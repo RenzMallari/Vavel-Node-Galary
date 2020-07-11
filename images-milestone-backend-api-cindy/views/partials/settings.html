@@ -1,0 +1,470 @@
+
+<div ng-show='!isloggedin'>
+  <header class="wrapper" id="header" data-stellar-background-ratio="0.5" style="background-position: 50% 0px;">
+      <div class="container">
+          <div id="header_inner" class="light_text">
+              <h2 id="slogan">404 Not Found</h2>
+          </div>
+      </div>
+  </header>
+</div>
+<!-------------------------------------->
+
+<div ng-show='isloggedin' class="ember-view parallax" id="ember806">
+        <div class="top-gap hidden-xs hidden-sm"></div>
+        <div class="parallax__layer parallax__layer--base">
+
+        <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="myModal-fileupload">
+            <div class="modal-backdrop fade in"></div>
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+                <h4 id="myModalLabel" class="modal-title">Upload Image</h4>
+                </div>
+                <div class="modal-body" >
+                  <form role="form" name="fileuploadform">
+                    <div class="errors"></div>
+                    <div class="form-group">
+                      <div class="form_controls">
+                        <div class="upload_button_holder">
+                            Upload
+                            <input type="file" name="file" class="cloudinary_fileupload">
+                        </div>
+                        <div class="status">{{status}}</div>
+                        <div class="progress" style="width: {{progress}}%" ng-init="progress=0" ng-show="filruploadSuccess"></div>
+                    </div>
+                    </div>
+                    <div id="ember1705" class="ember-view"></div>
+                  </form>
+                  <div class="social-auth">
+                    <div class="clearfix">
+                      <div id="ember1708" class="ember-view"></div>
+                      <div id="ember1709" class="ember-view"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer" style="text-align: center;"></div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+           </div>
+
+           <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="myModal-watermark1">
+            <div class="modal-backdrop fade in"></div>
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+                <h4 id="myModalLabel" class="modal-title">Upload First Watermark</h4>
+                </div>
+                <div class="modal-body" >
+                  <form role="form" name="fileuploadform">
+                    <div class="errors"></div>
+                    <div class="form-group">
+                      <div class="form_controls">
+                        <div class="upload_button_holder">
+                            Upload
+                            <input type="file" name="file" class="cloudinary_watermark1upload">
+                        </div>
+                        <div class="status">{{watermark1status}}</div>
+                        <div class="progress" style="width: {{watermark1progress}}%" ng-init="progress=0" ng-show="watermark1uploadSuccess"></div>
+                    </div>
+                    </div>
+                    <div id="ember1705" class="ember-view"></div>
+                  </form>
+                  <div class="social-auth">
+                    <div class="clearfix">
+                      <div id="ember1708" class="ember-view"></div>
+                      <div id="ember1709" class="ember-view"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer" style="text-align: center;"></div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+           </div>
+
+           <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="myModal-watermark2">
+            <div class="modal-backdrop fade in"></div>
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+                <h4 id="myModalLabel" class="modal-title">Upload Second Watermark</h4>
+                </div>
+                <div class="modal-body" >
+                  <form role="form" name="fileuploadform">
+                    <div class="errors"></div>
+                    <div class="form-group">
+                      <div class="form_controls">
+                        <div class="upload_button_holder">
+                            Upload
+                            <input type="file" name="file" class="cloudinary_watermark2upload">
+                        </div>
+                        <div class="status">{{watermark2status}}</div>
+                        <div class="progress" style="width: {{watermark2progress}}%" ng-init="progress=0" ng-show="watermark2uploadSuccess"></div>
+                    </div>
+                    </div>
+                    <div id="ember1705" class="ember-view"></div>
+                  </form>
+                  <div class="social-auth">
+                    <div class="clearfix">
+                      <div id="ember1708" class="ember-view"></div>
+                      <div id="ember1709" class="ember-view"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer" style="text-align: center;"></div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+           </div>
+
+          <div class="container-fluid">
+          	<div class="row">
+            	<div class="col-sm-3"></div>
+                <div class="col-sm-6">
+
+                    <div class="artist-photos">
+                    	<ul role="tablist" class="nav nav-tabs" id="myTab">
+                          <li class="active" role="presentation"><a aria-expanded="true" aria-controls="account" data-toggle="tab" role="tab" id="account-tab" href="/settings/#account">Account</a></li>
+                          <li class="" role="presentation"><a aria-controls="social" data-toggle="tab" id="social-tab" role="tab" href="/settings/#social">Embedded Code</a></li>
+                          <li class="" role="presentation" style="display:none;"><a aria-controls="notifications" data-toggle="tab" id="notifications-tab" role="tab" href="/settings/#notifications">Notifications</a></li>
+                          <li class="" role="presentation"><a aria-controls="payment" data-toggle="tab" id="payment-tab" role="tab" href="/settings/#payment">Payment</a></li>
+                          <li class="" role="presentation"><a aria-controls="currency" data-toggle="tab" id="currency-tab" role="tab" href="/settings/#currency">Currency</a></li>
+
+                        <!--  <li class="" role="presentation"><a aria-controls="subscription" data-toggle="tab" id="subscription-tab" role="tab" href="/settings/#subscription">Subscription</a></li>-->
+                        </ul>
+            		<div class="tab-content" id="myTabContent">
+                          <div aria-labelledby="account-tab" id="account" class="tab-pane fade in active" role="tabpanel">
+                            <div class="container-fluid">
+                              <h4 style="margin: 30px 0;">Account Settings</h4>
+                              <div class="row" id="email">
+                                <div ng-show="emailupdateSuccess" class="{{alert.altclass}}">
+                                      <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                 </div>
+                                <div class="col-sm-4">
+                                  <p class="text-dark">Email Address</p>
+                                </div>
+                                <div class="col-sm-8">
+                                  <div class="row" ng-hide="!editActive">
+                                   <div class="col-sm-9">
+                                    <form data-ember-action="2177" class="clearfix" ng-submit="changeEmail()">
+                                     <div class="form-group">
+                                     <input id="userid" ng-model="myaccount._id" class="ember-view ember-text-field form-control" type="hidden" name="_id" >
+
+                                     <input id="email" ng-model="myaccount.email" class="ember-view ember-text-field form-control" type="email" required name="email">
+                                     </div>
+                                     <button type="submit" class="btn btn-primary btn-xs pull-right" ng-disabled="updatingemail"><span ng-show="updatingemail" ><i class="fa fa-spinner fa-spin"></i></span> Save</button>
+                                     <a data-ember-action="2179" class="btn btn-xs btn-link pull-right" ng-click="closeedit()">Cancel</a>
+                                     </form>
+                                     </div>
+                                  </div>
+                                  <div class="clearfix" ng-hide="editActive">
+                                    <p class="pull-left strong">{{loggedindetails.email}}</p>
+                                    <button class="btn btn-primary btn-xs pull-right" data-ember-action="1164" ng-click="openedit()">Edit</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <hr class="light">
+                              <div class="row" id="password">
+                                <div ng-show="passwordupdateSuccess" class="{{alert.altclass}}">
+                                      <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                 </div>
+                                <div class="col-sm-4">
+                                  <p class="text-dark">Password</p>
+                                </div>
+                                <div class="col-sm-8">
+                                   <form data-ember-action="2182" class="clearfix" ng-hide="!editpassActive" ng-submit="changePassword()">
+                                    <div style="margin-bottom: 20px;" class="row">
+                                     <div class="col-sm-9">
+                                      <label for="oldPassword" class="xsmall">Old Password:</label>
+
+                                      <input id="userid" ng-model="myaccount._id" class="ember-view ember-text-field form-control" type="hidden" name="_id" >
+                                      <input id="oldpassword" class="ember-view ember-text-field form-control" type="password" name="oldpassword" ng-model="myaccount.oldpassword">
+                                     </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;" class="row">
+                                     <div class="col-sm-9">
+                                      <label for="newPassword" class="xsmall">New Password:</label>
+                                      <input id="newpassword" class="ember-view ember-text-field form-control" type="password" name="newpassword" ng-model="myaccount.newpassword">
+                                     </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;" class="row">
+                                     <div class="col-sm-9">
+                                      <label for="newPasswordConfirmation" class="xsmall">Confirm New Password:</label>
+                                      <input id="newpasswordconfirmation" class="ember-view ember-text-field form-control" type="password" name="newpasswordconfirmation" ng-model="myaccount.newpasswordconfirmation">
+                                     </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;" class="row">
+                                     <div class="col-sm-9">
+                                     <button type="submit" class="btn btn-xs btn-primary pull-right"ng-disabled="updatingpassword"><span ng-show="updatingpassword" ><i class="fa fa-spinner fa-spin"></i></span> Save</button>
+                                     <a data-ember-action="2186" class="btn btn-xs btn-link pull-right" ng-click="closepassedit()">Cancel</a>
+                                    </div>
+                                   </div>
+                                  </form>
+                                  <div class="clearfix" ng-hide="editpassActive">
+                                    <p class="pull-left">••••••••••••</p>
+                                    <button class="btn btn-primary btn-xs pull-right" data-ember-action="1166" ng-click="openpassedit()">Edit</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <hr class="light">
+                              <div class="row" id="username">
+                              <div ng-show="usernameupdateSuccess" class="{{alert.altclass}}">
+                                      <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                              </div>
+                                <div class="col-sm-4">
+                                  <p class="text-dark">Username</p>
+                                </div>
+                                <div class="col-sm-8">
+                                  <div class="row" ng-hide="!edituserActive">
+                                   <div class="col-sm-9">
+                                    <form data-ember-action="2177" class="clearfix" ng-submit="changeUsername()">
+                                     <div class="form-group">
+                                     <input id="userid" ng-model="myaccount._id" class="ember-view ember-text-field form-control" type="hidden" name="_id" >
+                                     <input id="username" class="ember-view ember-text-field form-control" type="text" required ng-model="myaccount.username" name="username">
+                                     </div>
+                                     <button type="submit" class="btn btn-primary btn-xs pull-right" ng-disabled="updatingusername"><span ng-show="updatingusername" ><i class="fa fa-spinner fa-spin"></i></span>Save</button>
+                                     <a data-ember-action="2179" class="btn btn-xs btn-link pull-right" ng-click="closeuseredit()">Cancel</a>
+                                     </form>
+                                     </div>
+                                  </div>
+                                  <div class="clearfix" ng-hide="edituserActive">
+                                    <p class="pull-left strong">{{loggedindetails.username}}</p>
+                                    <button class="btn btn-primary btn-xs pull-right" data-ember-action="1169" ng-click="openuseredit()">Edit</button>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--<hr class="light">
+                              <div class="row" id="avatar">
+                              <div ng-show="userfileupdateSuccess" class="{{alert.altclass}}">
+                                      <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                              </div>
+                                <div class="col-sm-4">
+                                  <p class="text-dark">Avatar</p>
+                                </div>
+                                <div class="col-sm-8">
+                                   <div id="ember1158" class="ember-view inline-block">
+                                   <svg height="0" width="0">
+                                    <clipPath id="hexagonClip">
+                                      <polygon points="24 0,45 12,45 37,24 50,3 37,3 12"/>
+                                    </clipPath>
+                                    </svg>
+
+<img public-id="{{loggedindetails.image}}" class="avatar hexagon-medium ng-isolate-scope" format="jpg" style="clip-path: url(#hexagonClip);" src="{{config.ftpAvatarPath}}{{loggedindetails.image}}" height="150" width="150"></img>
+
+
+                                   </div>
+
+                                  <a data-target="#myModal-fileupload" data-toggle="modal"><button type="button" class="btn btn-xs btn-primary pull-right upload_file">Edit</button></a>
+                                </div>
+                              </div>-->
+                              <hr class="light">
+                              <div class="row" id="bio">
+                              <div ng-show="bioupdateSuccess" class="{{alert.altclass}}">
+                                      <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                              </div>
+                                <div class="col-sm-4">
+                                  <p class="text-dark">Bio</p>
+                                </div>
+                                <div class="col-sm-8">
+                                  <div class="row" ng-hide="!editbioActive">
+                                   <div class="col-sm-9">
+                                    <form data-ember-action="2177" class="clearfix" ng-submit="changeBio()">
+                                     <div class="form-group">
+                                     <textarea id="bio" class="ember-view ember-text-area form-control" ng-model="myaccount.bio" name="bio"></textarea>
+                                     </div>
+                                     <button type="submit" class="btn btn-primary btn-xs pull-right" ng-disabled="updatingbio"><span ng-show="updatingbio" ><i class="fa fa-spinner fa-spin"></i></span> Save</button>
+                                     <a data-ember-action="2179" class="btn btn-xs btn-link pull-right" ng-click="closebioedit()">Cancel</a>
+                                     </form>
+                                     </div>
+                                  </div>
+                                  <div class="clearfix" style="margin-bottom: 20px;" ng-hide="editbioActive">
+                                    <p class="pull-left strong">{{loggedindetails.bio}}</p>
+                                    <button class="btn btn-primary btn-xs pull-right" data-ember-action="1179" ng-click="openbioedit()">Edit</button>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                            <hr class="light">
+                              <div class="row" id="avatar">
+                              <div ng-show="userwatermarkoneSuccess" class="{{alert.altclass}}">
+                                      <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                              </div>
+                                <div class="col-sm-4">
+                                  <p class="text-dark">Watermark Center</p>
+                                </div>
+                                <div class="col-sm-8">
+                                   <div id="ember1158" class="ember-view inline-block">
+                                    <cl-image public-id="{{loggedindetails.watermark1}}" class="avatar" format="jpg" >
+                                         <cl-transformation width="150" crop="fill"/>
+                                     </cl-image>
+                                   </div>
+
+                                  <a data-target="#myModal-watermark1" data-toggle="modal" data-backdrop="static" data-keyboard="false"><button type="button" class="btn btn-xs btn-primary pull-right upload_file">Edit</button></a>
+                                </div>
+                              </div>
+                              <hr class="light">
+                              <div class="row" id="avatar">
+                              <div ng-show="userwatermarktwoSuccess" class="{{alert.altclass}}">
+                                      <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                              </div>
+                                <div class="col-sm-4">
+                                  <p class="text-dark">Watermark Bottom</p>
+                                </div>
+                                <div class="col-sm-8">
+                                   <div id="ember1158" class="ember-view inline-block">
+
+                                    <cl-image public-id="{{loggedindetails.watermark2}}" class="avatar" format="jpg">
+                                         <cl-transformation width="150" crop="fill"/>
+                                     </cl-image>
+                                   </div>
+
+                                  <a data-target="#myModal-watermark2" data-toggle="modal" data-backdrop="static" data-keyboard="false"><button type="button" class="btn btn-xs btn-primary pull-right upload_file">Edit</button></a>
+                                </div>
+                              </div>
+
+                             </div>
+                          </div>
+                          <div aria-labelledby="social-tab" id="social" class="tab-pane fade" role="tabpanel">
+                            <div class="container-fluid">
+                              <h4 style="margin: 30px 0;">Embed Code</h4>
+                              <div class="row clearfix" id="facebook">
+                                <div class="col-sm-12">
+                                    <textarea style="background:#ccc;" readonly><iframe src="/{{loggedindetails.username}}" width="600" height="600" frameborder="0"></iframe>
+                                    </textarea>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div aria-labelledby="payment-tab" id="payment" class="tab-pane fade" role="tabpanel">
+                            <div class="container-fluid">
+                              <h4 style="margin: 30px 0 5px;">Payment Settings - Add your Paypal email here</h4>
+                              <p class="small text-dark" style="margin-bottom: 30px;">For be paid for your sales, is necesary add your <b>Paypal Account Email here</b>.</p>
+                              <div class="row clearfix" style="padding-bottom: 20px;" id="paypal">
+                                <div ng-show="paypalupdateSuccess" class="{{alert.altclass}}">
+                                      <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                </div>
+
+                                <div class="col-sm-8" style="width:99%;">
+                                  <div class="row" ng-hide="!editpaypalActive">
+                                   <div class="col-sm-9">
+                                    <form data-ember-action="2177" class="clearfix" ng-submit="changePaypal()">
+                                     <div class="form-group">
+                                     <input id="userid" ng-model="myaccount._id" class="ember-view ember-text-field form-control" type="hidden" name="_id" >
+                                     <input id="paypalemail" class="ember-view ember-text-field form-control" type="email" required ng-model="myaccount.paypalemail" name="paypalemail">
+                                     </div>
+
+                                      <button ng-disabled="updatingpaypal" type="submit" class="btn btn-loading btn-primary btn-xs pull-right">
+                                          <div class="btn-loading-text" id="paybtn"><span ng-show="updatingpaypal" ><i class="fa fa-spinner fa-spin"></i></span> Save</div>
+                                          <!-- <div ng-show="updatingpaypal" class="lds-ripple"><div></div><div></div></div> -->
+                                      </button>
+                                     <!-- <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button> -->
+                                     <a data-ember-action="2179" class="btn btn-xs btn-link pull-right" ng-click="closepaypaledit()">Cancel</a>
+                                     </form>
+                                     </div>
+                                  </div>
+                                  <div class="clearfix" style="margin-bottom: 20px;" ng-hide="editpaypalActive">
+                                    <p class="pull-left strong">{{loggedindetails.paypalemail}}</p>
+                                    <button class="btn btn-primary btn-xs pull-right" data-ember-action="1179" ng-click="openpaypaledit()">Edit</button>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div aria-labelledby="currency-tab" id="currency" class="tab-pane fade" role="tabpanel">
+                            <div class="container-fluid">
+                              <h4 style="margin: 30px 0 30px;">Currency Settings - Add your currency here</h4>
+                              <!-- <p class="small text-dark" style="margin-bottom: 30px;">For be paid for your sales, is necesary add your <b>Paypal Account Email here</b>.</p> -->
+                              <div class="row clearfix" style="padding-bottom: 20px;" id="currency">
+                                <div ng-show="currencyupdateSuccess" class="{{alert.altclass}}">
+                                      <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                </div>
+                                <div class="col-sm-4">
+                                  <p class="text-dark">Currency</p>
+                                </div>
+
+                                <div class="col-sm-8" >
+                                  <div class="row" ng-hide="!editcurrencyActive">
+                                   <div class="col-sm-9">
+                                    <form data-ember-action="2177" class="clearfix" ng-submit="changeCurrency()">
+                                     <div class="form-group">
+                                     <input id="userid" ng-model="myaccount._id" class="ember-view ember-text-field form-control" type="hidden" name="_id" >
+                                     <!-- <input id="currency" class="ember-view ember-text-field form-control" type="email" required ng-model="myaccount.currency" name="currency"> -->
+                                     <select id="currency" class="ember-view ember-text-field form-control" type="email" required ng-model="myaccount.currency" name="currency">
+                                        <option ng-repeat='currency in list_currencies' value={{currency.code}}>{{currency.code}}</option>
+                                     </select>
+                                     </div>
+
+                                      <button ng-disabled="updatingcurrency" type="submit" class="btn btn-loading btn-primary btn-xs pull-right">
+                                          <div class="btn-loading-text" id="paybtn"><span ng-show="updatingcurrency" ><i class="fa fa-spinner fa-spin"></i></span> Save</div>
+                                          <!-- <div ng-show="updatingcurrency" class="lds-ripple"><div></div><div></div></div> -->
+                                      </button>
+                                     <!-- <button type="submit" class="btn btn-primary btn-xs pull-right">Save</button> -->
+                                     <a data-ember-action="2179" class="btn btn-xs btn-link pull-right" ng-click="closecurrencyedit()">Cancel</a>
+                                     </form>
+                                     </div>
+                                  </div>
+                                  <div class="clearfix" style="margin-bottom: 20px;" ng-hide="editcurrencyActive">
+                                    <p class="pull-left strong">{{loggedindetails.currency}}</p>
+                                    <button class="btn btn-primary btn-xs pull-right" data-ember-action="1179" ng-click="opencurrencyedit()">Edit</button>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                          <div aria-labelledby="subscription-tab" id="subscription" class="tab-pane fade" role="tabpanel">
+                            <div class="container-fluid">
+                              <div id="ember1504" class="ember-view loading-spinner" style=""></div>
+                              <h4 style="margin: 30px 0;">Subscription Settings</h4>
+                              <div style="background-color: #DEE1E4; padding: 20px; margin: 0 -15px;">
+                                <p style="text-align: center; margin-bottom: 0;">Our image plans make it easy to license from Photography?<br/> <a href="/pricing">View our Subscription Plans </a>or contact us at <a href="mailto:admin@vavel.com">admin@vavel.com</a> for more info.</p>
+                              </div>
+                              <h4 style="margin: 30px 0;" ng-show="subscribed">Your Current Subscription Details</h4>
+                              <div style="background-color: #DEE1E4; padding: 20px; margin: 0 -15px;" ng-show="subscribed">
+                                <p style="margin-bottom: 0;">
+                                 Plan Name: {{currentsubscription.subscriptionname}} <br/>
+                                 Plan Price: ${{currentsubscription.price}} <br/>
+                                 Images: {{currentsubscription.images}} images/mo <br/>
+                                 Subscription Date: {{currentsubscription.subscriptiondate}} <br/>
+                                 Subscription Ends On: {{currentsubscription.subscriptionenddate}} <br/>
+                                 Images Left: {{currentsubscription.remaining_images}}
+                                </p>
+                                <p style="color:red;" ng-show="expired">Your subscription has been expired. Please renew your subscription.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+            		</div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+          </div>
+  <script>
+    $(function() {
+      $('#myTab li a').click(function() {
+            var id = $(this).attr('id');
+            var id_split=id.split('-');
+            $("#myTab li").removeClass("active");
+            $('#'+id).parent().addClass('active');
+
+            $(".tab-pane").removeClass("active");
+            $('#'+id_split[0]).addClass('in');
+            $('#'+id_split[0]).addClass('active');
+            return false;
+      });
+   });
+  </script>
+  <style>
+   #subscription{margin-bottom:30px;}
+  </style>

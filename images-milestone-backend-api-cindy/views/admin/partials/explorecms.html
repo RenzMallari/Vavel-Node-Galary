@@ -1,0 +1,179 @@
+<div ng-hide="editMode">
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="./">Home</a>
+					<i class="icon-angle-right"></i> 
+				</li>
+				<li>
+					<i class="icon-edit"></i>
+					<a href="javascript:void(0);">Explore CMS</a>
+				</li>
+			</ul>
+			
+			
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="halflings-icon white edit"></i><span class="break"></span>Explore CMS</h2>
+					</div>
+					<div class="box-content">
+						
+						<input id="appendedInput" size="16" name="exploreid" ng-model="explore._id" type="hidden">
+						
+						    <fieldset>
+						    <div class="control-group">
+								<label class="control-label" for="appendedInput">Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									 <textarea name="title" ng-model="explore.title" style="width:350px"></textarea>
+								  </div>
+								</div>
+							</div>
+						     
+							<div class="control-group">
+								<label class="control-label" for="appendedInput">Sub Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									 <textarea name="subtitle" ng-model="explore.subtitle" style="width:350px"></textarea>
+								  </div>
+								</div>
+							</div>
+							  
+							 <div class="control-group">
+								<label class="control-label" for="appendedInput">User Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="usertitle" ng-model="explore.usertitle" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							 <div class="control-group hidden-phone">
+							  <label class="control-label" for="textarea2">User Content</label>
+							  <div class="controls">
+							    <wysiwyg textarea-id="question" 
+                                                                  textarea-class="form-control"  
+                                                                  textarea-height="180px" 
+                                                                  textarea-name="textareaQuestion" 
+                                                                  textarea-required 
+                                                                  ng-model="explore.usercontent" 
+                                                                  enable-bootstrap-title="true"
+                                                                  textarea-menu="menu"
+                                                                  textarea-custom-menu="custom"
+                                                                  disabled="disabled">
+                                                              </wysiwyg>
+							  </div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label" for="appendedInput">User Button Text</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="userbuttonvalue" ng-model="explore.userbuttonvalue" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Photographer Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="photographertitle" ng-model="explore.photographertitle" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							 <div class="control-group hidden-phone">
+							  <label class="control-label" for="textarea2">Photographer Content</label>
+							  <div class="controls">
+							    <wysiwyg textarea-id="question" 
+                                                                  textarea-class="form-control"  
+                                                                  textarea-height="180px" 
+                                                                  textarea-name="textareaQuestion" 
+                                                                  textarea-required 
+                                                                  ng-model="explore.photographercontent" 
+                                                                  enable-bootstrap-title="true"
+                                                                  textarea-menu="menu"
+                                                                  textarea-custom-menu="custom"
+                                                                  disabled="disabled">
+                                                              </wysiwyg>
+							  </div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label" for="appendedInput">Photographer Button Text</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="photographerbuttonvalue" ng-model="explore.photographerbuttonvalue" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Below Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									
+									<textarea name="belowtitle" ng-model="explore.belowtitle" style="width:350px"></textarea>
+								  </div>
+								</div>
+							  </div>
+							  
+							
+							<div class="control-group">
+								<label class="control-label" for="appendedInput">Below User Button Text</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="belowuserbuttonvalue" ng-model="explore.belowuserbuttonvalue" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Below Photographer Button Text</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="belowphotographerbuttonvalue" ng-model="explore.belowphotographerbuttonvalue" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Signature Collection Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									
+									<textarea name="signaturecollectiontitle" ng-model="explore.signaturecollectiontitle" style="width:350px"></textarea>
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Signature Collection Subtitle</label>
+								<div class="controls">
+								  <div class="input-append">
+									
+									<textarea name="signaturecollectionsubtitle" ng-model="explore.signaturecollectionsubtitle" style="width:350px"></textarea>
+								  </div>
+								</div>
+							  </div>
+                           
+							  <div class="form-actions">
+								<button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+							  </div>
+							</fieldset>
+
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
+</div>
+<!--/row-->
+        
+<style>
+ .thumbnail{border:0px;}
+ textarea, input[type="text"]{border:1px solid #000 !important;}
+ #question,.wysiwyg-select{border:1px solid #C5C3C3;}
+</style>
+

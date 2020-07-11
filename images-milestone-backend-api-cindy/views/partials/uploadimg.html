@@ -1,0 +1,67 @@
+<!-------------------------------------->
+<div ng-show='!isloggedin'>
+  <header class="wrapper" id="header" data-stellar-background-ratio="0.5" style="background-position: 50% 0px;">
+      <div class="container">
+          <div id="header_inner" class="light_text">
+              <h2 id="slogan">404 Not Found</h2>
+          </div>
+      </div>
+  </header>
+</div>
+<div ng-show='isloggedin' class="container uploadimg-block">
+  <div class="left_block clear">
+    <div class="select-categori">
+      <select ng-options="album as album.name for album in albumsList track by album._id"
+        ng-change="albumSelectDropzone()" ng-model="albumSelect" id="albumSelect"></select>
+      <select ng-options="collection as collection.name for collection in collectionList track by collection._id"
+        ng-change="collectionSelectDropzone()" ng-model="collectionSelect" id="collectionSelect"></select>
+    </div>
+
+    <div class="clear">
+      <div album-add add="addAlbum(data)"></div>
+      <div colaction-add add="addCollaction(data)"></div>
+    </div>
+
+    <div img-update ng-show="imageForm.imageSelectedList.length" data-img-banch="tagsBunch" data-album="albums[currentAlbum]"
+      data-collactions="collectionList" data-data="imageForm.data" data-imglist="imageForm.imageSelectedList"
+      add-img-to-collaction-client="collactionUpdate(data)" update="imgUpdate(data)"></div>
+
+    <div album-update ng-show="albumSelect._id!='-'" data-data="albums[currentAlbum]" update="albumUpdate(data)"
+      delete="albumDelete(data)"></div>
+    <div collaction-update ng-show="collectionSelect._id!='-'" data-data="collections[currentCollection]"
+      update="collactionUpdate(data)" delete="collactionDelete(data)"></div>
+  </div>
+  <div class="right_block clear">
+    <div style="font-family: Open Sans, Ubuntu, Arial; font-size:14px; margin: 10px 15px; background: #FFF;     -webkit-box-shadow: 0 2px 17px -9px rgba(0,0,0,.75);
+    -moz-box-shadow: 0 2px 17px -9px rgba(0,0,0,.75);
+    box-shadow: 0 2px 17px -9px rgba(0,0,0,.75);
+    padding: 20px;"><b>+ In the intention of your photographies be found for be sold</b> and be found in search engines
+      too, <b>must add a proper description and tag</b> with proper keywords to each photography
+      upload.<br /><br /><span style="color: #109b70; font-weight: bold;">+ Example:</span> <i><b>Description of one
+          photo (is very important it doesn't be repeated respect other photos, must be original): </b></i>Lionel Messi
+      scores a free-kick goal against Liverpool in 2019 Champions League semifinal. <i><b>Keywords (use always name +
+          surname model):</b></i> Lionel Messi, Camp Nou, FC Barcelona, Liverpool FC.<br /><br /><span
+        style="color: #109b70; font-weight: bold;">+ How is this done?</span> After upload can click in each picture and
+      at left sidebar will can edit the information of each single picture. Also don't create album title or description
+      all in caps, and create it with local team vs away team in (round if exist) tournament + year. INCORRECT: FC
+      BARCELONA VS LIVERPOOL IN 2019 CHAMPIONS LEAGUES SEMIFINAL, CORRECT > FC Barcelona vs Liverpool in 2019 Champions
+      Leagues semifinal</div>
+
+    <form ng-if="albumSelect._id!='-'" class="dropzone ng-pristine ng-valid dz-clickable" id="my-awesome-dropzone"
+      dropzone="dropzoneConfig">
+      <div class="dz-default dz-message">
+        <span>Drop files here to upload</span>
+      </div>
+    </form>
+    <div id="selectable">
+      <div ng-repeat="img in imgList track by $index" img-box data-img="img" delete-img="deleteImg(data)"
+        data-nom="{{img.publicid}}" class=" clear block-img-upload"></div>
+    </div>
+
+<div style="margin-top:50px;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IN_pOKybI3E" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" style="float:right;" allowfullscreen></iframe>
+</div>
+  </div>
+
+
+</div>

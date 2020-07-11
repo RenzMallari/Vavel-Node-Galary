@@ -1,0 +1,190 @@
+<div ng-hide="editMode">
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			<a href="./">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<i class="icon-edit"></i>
+			<a href="javascript:void(0);">Settings</a>
+		</li>
+	</ul>
+
+
+	<div class="row-fluid sortable">
+		<div class="box span12">
+			<div class="box-header" data-original-title>
+				<h2><i class="halflings-icon white edit"></i><span class="break"></span>Settings</h2>
+			</div>
+			<div class="box-content">
+
+				<input id="appendedInput" size="16" name="settingid" ng-model="settings._id" type="hidden">
+				<input id="appendedInput" size="16" name="hidimage" ng-model="settings.image" type="hidden">
+				<input id="appendedInput" size="16" name="imageid" ng-model="settings.imageid" type="hidden">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">&nbsp;</label>
+						<div class="controls">
+							<cl-image public-id="{{settings.image}}" class="thumbnail inline" format="jpg">
+								<cl-transformation height="150" width="150" crop="fill" gravity="north" />
+							</cl-image>
+						</div>
+					</div>
+					<div class="form_line">
+						<label class="control-label" for="appendedInput">Image</label>
+						<div class="controls">
+							<div class="upload_button_holder">
+								<input type="file" name="file" class="cloudinary_fileupload">
+							</div>
+							<div class="status">{{status}}</div>
+							<div class="progress-bar" ng-show="showupload">
+								<div class="progress" style="width: {{progress}}%" ng-init="progress=0"></div>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Admin Percentage Per Album(%)</label>
+						<div class="controls">
+							<div class="input-append">
+								<input id="appendedInput" size="16" name="adminpercentage"
+									ng-model="settings.adminpercentage" required type="text">
+							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Admin Percentage Per Image(%)</label>
+						<div class="controls">
+							<div class="input-append">
+								<input id="appendedInput" size="16" name="adminpercentageperimage"
+									ng-model="settings.adminpercentageperimage" required type="text">
+							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Admin Email</label>
+						<div class="controls">
+							<div class="input-append">
+								<input id="appendedInput" size="16" name="adminemail" ng-model="settings.adminemail"
+									required type="text">
+							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Admin PaypalID</label>
+						<div class="controls">
+							<div class="input-append">
+								<input id="appendedInput" size="16" name="adminpaypalid"
+									ng-model="settings.adminpaypalid" required type="text">
+							</div>
+						</div>
+					</div>
+
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Admin Phone Number</label>
+						<div class="controls">
+							<div class="input-append">
+								<input id="appendedInput" size="16" name="adminphonenumber"
+									ng-model="settings.adminphonenumber" required type="text">
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Facebook</label>
+						<div class="controls">
+							<div class="input-append">
+								<textarea name="facebook" ng-model="settings.facebook" style="width:350px"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Twitter</label>
+						<div class="controls">
+							<div class="input-append">
+								<textarea name="twitter" ng-model="settings.twitter" style="width:350px"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Instagram</label>
+						<div class="controls">
+							<div class="input-append">
+								<textarea name="instagram" ng-model="settings.instagram" style="width:350px"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Contact No.</label>
+						<div class="controls">
+							<div class="input-append">
+								<input id="appendedInput" size="16" name="contact" ng-model="settings.contactno"
+									required type="text">
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label" for="appendedInput">Contact Email</label>
+						<div class="controls">
+							<div class="input-append">
+								<input id="appendedInput" size="16" name="contactemail" ng-model="settings.contactemail"
+									required type="text">
+							</div>
+						</div>
+					</div>
+					<div class="control-group hidden-phone">
+						<label class="control-label" for="textarea2">Copyright</label>
+						<div class="controls">
+							<wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="180px"
+								textarea-name="textareaQuestion" textarea-required ng-model="settings.copyright"
+								enable-bootstrap-title="true" textarea-menu="menu" textarea-custom-menu="custom"
+								disabled="disabled">
+							</wysiwyg>
+
+						</div>
+					</div>
+
+					<div class="control-group hidden-phone">
+						<label class="control-label" for="textarea2">Noscript Content</label>
+						<div class="controls">
+							<wysiwyg textarea-id="question" textarea-class="form-control" textarea-height="180px"
+								textarea-name="textareaQuestion" textarea-required ng-model="settings.noscriptcontent"
+								enable-bootstrap-title="true" textarea-menu="menu" textarea-custom-menu="custom"
+								disabled="disabled">
+							</wysiwyg>
+
+						</div>
+					</div>
+
+
+					<div class="form-actions">
+						<button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+					</div>
+				</fieldset>
+
+			</div>
+		</div>
+		<!--/span-->
+
+	</div>
+	<!--/row-->
+</div>
+<!--/row-->
+
+<style>
+	.thumbnail {
+		border: 0px;
+	}
+
+	textarea,
+	input[type="text"] {
+		border: 1px solid #000 !important;
+	}
+
+	#question,
+	.wysiwyg-select {
+		border: 1px solid #C5C3C3;
+	}
+</style>

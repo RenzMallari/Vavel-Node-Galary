@@ -1,0 +1,136 @@
+<div ng-hide="editMode">
+<ul class="breadcrumb">
+	<li> <i class="icon-home"></i> <a href="./">Home</a> <i class="icon-angle-right"></i> </li>
+	<li><a href="javascript:void(0);">List Subscriptions</a></li>
+</ul>
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header" data-original-title>
+			<h2><i class="halflings-icon white user"></i><span class="break"></span>Subscriptions</h2>	
+			<div class="box-icon">
+							<a class="btn-add" href="javascript:void(0);" ng-click="changeMode();"><i class="halflings-icon white plus"></i></a>
+						</div>		
+		</div>
+		<div class="box-content">
+		
+			<div id="list">
+			
+				<table class="table table-striped table-bordered bootstrap-datatable datatable" id="userlist">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Description</th>
+							<th>Amount($/month)</th>
+							<th>No Of Images(/month)</th>
+							<th>Status</th>
+							<th>Is Popular</th>
+							<th align="center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="subscription in allsubscriptions">
+							<td>{{ subscription.subscriptionname }}</td>
+							<td>{{ subscription.description }}</td>
+							<td>{{ subscription.amount }}</td>
+							<td>{{ subscription.noofimages }}</td>
+							<td><span class="label" ng-class="{'label-success': subscription.isactive}">{{subscription.isactive ? 'Active' : 'InActive'}}</span></td>
+							<td><span class="label" ng-class="{'label-success': subscription.ispopular}">{{subscription.ispopular ? 'Yes' : 'No'}}</span></td>
+							<td align="center"><a class="btn btn-info editdata" href="javascript:void(0);" ng-click="getsubscriptionsbyid(subscription)" title="Edit" ><i class="halflings-icon white edit"></i></a> <a class="btn btn-danger delete"  ng-click="deletesubscriptions(subscription._id)" title="Delete"><i class="halflings-icon white trash"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!--/span-->
+</div>
+</div>
+<div ng-hide="!editMode">
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="./">Home</a>
+					<i class="icon-angle-right"></i> 
+				</li>
+				<li>
+					<i class="icon-edit"></i>
+					<a href="javascript:void(0);">{{mode}}</a>
+				</li>
+			</ul>
+			
+			
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="halflings-icon white edit"></i><span class="break"></span>{{mode}}</h2>
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal" name="subscription" id="subscription" method="post" action="./">
+						       <input id="hdnid" size="16" name="id" ng-model="subscriptions._id" required type="hidden" value="{{id}}">
+							<fieldset>
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Subscription Name</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="subscriptionname" ng-model="subscriptions.subscriptionname" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Description</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="description" ng-model="subscriptions.description" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Amount($/month)</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="amount" ng-model="subscriptions.amount" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">No Of Images(/month)</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="noofimages" ng-model="subscriptions.noofimages" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Is Active</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input type="checkbox" ng-model="subscriptions.isactive">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Is Popular</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input type="checkbox" ng-model="subscriptions.ispopular">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="form-actions">
+								<button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+								<button type="button" class="btn" ng-click="changeMode();">Cancel</button>
+							  </div>
+							</fieldset>
+						</form>
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
+</div>
+<!--/row-->
+

@@ -1,0 +1,47 @@
+<div class="ember-view parallax" id="ember806">
+<div class="top-gap hidden-xs hidden-sm"></div>
+<div class="parallax__layer parallax__layer--base about">
+  <div class="container-fluid">
+    <div class="centered-heading">
+      <h2 class="caps strong">{{teams.title}}</h2>
+      <p class="pannel-head">{{teams.subtitle}}</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" style="margin-bottom: 30px;">
+      <div class="col-sm-12">
+        <p data-ng-bind-html="trustAsHtml(teams.content)"></p>
+        <h5>{{teams.contentbelow}}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3 text-center" ng-repeat="member in memberslist">
+        <img src="{{member.image}}" class="thumbnail inline" />
+            
+        <h5>{{member.name}}</h5>
+        <p class="text-dark small">{{member.designation}}</p>
+      </div>
+    </div>
+  </div>
+         
+<script type='text/javascript'>
+    $(function(){
+
+
+		$( ".button-show" ).click(function() {
+
+		  $( ".show-div" ).toggle();
+
+			  $('html,body').animate({
+
+				scrollTop: $(".show-div").offset().top},
+
+				'slow');
+
+		});
+
+    });
+</script>
+<style>
+.centered-heading{padding-top:0px;}
+</style>

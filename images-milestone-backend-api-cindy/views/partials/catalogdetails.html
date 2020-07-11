@@ -1,0 +1,158 @@
+<!-------------------------------------->
+<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="mymodal-addcollection">
+  <div class="modal-backdrop fade in"></div>
+  <div class="modal-dialog modal-sml">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">Save to a Collection</h4>
+      </div>
+      <div class="modal-body" ng-show="showcollections">
+        <div id="collection-container" class="ember-view collection-group-stack" style="max-height:214px">
+          <ul id="collection-list" style="margin-bottom: 0;" class="list-group">
+            <li data-ember-action="22819" class="list-group-item clearfix collection-group-item" ng-repeat="allcollection in allcollections | orderBy: createdate" ng-click="addtocollection(allcollection._id)">
+              <div style="float:left;width:50px;height:50px;background:#e5e5e5;">
+                <div class="collection-cover" ng-repeat="imgpublicid in allcollection.images | orderBy: adddate | limitTo:1">
+                  <cl-image public-id="{{imgpublicid.publicid}}" format="jpg">
+                    <cl-transformation crop="fill" width="50" height="50" />
+                  </cl-image>
+                </div>
+              </div>
+              <div class="collection-info">
+                <h5 class="list-group-item-heading strong">{{allcollection.name}}</h5>
+                <h5 class="pannel-head list-group-item-text small">{{allcollection.images.length}} photos</h5>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <form role="form" style="text-align: left;" data-ember-action="22825" class="form-inline" ng-submit="collectionsubmit()">
+          <div class="form-group" style="float:left;width:auto;">
+            <input id="new-collection-input" ng-model="albumdetls.collectionname" class="ember-view ember-text-field form-control" placeholder="New Collection..." type="text" required>
+            <input id="new-collection-input-gallerycollectionid" ng-model="albumdetls.collectiongalleryid" type="hidden">
+          </div>
+          <div id="ember22826" class="ember-view" style="float:left;width:auto;">
+            <button class="btn btn-loading btn btn-primary" data-bindattr-22830="22830" data-bindattr-22831="22831" type="submit" data-bindattr-22832="22832" style="padding: 19px 17px;">
+              <div id="ember22833" class="ember-view loading-spinner" style=""></div>
+              <div class="btn-loading-text">Create</div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-------------------------------------->
+
+<div class="ember-view parallax" id="ember806">
+  <div class="top-gap hidden-xs hidden-sm"></div>
+  <div class="parallax__layer parallax__layer--base">
+    <div class="page-body">
+      <div class="page-title-bar">
+        <div class="row" style="margin: 0;">
+          <div class="col-xs-12">
+            <h5 style="margin-bottom: 2px;">{{keywordname}}&nbsp;~&nbsp;{{noofphotos}} photos </h5>
+            <a id="ember1676" class="ember-view small caps" href="/albums"><i class="right-arrow"></i>Albums</a></div>
+          <div class="col-xs-12">
+            <div class="pull-right" style="height: 0; overflow: hidden;" id="share-buttons-container">
+              <div id="ember1683" class="ember-view">
+                <div class="addthis_custom_sharing" data-bindattr-1689="1689" data-title="Check out this collection of photos on Photography: " data-bindattr-1688="1688" data-url="https://www.Photography.com/collections/1afe8da5-0a5d-41ed-8e31-82adffa1c2d2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="light hidden-xs hidden-sm" style="margin: 14px 0 7px;">
+      <div class="ember-view grid">
+        <div class="grid-real clearfix pictures" ng-show="nocatalogimage">
+          <brick-wall bricks="catalogphotos" item='photo'>
+            <div class="grid-photo-block">
+              <img ng-src="{{photo.src}}" ng-click="$parent.$parent.showDetails(photo.galleryid,photo.imageid)" style="cursor:pointer; position: absolute; height:{{photo.height}}px; width:{{photo.width}}px;">
+              <span class="btn btn-default btn-sm btnhover addcollectionbtn" ng-show="!$parent.$parent.spnAddCollection">
+                     <a id="btn-collect" href="javascript:void(0);" ng-click="$parent.$parent.open_collectionmodal(photo.galleryid,photo.imageid)">
+                       <i class="collect-icon"></i>
+                     </a>
+                   </span>
+            </div>
+          </brick-wall>
+        </div>
+        <div class="ember-view" style="text-align: center" ng-show="!nocatalogimage">
+          <div class="empty-con">
+            <h5>Nothing's been related to this keyword.</h5>
+          </div>
+        </div>
+        <div class="grid-footer" style="width:97.6%;">
+          <hr class="light" style="margin-left: 4px; margin-right: 4px;">
+          <div class="icon-background"></div>
+          <i class="t20-icon-grey-sm" style="position: absolute; left: 50%; top: 0; margin-left: -28px; margin-top: -24px;"></i></div>
+        <button data-bindattr-1691="1691" class="btn btn-default sticky-bottom-right" data-ember-action="1690" id="scrollToTop" style="display:none;"><i class="arrow-up-sm pull-left" style="width: 22px; height: 28px;"></i></button>
+      </div>
+    </div>
+
+    <style>
+      input[type="text"] {
+        display: inline-table;
+      }
+
+      tags-input .tags {
+        border-radius: 6px;
+      }
+
+      tags-input {
+        width: 56%;
+      }
+
+      .btn-default {
+        background-color: #dee1e4;
+        border: 1px solid #dee1e4;
+        color: #000;
+      }
+
+      .view-hover::after {
+        border: 2px solid white;
+        background: none;
+        border-radius: 3px;
+      }
+
+      .photogallery {
+        background-color: red;
+      }
+
+      .grid-photo-block .delete-btn {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        height: 38px;
+        width: 38px;
+        opacity: 1;
+        z-index: 1;
+        padding-right: 16px;
+        bottom: 46px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        border: none;
+        transition: opacity .15s ease-in-out;
+        -webkit-backface-visibility: hidden;
+        border-radius: 3px 3px 3px 3px;
+        cursor: pointer;
+      }
+
+      .grid-photo-block .delete-btn i {
+        margin: 0 auto;
+        opacity: 0.6;
+        -webkit-transition: opacity .15s ease-in-out;
+        -moz-transition: opacity .15s ease-in-out;
+        -ms-transition: opacity .15s ease-in-out;
+        -o-transition: opacity .15s ease-in-out;
+        transition: opacity .15s ease-in-out;
+        -webkit-backface-visibility: hidden;
+      }
+
+      i.delete-icon::after {
+        top: 0px;
+      }
+    </style>
+    <script>
+    </script>

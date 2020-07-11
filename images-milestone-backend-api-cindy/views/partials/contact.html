@@ -1,0 +1,51 @@
+<link href="../css/contact.css" media="screen" rel="stylesheet" type="text/css">
+<div class="ember-view parallax" id="ember806">
+<div class="top-gap hidden-xs hidden-sm"></div>
+<div class="parallax__layer parallax__layer--base">
+<div class="container-fluid">
+    <div class="centered-heading">
+      <h2 class="caps strong">{{contact.title}}</h2>
+      <p class="pannel-head">{{contact.subtitle}}</p>
+    </div>
+</div>
+<div class="container">
+<main role="main">
+<div class="new-request">
+<h1>{{contact.formtitle}}</h1>
+<p></p>
+<div ng-show="contactusError" class="{{alert.altclass}}">
+	<alert type="{{alert.type}}">{{alert.msg}}</alert>
+</div>
+<div ng-show="contactusSuccess" class="{{alert.altclass}}">
+	<alert type="{{alert.type}}">{{alert.msg}}</alert>
+</div>
+<form method="post" id="new_request" class="request-form" ng-submit="contact()" accept-charset="UTF-8">
+  <div class="form-field string required request_anonymous_requester_email">
+    <label for="request_anonymous_requester_email">Your email address</label>
+    <input type="email" name="email" ng-model="contactus.email" id="request_anonymous_requester_email" required>
+  </div>
+  <div data-searchbox="" class="form-field string required request_subject">
+    <label for="request_subject">Subject</label>
+    <input type="text" size="150" name="subject" ng-model="contactus.subject" maxlength="150" id="request_subject" required>
+    <div class="searchbox" style="display: none;">
+      <label>Suggested articles</label>
+      <div class="searchbox-suggestions"></div>
+    </div>
+  </div>
+  <div class="form-field text required request_description">
+    <label for="request_description">Description</label>
+    <textarea name="descriptions" ng-model="contactus.descriptions" id="request_description" required></textarea>
+    <p data-ng-bind-html="trustAsHtml(contact.formbelowtext)"></p>
+  </div>
+ 
+  <footer>
+    <input type="submit" value="Submit">
+  </footer>
+</form>
+</div>
+</main>
+</div>
+<style>
+.centered-heading{padding-top:0px;}
+</style>
+

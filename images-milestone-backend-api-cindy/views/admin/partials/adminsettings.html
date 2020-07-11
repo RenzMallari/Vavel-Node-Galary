@@ -1,0 +1,89 @@
+<div ng-hide="editMode">
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="./">Home</a>
+					<i class="icon-angle-right"></i> 
+				</li>
+				<li>
+					<i class="icon-edit"></i>
+					<a href="javascript:void(0);">Settings</a>
+				</li>
+			</ul>
+			
+			
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="halflings-icon white edit"></i><span class="break"></span>Settings</h2>
+						<!--<div class="box-icon">
+							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+						</div>-->
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal" name="addsettings" id="addsettings" method="post" action="./">
+						
+						<input id="hdnid" size="16" name="id" ng-model="settings._id" required type="hidden" value="54f5ac291f5edc70139347cb">
+							<fieldset>
+							  <cl-image public-id="{{settings.profileimage}}" ng-model="settings.profileimage" class="thumbnail inline" angle="30" format="jpg">
+                    <cl-transformation height="150" width="150" crop="fill" gravity="north"  radius="20" />
+                </cl-image>
+                                <div class="form_line">
+                                    <label>Image:</label>
+                                    <div class="form_controls">
+                                        <div class="upload_button_holder">
+                                            <a href="#" class="upload_button">Upload</a>
+                                            <input type="file" name="file" class="cloudinary_fileupload">
+                                        </div>
+                                        <div class="status">{{status}}</div>
+                                        <div class="progress-bar">
+                                            <div class="progress" style="width: {{progress}}%" ng-init="progress=0"></div>
+                                        </div>
+                                    </div>
+                                </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Email</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="adminpercentage" ng-model="settings.email" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							
+							  
+                           
+							  
+							  
+							  
+							  <div class="form-actions">
+								<button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+								<!--<button type="button" class="btn" ng-click="changeMode();">Cancel</button>-->
+							  </div>
+							</fieldset>
+						</form>
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
+</div>
+<!--/row-->
+
+
+
+<div class="modal hide fade" id="viewModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">x</button>
+			
+			<h3>Role Details</h3>
+		</div>
+		<div class="modal-body">
+			Name:{{viewdata.rolename}}
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>			
+		</div>
+	</div>

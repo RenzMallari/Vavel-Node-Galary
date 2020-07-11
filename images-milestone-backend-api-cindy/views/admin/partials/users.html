@@ -1,0 +1,427 @@
+<div ng-hide="editMode">
+	<ul class="breadcrumb">
+		<li> <i class="icon-home"></i> <a href="./">Home</a> <i class="icon-angle-right"></i> </li>
+		<li><a href="javascript:void(0);">List Users</a></li>
+	</ul>
+	<div class="row-fluid sortable">
+		<div class="box span12">
+			<div class="box-header" data-original-title>
+				<h2><i class="halflings-icon white user"></i><span class="break"></span>Members</h2>
+				<div class="box-icon">
+					<!--<a class="btn-add" href="javascript:void(0);" ng-click="changeMode();"><i class="halflings-icon white plus"></i></a>-->
+
+				</div>
+			</div>
+			<div class="box-content">
+				<div class='input-search'>
+					<input ng-model="search">
+					<button ng-click="searching(search)">Search</button>
+				</div>
+				<div id="list">
+
+					<table class="table table-striped table-bordered bootstrap-datatable datatable" id="userlist">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Role</th>
+								<th>Email</th>
+								<th>Phone</th>
+								<th>Status</th>
+								<th>Verified</th>
+								<th>Featured</th>
+								<th align="center">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="usr in users">
+								<td>{{ usr.firstname }} {{ usr.lastname }}</td>
+								<td>
+									<div ng-if="usr.roleid==='1'">Administrator</div>
+									<div ng-if="usr.roleid==='2'">User</div>
+									<div ng-if="usr.roleid==='3'">Photographer</div>
+								</td>
+								<td>{{ usr.email }}</td>
+								<td>{{ usr.phonenumber }}</td>
+								<td><span class="label"
+										ng-class="{'label-success': usr.isactive}">{{usr.isactive ? 'Active' : 'InActive'}}</span></td>
+								<td>
+									<div ng-show="usr.verified"><span class="label"
+											ng-class="{'label-success': usr.verified}">Verified</span></div>
+									<a ng-show="!usr.verified" class="btn btn-success btnview" href="javascript:void(0);"
+										ng-click="verified(usr)" title="View"><i class="halflings-icon white check"></i></a>
+									<a style="margin-top: 8px" ng-show="usr.verified" class="btn btn-danger btnview"
+										href="javascript:void(0);" ng-click="verified(usr)" title="View"><i
+											class="halflings-icon white remove"></i></a>
+								</td>
+
+								<td><span class="label"
+										ng-class="{'label-success': usr.isfeatured}">{{usr.isfeatured ? 'Featured' : 'N/A'}}</span></td>
+								<td align="center"><a class="btn btn-success btnview" href="javascript:void(0);" ng-click="view(usr)"
+										title="View"><i class="halflings-icon white zoom-in"></i></a> <a class="btn btn-info editdata"
+										href="javascript:void(0);" ng-click="getuserbyid(usr)" title="Edit"><i
+											class="halflings-icon white edit"></i></a> <a class="btn btn-danger delete"
+										ng-click="deleteUser(usr._id)" title="Delete"><i class="halflings-icon white trash"></i></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class='action-table'>
+					<div class='select-limit'>
+						<select ng-model='limit' ng-change="redirectURL('limit', limit)">
+							<!-- <option value='1'>1</option> -->
+
+							<option value='10'>10</option>
+							<option value='30'>30</option>
+							<option value='50'>50</option>
+							<option value='100'>100</option>
+						</select>
+					</div>
+					<nav class='box-pagination'>
+						<ul class="pagination">
+							<li class="page-item"><button ng-disabled="page <= 1" ng-click="redirectURL('page', page-1)"
+									class="page-link">Previous</button></li>
+							<li ng-repeat="pa in pagination" ng-class="[pa.active, 'page-item']"><button
+									ng-disabled="pa.active === 'active' ? true : false" ng-click="redirectURL('page', pa.page)"
+									class="page-link">{{pa.page}}</button></li>
+
+							<li class="page-item"><button ng-disabled="page >= totalPages" ng-click="redirectURL('page', page+1)"
+									class="page-link">Next</button></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<!--/span-->
+	</div>
+</div>
+<div ng-hide="!editMode">
+	<ul class="breadcrumb">
+		<li>
+			<i class="icon-home"></i>
+			<a href="./">Home</a>
+			<i class="icon-angle-right"></i>
+		</li>
+		<li>
+			<i class="icon-edit"></i>
+			<a href="javascript:void(0);">{{mode}}</a>
+		</li>
+	</ul>
+
+
+	<div class="row-fluid sortable">
+		<div class="box span12">
+			<div class="box-header" data-original-title>
+				<h2><i class="halflings-icon white edit"></i><span class="break"></span>{{mode}}</h2>
+			</div>
+			<div class="box-content">
+				<form class="form-horizontal" name="adduser" id="adduser" method="post" action="./">
+
+					<input id="hdnid" size="16" name="id" ng-model="addusers._id" required type="hidden" value="{{id}}">
+					<fieldset>
+
+						<div class="control-group">
+							<label class="control-label" for="appendedInput">First Name</label>
+							<div class="controls">
+								<div class="input-append">
+									<input id="appendedInput" size="16" name="firstname" ng-model="addusers.firstname" required
+										type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">Middle Name</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="middlename" ng-model="addusers.middlename" required
+										type="text">
+								</div>
+							</div>
+						</div>
+
+
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">Last Name</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="lastname" ng-model="addusers.lastname" required
+										type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">Email</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="email" ng-model="addusers.email" required
+										type="text">
+								</div>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">Phone Number</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="phonenumber" ng-model="addusers.phonenumber"
+										required type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">Country</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="country" ng-model="addusers.country" required
+										type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">City</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="city" ng-model="addusers.city" required
+										type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">State</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="state" ng-model="addusers.state" required
+										type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">Address Line 1</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="addressline1" ng-model="addusers.addressline1"
+										type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">Address Line 2</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="addressline2" ng-model="addusers.addressline2"
+										type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group">
+							<label class="control-label" for="appendedPrependedInput">Is Active</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input type="checkbox" ng-model="addusers.isactive">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group" ng-if="addusers.roleid==='3'">
+							<label class="control-label" for="appendedPrependedInput">Is Featured</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input type="checkbox" ng-model="addusers.isfeatured">
+								</div>
+							</div>
+						</div>
+
+						<div class="control-group" ng-if="addusers.roleid!='1'">
+							<label class="control-label" for="appendedPrependedInput">Admin Percentage(%)</label>
+							<div class="controls">
+								<div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="adminpercentage"
+										ng-model="addusers.adminpercentage" type="text">
+								</div>
+							</div>
+						</div>
+
+						<div class="form-actions">
+							<button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+							<button type="button" class="btn" ng-click="changeMode();">Cancel</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<!--/span-->
+
+	</div>
+	<!--/row-->
+</div>
+<!--/row-->
+
+
+
+<div class="modal hide fade" id="viewModal">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">x</button>
+
+		<h3>{{viewdata.firstname}} {{viewdata.lastname}}</h3>
+	</div>
+	<div class="modal-body">
+		Email: {{viewdata.email}}<br /><br />
+		Phone: {{viewdata.phonenumber? viewdata.phonenumber:'N/A'}}<br /><br />
+		Address: {{viewdata.addressline1? viewdata.addressline1:'N/A'}}<br /><br />
+		City: {{viewdata.city? viewdata.city:'N/A'}}<br /><br />
+		State: {{viewdata.state? viewdata.state:'N/A'}}<br /><br />
+		Country: {{viewdata.country? viewdata.country:'N/A'}}<br /><br />
+	</div>
+	<div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+	</div>
+</div>
+<style>
+	.img-group {
+		position: relative;
+	}
+
+	.remove-icon {
+		width: 20px;
+		height: 20px;
+		top: -30px;
+		position: absolute;
+		right: 0;
+		cursor: pointer;
+	}
+
+	.remove-icon img {
+		width: 100%;
+		height: 100%;
+
+	}
+
+	.form-group input {
+		width: 100%;
+		padding: 22px 8px;
+		box-sizing: border-box;
+	}
+
+	#image {
+		margin-top: 20px;
+		width: auto;
+		height: 200px;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+
+	#image-logo {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		width: auto;
+		height: 100px;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+
+	#tag-logo {
+		width: 40px;
+		height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		object-fit: cover;
+	}
+
+	#tag-logo>img {
+		border: 1px solid grey;
+		border-radius: 50%;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	#tag-image {
+		width: 200px
+	}
+
+	.loading {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		display: none;
+		justify-content: center;
+		align-items: center;
+		top: 0;
+		left: 0;
+		background-color: #0000001a;
+	}
+
+	.loading.show {
+		display: flex
+	}
+
+	.btn-create {
+		position: absolute;
+		top: 0;
+		right: 0;
+
+	}
+
+	.pagination {
+		display: inline-flex;
+		justify-content: center;
+		align-content: center;
+		list-style: none;
+		border: 1px solid #ccc;
+		position: relative;
+		border-radius: 8px;
+		float: right
+	}
+
+	.page-item {
+		position: relative;
+		padding: 6px 10px;
+		border-right: 1px solid #ccc;
+		cursor: pointer;
+	}
+
+	.page-link {
+		background-color: transparent;
+		border: none;
+	}
+
+	.page-item:first-child {
+		/* border-right: 1px solid #ccc; */
+	}
+
+	.page-item:last-child {
+		border-left: none;
+	}
+
+	.page-item.active {
+		background-color: #ccc;
+	}
+
+	.input-search {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 24px;
+	}
+
+	.action-table {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.select-limit {
+		margin-bottom: 8px;
+		min-width: 140px;
+	}
+
+	.box-pagination {
+		margin-bottom: 8px;
+	}
+</style>

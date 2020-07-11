@@ -1,0 +1,8 @@
+<div>
+  <div class="img-col clear" data-nom="{{img.publicid}}" ng-class="{selected: img.selected}">
+    <img ng-src="{{config.ftpThumbnailPath}}{{img.publicid}}.{{img.fileExtension}}" />
+    <div class="btn-default delete-img-btn" ng-click="deleteSinglePhoto(img.publicid)" style="">
+      <i class="delete-icon"></i>
+    </div>
+  </div>
+</div>

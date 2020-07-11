@@ -1,0 +1,68 @@
+<div ng-hide="editMode">
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="./">Home</a>
+					<i class="icon-angle-right"></i> 
+				</li>
+				<li>
+					<i class="icon-edit"></i>
+					<a href="javascript:void(0);">Sale CMS</a>
+				</li>
+			</ul>
+			
+			
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="halflings-icon white edit"></i><span class="break"></span>Sale CMS</h2>
+					</div>
+					<div class="box-content">
+						
+						<input id="appendedInput" size="16" name="salecmsid" ng-model="salecms._id" type="hidden">
+						
+						    <fieldset>
+						    <div class="control-group">
+								<label class="control-label" for="appendedInput">Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									 <textarea name="title" ng-model="salecms.title" style="width:350px"></textarea>
+								  </div>
+								</div>
+							</div>
+						     
+							 <div class="control-group hidden-phone">
+							  <label class="control-label" for="textarea2">Content</label>
+							  <div class="controls">
+							    <wysiwyg textarea-id="question" 
+                                                                  textarea-class="form-control"  
+                                                                  textarea-height="180px" 
+                                                                  textarea-name="textareaQuestion" 
+                                                                  textarea-required 
+                                                                  ng-model="salecms.content" 
+                                                                  enable-bootstrap-title="true"
+                                                                  textarea-menu="menu"
+                                                                  textarea-custom-menu="custom"
+                                                                  disabled="disabled">
+                                                              </wysiwyg>
+							  </div>
+							</div>
+							
+							<div class="form-actions">
+								<button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+							</div>
+							</fieldset>
+
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
+</div>
+<!--/row-->
+        
+<style>
+ .thumbnail{border:0px;}
+ textarea, input[type="text"]{border:1px solid #000 !important;}
+ #question,.wysiwyg-select{border:1px solid #C5C3C3;}
+</style>
+

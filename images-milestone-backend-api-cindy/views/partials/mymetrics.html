@@ -1,0 +1,696 @@
+<div ng-show='!loggedindetails'>
+  <header class="wrapper" id="header" data-stellar-background-ratio="0.5" style="background-position: 50% 0px;">
+    <div class="container">
+      <div id="header_inner" class="light_text">
+        <h2 id="slogan">404 Not Found</h2>
+      </div>
+    </div>
+  </header>
+</div>
+<!-------------------------------------->
+
+<div ng-show='loggedindetails' aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+  class="modal fade" id="myModal-drag">
+  <div class="modal-backdrop fade in"></div>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span
+            aria-hidden="true">×</span></button>
+        <h4 id="myModalLabel" class="modal-title">Be Active - Upload More</h4>
+      </div>
+      <div class="modal-body">
+        <div ng-show="albumError" class="{{alert.altclass}}">
+          <alert type="{{alert.type}}">{{alert.msg}}</alert>
+        </div>
+        <div>
+          <h3>Drag &amp; Drop files here or click to upload</h3>
+          <p>Choose from the files on your local device</p>
+          <form class="dropzone" id="my-awesome-dropzone" dropzone="dropzoneConfig"></form>
+
+          <input type="hidden" id="publicid" name="publicid" class="form-control" ng-model="myalbum.albumpublicid"
+            ng-value="albumpublicid" />
+          <input type="hidden" id="imageheightwidth" name="imageheightwidth" class="form-control"
+            ng-model="myalbum.albumwidthheight" ng-value="albumwidthheight" />
+          <input type="hidden" id="imageurls" name="imageurls" class="form-control" ng-model="myalbum.albumimageurls"
+            ng-value="albumimageurls" />
+          <div class="well" style="margin-top:10px">
+            <a href="javascript:void(0);" id="openkeyword" class="btn btn-link">Add Keywords</a>
+            <div id="collapseExample-one" aria-expanded="true" style="display:block;">
+              <tags-input ng-model="myalbum.keyword" display-property="tag" replace-spaces-with-dashes="false">
+              </tags-input>
+              <p class="xsmall text-medium" style="margin-bottom:0px;">Enter tab or press enter to separate keywords.
+              </p>
+            </div>
+          </div>
+          <div class="well">
+            <a href="javascript:void(0);" id="openprice" class="btn btn-link">Set Album Price($)</a>
+            <div id="collapseExample-two" aria-expanded="true" style="display:block;">
+              <input type="text" placeholder="set album price" id="price" name="price" class="form-control"
+                ng-model="myalbum.price">
+            </div>
+          </div>
+
+          <div class="well">
+            <a href="javascript:void(0);" id="openname" class="btn btn-link">Add Album Name</a>
+            <div id="collapseExample-three" aria-expanded="true" style="display:block;">
+              <input type="text" placeholder="add album name" id="albumname" name="albumname" class="form-control"
+                ng-model="myalbum.albumname">
+            </div>
+          </div>
+
+          <div class="well">
+            <a href="javascript:void(0);" id="openlicenseeditorial" class="btn btn-link">Select Editorial License</a>
+            <div id="collapseExample-four" aria-expanded="true" style="display:block;">
+              <select name="editoriallicense" ng-model="myalbum.editoriallicense">
+                <option value="">Select Editorial License</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="well">
+            <a href="javascript:void(0);" id="openlicensecommercial" class="btn btn-link">Select Commercial License</a>
+            <div id="collapseExample-five" aria-expanded="true" style="display:block;">
+              <select name="commerciallicense" ng-model="myalbum.commerciallicense">
+                <option value="">Select Commercial License</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="well">
+            <a href="javascript:void(0);" id="openaddress" class="btn btn-link">Enter Address</a>
+            <div id="collapseExample-six" aria-expanded="true" style="display:block;">
+              <input type="text" placeholder="Enter address" id="albumaddress" name="albumaddress" class="form-control"
+                ng-model="myalbum.albumaddress">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" type="submit" ng-click="albumsubmit()" id="submtbtn">Submit</button>
+      </div>
+
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="page-body" ng-show='loggedindetails'>
+  <div class="row float-right" style="margin-right: 15px; margin-top: 10px;">
+    <ta-date-range-picker ng-model="dateRange" ranges="customRanges" 
+    callback="dateRangeChanged()"></ta-date-range-picker>
+  </div>
+  <br/>
+  <div class="row chart-statistic">
+    <div class="col-lg-3 col-md-6 col-sm-12 normal-margin-view">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="font-weight-bold mb-2">{{viewtimes}}</h2>
+                        <div>Total Views</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 normal-margin-view">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="font-weight-bold mb-2">{{clicktimes}}</h2>
+                        <div>Total Clicks</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12 normal-margin-view">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="font-weight-bold mb-2">{{ctr}}%</h2>
+                        <div>CTR</div>
+                    </div>
+                    <div ng-show="false">
+                        <span class="dashboard-pie-3" style="display: none;">ctr</span><svg class="peity" height="60" width="60"><path d="M 30.000000000000004 0 A 30 30 0 0 1 58.53169548885461 20.72949016875158 L 30 30" data-value="1" fill="rgba(247, 204, 76, 0.3)"></path><path d="M 58.53169548885461 20.72949016875158 A 30 30 0 1 1 29.999999999999993 0 L 30 30" data-value="4" fill="rgb(247, 204, 76)"></path></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  <div class="container-metrics-charts">
+    <div class="card-body">
+        <h3>
+          My Metrics
+        </h3>
+        <hr class="light">
+
+        <div class="row">
+          <div class="col-md-6 normal-margin-view">
+            <div class="d-flex justify-content-between" style="max-width: 240px;">
+                <div class="d-flex align-items-center">
+                  <span class="btn btn-danger btn-xs" ng-click="toggleViews()">{{viewtimes}}</span>
+                  <span style="margin: 0px 10px;">Views</span> 
+                </div>
+                <div class="d-flex align-items-center">
+                  <span class="btn btn-warning btn-xs" ng-click="toggleClicks()">{{clicktimes}}</span>
+                  <span style="margin: 0px 10px;">Clicks</span>
+                </div>
+                <div class="d-flex align-items-center">
+                  <span class="btn btn-success btn-xs">{{ctr}}%</span>
+                  <span style="margin: 0px 10px;">CTR</span>
+                </div>
+              </div>    
+          </div>
+          <div class="col-md-6 normal-margin-view">
+            <div class="btn-group nav navbar-nav navbar-right">
+                <button class="btn btn-xs" ng-class="{'btn-primary': selectedIndex!=0, 'btn-danger': selectedIndex==0}" ng-click="updateChartType('ga:hour')">Hourly</button>
+                <button class="btn btn-xs" ng-class="{'btn-primary': selectedIndex!=1, 'btn-danger': selectedIndex==1}" ng-click="updateChartType('ga:date')">Day</button>
+                <button class="btn btn-xs" ng-class="{'btn-primary': selectedIndex!=2, 'btn-danger': selectedIndex==2}" ng-click="updateChartType('ga:week')">Week</button>
+                <button class="btn btn-xs" ng-class="{'btn-primary': selectedIndex!=3, 'btn-danger': selectedIndex==3}" ng-click="updateChartType('ga:month')">Month</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-12">
+          <ng-analytics-chart chart="mainChart" auth-container="embed-api-auth-container"></ng-analytics-chart>
+        </div>
+    </div>
+
+    <hr class="light">
+
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <div class="widgets-data card card-body" style="margin: 15px;">
+            <div class="d-flex justify-content-between align-items-center">
+                <h6 class="card-title">Widgets Data</h6>
+                <div class="d-flex justify-content-between align-items-center">
+                  <label class="aria-label">Widget ID:</label>
+                  <input class="search-text-input" type="text" ng-model="searchWidgetId" onchange="angular.element(this).scope().getAnalyticsData(this)">
+                  <a href="" class="mr-3" ng-click="getAnalyticsData()">
+                    <i class="fa fa-refresh"></i>
+                  </a>
+                </div>
+            </div>
+            <table id="example" class="table table-striped" cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th>WIDGET URL</th>
+                  <th>VIEWS</th>
+                  <th>CLICKS</th>
+                  <th>DOMAIN WHERE APPEAR MORE</th>
+                  <th>CTR</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="data in analyticsDatas">
+                  <td ng-if="analyticsDatas.length" class="align-items-center">
+                    <a href="{{data.imageUrl}}">
+                      <img ng-src="{{data.imageUrl}}" style="width: 25px; height: 25px;">
+                    </a>
+                    &nbsp;
+                    <a href="/mymetrics/{{data.imageId}}">
+                        {{data.imageId}}
+                    </a>
+                  </td>
+                  <td>{{data.viewTimes}}</td>
+                  <td>{{data.clickTimes}}</td>
+                  <td>{{data.domain}}</td>
+                  <td>{{data.ctr}}%</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="text-align:center;" ng-show="!analyticsDatas.length">
+              <h3>There is no view times these days.</h3>
+              <div style="clear:both;"></div>
+              <div class="grid-footer">
+                  <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+              </div>
+            </div>
+            <div ng-show="analyticsDatas.length">
+              <div class="col-md-5"></div>
+              <div class="col-md-7" style="padding-right: 0px;">
+                <div class="float-right resp-right-div">
+                  <div class="d-flex align-items-center">
+                    <span class="aria-label nowrap-label">Show rows:</span>
+                    <select class="pagination-selector" ng-model="widgetPagination.pageSize" ng-change="showWidgetPage()"
+                        ng-options="item for item in widgetPagination.pageSizeList"></select>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <span class="aria-label nowrap-label">Go to:</span>
+                    <input class="page-number-input" type="number" ng-model="widgetPagination.curPage" onchange="angular.element(this).scope().showWidgetPage(this)">
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <span class="aria-label nowrap-label">{{((widgetPagination.curPage-1)*widgetPagination.pageSize)+1}}-{{(widgetPagination.curPage-1)*widgetPagination.pageSize+analyticsDatas.length}} of {{totalRowCounts}}</span>
+                    <button class="btn btn-xs" type="button"
+                      ng-disabled="widgetPagination.curPage == 1" ng-click="showWidgetPage(widgetPagination.curPage-1)">
+                      <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-xs" type="button" ng-disabled="widgetPagination.curPage >= widgetPagination.numberOfPages"
+                      ng-click="showWidgetPage(widgetPagination.curPage+1)">
+                      <i class="fa fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="domains-data card card-body" style="margin: 15px;">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="col-md-5">
+                  <h6 class="card-title">By Domains where my widget has more views</h6>
+                </div>
+                <div class="d-flex justify-content-between align-items-center" ng-click="getDomainDatas()">
+                    <label class="aria-label">Domain Name:</label>  
+                    <input class="search-text-input" type="text" ng-model="domainFilter" onchange="angular.element(this).scope().getDomainDatas(this)">
+                    <a href="" class="mr-3">
+                        <i class="fa fa-refresh" ng-click="showDomainPage()"></i>
+                    </a>
+                </div>
+            </div>
+            <table class="table table-striped" cellspacing="0" width="100%">
+              <thead>
+                <tr>
+                  <th>LINK</th>
+                  <th>DOMAIN NAME</th>
+                  <th>PERCENTAGE(%)</th>
+                  <th>VALUE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="data in domainDatas" ng-value="{{$index}}">
+                  <td>
+                    <a ng-click="onFilterByDomain($index)" ng-if="!domainFilter">
+                      <i class="fa fa-external-link" aria-hidden="true"></i>
+                    </a>
+                    <a href="{{data.linkUrl}}" ng-if="domainFilter" target="_blank">
+                      {{data.domainUrl}}
+                    </a>
+                  </td>
+                  <td>{{data.pageTitle}}</td>
+                  <td>
+                      <div class="progress-bar progress-bar-striped progress-bar-animated"
+                       style="height: 5px; margin-top: 6px; margin-bottom: 0px; width: {{data.percentage}}%;">{{data.percentage}}%</div>
+                  </td>
+                  <td>{{data.percentage}}%</td>
+                </tr>
+              </tbody>
+            </table>
+            <div style="text-align:center;" ng-show="!domainDatas.length">
+              <h3>There is no view times by domains these days.</h3>
+              <div style="clear:both;"></div>
+              <div class="grid-footer">
+                  <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+              </div>
+            </div>
+            <div ng-show="domainDatas.length">
+              <div class="col-md-5"></div>
+              <div class="col-md-7" style="padding-right: 0px;">
+                <div class="d-flex align-items-center float-right">
+                  <span class="aria-label nowrap-label">Show rows:</span>
+                  <select class="pagination-selector" ng-model="domainPagination.pageSize" ng-change="showDomainPage()"
+                      ng-options="item for item in domainPagination.pageSizeList"></select>
+                  <span class="aria-label nowrap-label">Go to:</span>
+                  <input class="page-number-input" type="number" ng-change="showDomainPage()" ng-model="domainPagination.curPage">
+                  <span class="aria-label nowrap-label">{{((domainPagination.curPage-1)*domainPagination.pageSize)+1}}-{{(domainPagination.curPage-1)*domainPagination.pageSize+domainDatas.length}} of {{totalDomainRowCounts}}</span>
+                  <button class="btn btn-xs" type="button"
+                    ng-disabled="domainPagination.curPage == 1" ng-click="showDomainPage(domainPagination.curPage-1)">
+                    <i class="fa fa-chevron-left"></i>
+                  </button>
+                  <button class="btn btn-xs" type="button" ng-disabled="domainPagination.curPage >= domainPagination.numberOfPages"
+                     ng-click="showDomainPage(domainPagination.curPage+1)">
+                     <i class="fa fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+          <div class="row">
+            <ng-analytics-auth ng-show="false" service-auth-token="{{serviceAuthToken}}" auth-container="embed-api-auth-container"></ng-analytics-auth>
+            <ng-analytics-view ng-show="false" view-selector-container="view-selector-container" auth-container="embed-api-auth-container"></ng-analytics-view>
+            <ng-analytics-report queries="queries" auth-container="embed-api-auth-container"></ng-analytics-report>
+            <ng-analytics-report queries="queries" auth-container="embed-api-auth-container" view-selector-container="view-selector-container"></ng-analytics-report>
+            <div class="row">
+              <div class="col-md-4" style="height: 200px;">
+                <div class="vertical-center">
+                  <h2 class="text-center-title">Right Now</h2>
+                  <h1 class="active-count text-center-title">
+                    <ng-analytics-active-users label="" increase-class="increaser" decrease-class="decreaser" active-users-container="active-users-container-1" view-selector-container="view-selector-container" auth-container="embed-api-auth-container"></ng-analytics-active-users>
+                  </h1>
+                  
+                  <div id="active-users-container"></div>
+                  <h5 class="text-center-title">active users on site</h5>
+                  <br>
+                  <!-- <div class="row">
+                      <span>Mobile</span>
+                      <span>Desktop</span>
+                  </div>
+                  <div class="row">
+                    <span>Tablet</span>
+                  </div> -->
+                </div>
+              </div>
+              <div class="col-md-8" style="padding-left: 0px;"> 
+                <div class="row">
+                  <div class="col-md-6" style="padding-left: 0px;">
+                    <h3 class="title-text">By Sessions</h3>
+                    <ng-analytics-chart chart="sessionsChart" auth-container="embed-api-auth-container"></ng-analytics-chart>
+                  </div>
+                  <div class="col-md-6" style="padding-left: 0px;">
+                    <div class="Chartjs">
+                      <h3 class="title-text">By Users</h3>
+                      <ng-analytics-chart chart="usersChart" auth-container="embed-api-auth-container"></ng-analytics-chart>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" ng-show="false">
+              <div class="col-md-4">
+                <div class="row">
+                  <h3 style="margin-bottom: 0px; font-weight: 100;">Top Referrals</h3>
+                  <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Source</th>
+                        <th>Active Users</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="data in domainDatas" ng-value="{{$index}}">
+                        <td style="width: 15%;">{{$index+1}}</td>
+                        <td style="width: 45%;"><a href="{{data.domain}}">{{data.domain}}</a></td>
+                        <td style="width: 40%;">{{data.activeUsers}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="row">
+                    <h3 style="margin-bottom: 0px; font-weight: 100;">Top Social Traffic</h3>
+                    <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th>Source</th>
+                          <th>Active Users</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="data in domainDatas" ng-value="{{$index}}">
+                          <td style="width: 15%;">{{$index+1}}</td>
+                          <td style="width: 45%;"><a href="{{data.domain}}">{{data.domain}}</a></td>
+                          <td style="width: 40%;">{{data.activeUsers}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="row">
+                  <h3 style="margin-bottom: 0px; font-weight: 100;">Top Active Pages</h3>
+                  <table class="table table-striped table-bordered" cellspacing="0" width="100%">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Active Page</th>
+                        <th colspan="2">Active Users</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="data in domainDatas" ng-value="{{$index}}">
+                        <td style="width: 10%;">{{$index+1}}</td>
+                        <td style="width: 70%;"><a href="{{data.domain}}">{{data.domain}}</a></td>
+                        <td style="width: 10%;">{{data.activeUsers}}</td>
+                        <td style="width: 10%;">{{data.percentage}}%</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="domains-data card card-body" style="margin: 15px;">
+              <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="card-title">By Cities</h6>
+                  <div class="d-flex justify-content-between align-items-center" ng-click="getCityDatas()">
+                      <label class="aria-label">City Name:</label>  
+                      <input  class="search-text-input" type="text" ng-model="cityFilter" onchange="angular.element(this).scope().getCityDatas(this)">
+                      <a href="" class="mr-3" ng-click="getCityDatas()">
+                          <i class="fa fa-refresh"></i>
+                      </a>
+                  </div>
+              </div>
+              <table class="table table-striped" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>LINK</th>
+                    <th>CITY NAME</th>
+                    <th>PERCENTAGE(%)</th>
+                    <th>VALUE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="data in cityDatas" ng-value="$index">
+                    <td>
+                      <a ng-click="onFilterByCity($index)" ng-if="!cityFilter">
+                        <i class="fa fa-external-link" aria-hidden="true"></i>
+                      </a>
+                    </td>
+                    <td>{{data.cityName}}</td>
+                    <td>
+                        <div class="progress-bar {{data.progressColor}} progress-bar-striped progress-bar-animated"
+                        style="height: 5px; margin-top: 6px; margin-bottom: 0px; width: {{data.percentage}}%;"></div>
+                    </td>
+                    <td>{{data.percentage}}%</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="text-align:center;" ng-show="!cityDatas.length">
+                <h3>There is no view times by cities these days.</h3>
+                <div style="clear:both;"></div>
+                <div class="grid-footer">
+                    <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+                </div>
+              </div>
+              <div ng-show="cityDatas.length">
+                <div class="col-md-5"></div>
+                <div class="col-md-7" style="padding-right: 0px;">
+                  <div class="d-flex align-items-center float-right">
+                    <span class="aria-label nowrap-label">Show rows:</span>
+                    <select class="pagination-selector" ng-model="cityPagination.pageSize" ng-change="showCityPage()"
+                        ng-options="item for item in cityPagination.pageSizeList"></select>
+                    <span class="aria-label nowrap-label">Go to:</span>
+                    <input class="page-number-input" type="number" ng-change="showCityPage()" ng-model="cityPagination.curPage">
+                    <span class="aria-label nowrap-label">{{((cityPagination.curPage-1)*cityPagination.pageSize)+1}}-{{(cityPagination.curPage-1)*cityPagination.pageSize+cityDatas.length}} of {{totalCityRowCounts}}</span>
+                    <button class="btn btn-xs" type="button"
+                      ng-disabled="cityPagination.curPage == 1" ng-click="showCityPage(cityPagination.curPage-1)">
+                      <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-xs" type="button" ng-disabled="cityPagination.curPage >= cityPagination.numberOfPages"
+                      ng-click="showCityPage(cityPagination.curPage+1)">
+                      <i class="fa fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="row by-country-data card card-body" style="margin: 15px;">
+              <div class="d-flex justify-content-between align-items-center">
+                  <h6 class="card-title">By Country</h6>
+                  <div class="d-flex justify-content-between align-items-center" ng-click="getCountryDatas()">
+                      <label class="aria-label">Country Name:</label>  
+                      <input class="search-text-input" type="text" ng-model="countryFilter" onchange="angular.element(this).scope().getCountryDatas(this)">
+                      <a href="" class="mr-3" ng-click="getCountryDatas()">
+                          <i class="fa fa-refresh"></i>
+                      </a>
+                  </div>
+              </div>
+              <table class="table table-striped" cellspacing="0" width="100%">
+                <thead>
+                  <tr>
+                    <th>LINK</th>
+                    <th>Country Name</th>
+                    <th>PERCENTAGE(%)</th>
+                    <th>VALUE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="data in countryDatas" ng-value="$index">
+                    <td>
+                      <a ng-click="onFilterByCountry($index)" ng-if="!countryFilter">
+                        <i class="fa fa-external-link" aria-hidden="true"></i>
+                      </a>
+                    </td>
+                    <td>{{data.countryName}}</td>
+                    <td>
+                        <div class="progress-bar {{data.progressColor}} progress-bar-striped progress-bar-animated"
+                         style="height: 5px; margin-top: 6px; margin-bottom: 0px; width: {{data.percentage}}%;">{{data.percentage}}%</div>
+                    </td>
+                    <td>{{data.percentage}}%</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="text-align:center;" ng-show="!countryDatas.length">
+                <h3>There is no view times by country these days.</h3>
+                <div style="clear:both;"></div>
+                <div class="grid-footer">
+                    <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+                </div>
+              </div>
+              <div ng-show="countryDatas.length">
+                <div class="col-md-5"></div>
+                <div class="col-md-7" style="padding-right: 0px;">
+                  <div class="d-flex align-items-center float-right">
+                    <span class="aria-label nowrap-label">Show rows:</span>
+                    <select class="pagination-selector" ng-model="countryPagination.pageSize" ng-change="showCountryPage()"
+                        ng-options="item for item in countryPagination.pageSizeList"></select>
+                    <span class="aria-label nowrap-label">Go to:</span>
+                    <input class="page-number-input" type="number" ng-change="showCountryPage()" ng-model="countryPagination.curPage">
+                    <span class="aria-label nowrap-label">{{((countryPagination.curPage-1)*countryPagination.pageSize)+1}}-{{(countryPagination.curPage-1)*countryPagination.pageSize+countryDatas.length}} of {{totalCountryRowCounts}}</span>
+                    <button class="btn btn-xs" type="button"
+                      ng-disabled="countryPagination.curPage == 1" ng-click="showCountryPage(countryPagination.curPage-1)">
+                      <i class="fa fa-chevron-left"></i>
+                    </button>
+                    <button class="btn btn-xs" type="button" ng-disabled="countryPagination.curPage >= countryPagination.numberOfPages"
+                      ng-click="showCountryPage(countryPagination.curPage+1)">
+                      <i class="fa fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance:textfield;
+  }
+  .search-text-input {
+    border-radius: 3px!important;
+    width: 128px;
+    font-size: 14px!important;
+    height: 25px!important;
+    margin: 4px 10px;
+    padding: 0px 3px!important;
+  }
+  .title-text {
+    margin: 0px;
+  }
+  .text-center-title {
+    text-align: center;
+    margin: 0px;
+  }
+  .tag-wapper {
+    display: none;
+  }
+  .vertical-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .app-block .app-content .app-action {
+    border-radius: 4px;
+    position: relative;
+    background: #fff;
+    border: none;
+  }
+  .mr-3, .mx-3 {
+    margin-right: 1rem!important;
+  }
+  .card-title {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  .chart-statistic {
+    margin-top: 20px;
+  }
+  .float-right {
+    float: right;
+  }
+  .page-number-input {
+    width: 42px;
+    height: 36px;
+    border-radius: 4px!important;
+    font-size: 1rem!important;
+    text-align: center;
+    padding-left: 4px!important;
+    font-family: sans-serif;
+  }
+  .active-count {
+    text-align: center;
+    font-size: 3em!important;
+    margin: 0px;
+    font-weight: 700;
+  }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+  }
+  .pagination-selector {
+    width: 52px!important;
+    padding-left: 2px;
+    border-radius: 4px;
+  }
+  .card-body {
+    flex: 1 1 auto;
+    overflow-x:auto;
+    padding: 1.25rem;
+  }
+  .normal-margin-view {
+    margin-top: 10px;
+  }
+  .align-items-center {
+    align-items: center!important;
+  }
+  .justify-content-between {  
+    justify-content: space-between!important;
+  }
+  .d-flex {
+    display: flex!important;
+  }
+  @media screen 
+    and (max-width: 120px)
+    and (min-width: 480px) {
+    .resp-right-div {
+      display: inline-block;
+    }
+  }
+  .resp-right-div {
+    display: flex;
+  }
+  .nowrap-label {
+    margin:0px 10px;
+    white-space: nowrap;
+  }
+</style>

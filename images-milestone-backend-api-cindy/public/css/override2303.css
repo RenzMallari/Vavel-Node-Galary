@@ -1,0 +1,78 @@
+@charset "utf-8";
+/* CSS Document */
+
+.tk-museo-sans { font-family: "museo-sans", sans-serif; }
+span.skype_c2c_print_container { }
+span.skype_c2c_container { display: none !important; }
+.skype_c2c_menu_container { display: none !important; }
+.navbar-transparent .navbar { background: url("img/nav-bar-gradient.png") repeat-x scroll left top rgba(0, 0, 0, 0) !important; }
+.navbar-transparent .navbar { background-color: transparent !important; border-bottom: medium none !important; }
+/*.navbar-zone .navbar{ width:100%;}*/
+
+.navbar-transparent .navbar { width: 98.5%; }
+a.navbar-brand { }
+.navbar .logo { padding-top: 3px; padding-left:10px; }
+.navbar .logo img { width: 80%; }
+.show-div { display: none; }
+h2 span { border-bottom: medium none; color: #fff; font-weight: 700; text-transform: uppercase; transition: all 0.2s ease-in 0s; font-size: 54px; }
+.modal-backdrop { z-index: 0; }
+#myModal-login .modal-dialog { /*width: 410px;*/}
+.top-gap{ height:65px; border-bottom:2px dotted #9c9c9c;}
+
+.keyword-item li a{ line-height:26px;}
+
+.challenge-list{ margin-top:0;}
+.challenge-list .challenge-con{ padding-left:0px; padding-right:0px; margin-bottom:0px;}
+.challenge-list .challenge-con .dark-overlay{ background-color:rgba(0, 0, 0, 0.8); transition:all 0.3s ease-in-out;}
+.explore .zone-value-proposition-buyer p{ padding-bottom:0; transition:all 0.3s ease-in-out;}
+.challenge-list .challenge-con .view-hover:hover .dark-overlay{ background-color:rgba(255, 255, 255, 0.6); transition:all 0.3s ease-in-out;}
+.challenge-list .challenge-con .view-hover:hover h4{ color:#464646; transition:all 0.3s ease-in-out;}
+.challenge-list .challenge-con .view-hover:hover p{ color:#FFFFFF; background:#0089d0; display:inline-block; width:auto; margin-bottom:30px; padding:0 25px; letter-spacing:1px; transition:all 0.3s ease-in-out;}
+.view-hover::after{ border:2px solid #000000; background:#000000; border-radius: 8px; color: #FFFFFF; content: "VIEW"; font-size: 16px; font-weight: 500; left: 33%; line-height: 14px; margin: -0.5em 0 0 -0.5em; padding: 13px 50px 10px; top: 45%;}
+.price-table{ margin: 0 auto; text-align: center; width: 100%; max-width: 1100px;}
+
+.subscription-options{ padding: 5% 70px !important;}
+.option{ min-width:25%; border-top:10px solid #0089d0;}
+.option.popular{ min-width:25%; border-top:10px solid #43ac6a; box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.2); margin-top: -40px; padding: 50px 0; position: relative; z-index: 1;}
+.pro-icon { background: url("../img/pricing-pro4@2x.png") no-repeat scroll center top / 55px 40px rgba(0, 0, 0, 0); margin-top: 6.05% !important; padding-top: 55px; }
+.starter-icon { background: url("../img/pricing-starter2@2x.png") no-repeat scroll center top / 55px 40px rgba(0, 0, 0, 0); padding-top: 55px; }
+.team-icon { background: url("../img/pricing-team2@2x.png") no-repeat scroll center top / 55px 40px rgba(0, 0, 0, 0); padding-top: 55px; }
+.custom-icon { background: url("../img/pricing-custom1@2x.png") no-repeat scroll center top / 55px 40px rgba(0, 0, 0, 0); padding-top: 55px; }
+.option.popular .callout { display: block; padding: 5px 10px; position: absolute; top: -23px; width: 100%; }
+.option.popular .callout p { background-color: #43ac6a; color: #fff; display: inline-block; margin-bottom: 0; padding: 5px 10px; text-align: center; }
+.xsmall { font-size: 11px; line-height: 16px; }
+.strong { font-weight: 700; }
+.caps { text-transform: uppercase; }
+.subscription-options .plan-name { display: block; font-weight: 500; margin: 10% 0 15%; color:#41494f; text-transform:capitalize;}
+
+.nav > li > a, .nav > li > button{ padding-left: 9px; padding-right: 9px;}
+.navbar .form-control{ width:280px;}
+
+
+
+
+/* Responsive Styles */
+
+
+
+@media (min-width:3500px) {
+}
+ @media (max-width:2100px) {
+}
+ @media (min-width:2100px) {
+}
+ @media(min-width:1920px) and (max-width:2520px) {
+}
+ @media(min-width:1024px) and (max-width:1300px) {
+}
+ @media(max-width:1136px) {
+}
+ @media(max-width:1024px) {
+}
+ @media(max-width:991px) {
+}
+ @media (max-width: 767px) {
+a.navbar-brand { width: 80%; }
+.navbar .logo { padding-top: 10px; }
+.navbar .logo img { width: 200px; }
+}

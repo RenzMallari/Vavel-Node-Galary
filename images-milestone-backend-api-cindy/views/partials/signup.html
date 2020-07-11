@@ -1,0 +1,126 @@
+<div class="parallax__layer parallax__layer--base">
+  <div class="container-fluid">
+    <h1 class="caps strong centered-heading">{{joinus.title}}</h1>
+
+    <p style="text-align: center;" class="pannel-head text-large">{{joinus.subtitle}}</p>
+    <div class="bm-desktop" style="max-width: 990px; width: 100%; margin: 0 auto;">
+      <img src="img/the-deal.png" width="100%" />
+    </div>
+
+    <div class="bm-mobile" style="max-width: 500px; width: 100%; margin: 0 auto;">
+      <img src="img/business-model.png" width="100%" />
+    </div>
+  </div>
+  <div class="page-body">
+    <div class="container con-med">
+      <div class="errors"></div>
+      <div class="row">
+        <div style="padding:25px 10px;" class="col-md-7">
+          <div ng-show="registrationError" class="{{alert.altclass}}">
+            <alert type="{{alert.type}}">{{alert.msg}}</alert>
+          </div>
+          <div ng-show="registrationSuccess" class="{{alert.altclass}}">
+            <alert type="{{alert.type}}">{{alert.msg}}</alert>
+          </div>
+          <form id="signup-form" data-ember-action="715" ng-submit="signup()">
+            <div class="form-group row">
+              <div class="col-md-6 inputpdl10">
+                <input type="text" ng-model="userregistration.firstname" required autofocus name="firstname"
+                  placeholder="First Name" class="ember-view ember-text-field form-control" id="ember721">
+              </div>
+              <div class="col-md-6 inputpdr10">
+                <input type="text" required ng-model="userregistration.lastname" name="lastname" placeholder="Last Name"
+                  class="ember-view ember-text-field form-control" id="ember722">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-6 inputpdl10">
+                <select type="text" style='color: black; height: 56px' ng-model="userregistration.country"
+                  name="country" placeholder="Country" class="ember-view ember-text-field form-control" id="ember723">
+                  <option value=''>Please, select your country</option>
+                  <option ng-repeat='country in list_countries' value='{{country.name}}'>{{country.name}}</option>
+                </select>
+                <!-- <input type="text" ng-model="userregistration.country" name="country" placeholder="Country" class="ember-view ember-text-field form-control" id="ember723"> -->
+              </div>
+              <div class="col-md-6 inputpdr10">
+                <input type="text" ng-model="userregistration.paypalemail" name="paypalemail"
+                  placeholder="Paypal email (optional)" class="ember-view ember-text-field form-control" id="ember724">
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="email" required name="email" ng-model="userregistration.email"
+                placeholder="Email address for login" class="ember-view ember-text-field form-control" id="form-email">
+            </div>
+            <div class="form-group">
+              <input type="password" required ng-model="userregistration.password" name='password'
+                placeholder="Create Password" class="ember-view ember-text-field form-control" id="form-password">
+            </div>
+            <!--<div style="width: 100%; text-align: center; margin-top: 10px;" class="clearfix"><a href="#" data-ember-action="858" class="pull-right" data-bindattr-859="859" style="margin-bottom: 20px;">Invite code</a></div>-->
+            <div class="ember-view" id="ember734">
+              <div style="margin: 10px 0;" vc-recaptcha key="recaptchaPublicKey"></div>
+              <button class="btn btn-loading btn btn-primary btn-block" data-bindattr-861="861" style=""
+                data-bindattr-862="862" type="submit" data-bindattr-863="863">
+                <div style="" class="ember-view loading-spinner" id="ember870"></div>
+                <div class="btn-loading-text">Create Account</div>
+              </button>
+            </div>
+            <p style="margin-top: 10px;" class="xsmall" data-ng-bind-html="trustAsHtml(joinus.formbelowcontent)"></p>
+            <div class="form-group">
+              <p style="padding-top:6px;" class="pull-left">Already Joined? <a type="button" data-ember-action="743"
+                  data-target="#myModal-login" data-backdrop="static" data-keyboard="false" data-toggle="modal">Sign
+                  In</a></p>
+            </div>
+          </form>
+          <div class="social-auth" style='margin-top: 100px'>
+            <hr class="light" style="margin: 30px 0;">
+            <p class="small">or</p>
+            <div class="clearfix">
+              <div id="ember1708" class="ember-view" style="display:none;">
+                <button data-bindattr-1723="1723" style="background:#D8D5D5" data-bindattr-1722="1722"
+                  class="btn btn-loading btn-ig btn-xs btn-default pull-left" data-ember-action="1721">
+                  <div id="ember1724" class="ember-view loading-spinner" style="">
+                  </div>
+                  <div class="btn-loading-text"><i data-bindattr-1727="1727" class="ig-icon"></i>Sign in with Instagram
+                  </div>
+                </button>
+              </div>
+
+              <div id="ember1709" class="ember-view">
+
+                <button class="btn btn-loading btn btn-primary btn-block" ng-click="loginFacebook()">
+
+
+                  <div class="btn-loading-text"><i data-bindattr-1735="1735" class="fb-icon"></i>Sign in with Facebook
+                  </div>
+                </button>
+
+                <!-- <a href='/api/auth/facebook' target='_blank'>
+                                    <button data-bindattr-1731="1731" style="background:#3b5998 !important"
+                                    data-bindattr-1730="1730"
+                                    class="btn btn-loading btn-fb btn-xs btn-default pull-right"
+                                    data-ember-action="1729">
+                                    <div id="ember1732" class="ember-view loading-spinner" style="background:#3b5998 !important">
+                                    </div>
+                                    <div class="btn-loading-text"><i data-bindattr-1735="1735"
+                                            class="fb-icon"></i>Sign in with Facebook</div>
+                                    </button>
+                                </a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-1"></div>
+        <div style="padding:5px;" class="col-md-4">
+          <cl-image public-id="{{joinus.rightimage}}" format="jpg"
+            style="width: 100%; margin-bottom: 30px; margin-top: 20px;">
+            <cl-transformation crop="fill" gravity="north" />
+          </cl-image>
+          <h4>{{joinus.righttitle}}</h4>
+          <p data-ng-bind-html="trustAsHtml(joinus.rightcontent)"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

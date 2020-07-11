@@ -1,0 +1,5 @@
+$.cloudinary.config({
+  cloud_name: 'nits',
+  api_key: '493331285117127',
+  upload_preset: "tpitp0z1"
+})

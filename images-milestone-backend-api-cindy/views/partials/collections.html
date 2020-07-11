@@ -1,0 +1,66 @@
+
+<!--page loader box end-->
+<div id="ember806" class="ember-view parallax reload">
+        <div class="top-gap hidden-xs hidden-sm"></div>
+        <div class="parallax__layer parallax__layer--base">
+          <div class="bg-black">
+
+              <div class="grid pdt15">
+              <!-- <h5 style="margin: 25px 0 40px 0px;" class="caps text-centered strong">Featured Curated Albums</h5>
+              <div class="collection-list" style="text-align:center;" ng-show="noalbum">
+                <h4>Sorry! No album has been created yet.</h4>
+                 <div style="clear:both;"></div>
+                 <div class="grid-footer">
+                     <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+                 </div>
+              </div> -->
+
+
+
+
+                  <div ng-show="!nocollection">
+                  <brick-wall bricks="allcollections" item="collection">
+                    <a href="/maincollectiondetails/{{collection._id}}">
+                      <img style="background: url({{collection.src}}) no-repeat center center; background-size: cover; height: {{collection.height+2}}px; width: {{collection.width+2}}px;top: -1px;left: -1px;position: relative;">
+                      <div class="image-title-background">
+                      <div class="image-title">{{collection.name}}</div>
+                      </div>
+                    </a>
+                  </brick-wall>
+                </div>
+
+            </div>
+          </div>
+          <!--<div class="container-fluid">
+
+              <div class="container">
+                <div class="col-md-7 col-padding" style="padding-bottom: 7% !important;">
+                  <p data-ng-bind-html="trustAsHtml(brandcms.title)"></p>
+                  <p data-ng-bind-html="trustAsHtml(brandcms.content)"></p>
+                    <a id="ember1021" class="ember-view btn btn-primary btn-large" ng-click="open_join_modal();" href="javascript:void(0);">Join today</a></div>
+                  <div class="col-md-5 col-padding" style="padding-top: 7% !important;">
+                   <div style="float:left;width:45%;margin-right:15px;height:120px;" ng-repeat="allbrand in allbrands | limitTo:4">
+                         <cl-image public-id="{{allbrand.image}}" class="thumbnail inline" format="jpg" style="width:100%;">
+                            <cl-transformation  crop="fill" gravity="north"/>
+                        </cl-image>
+                   </div>
+                </div>
+              </div>
+
+          </div>-->
+
+        </div>
+      </div>
+<style>
+  .view-hover::after{border: 2px solid white;background: none;border-radius: 3px;}
+</style>
+ <script type="text/javascript">
+    $(window).ready(function() {
+         $(window).lazyLoadXT();
+    });
+    $(window).load(function() {
+    $('#status').fadeOut();
+    $('#preloader').fadeOut('slow');
+    $('body').css({'overflow':'visible'});
+    });
+  </script>

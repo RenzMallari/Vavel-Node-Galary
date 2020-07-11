@@ -1,0 +1,110 @@
+<div class="ember-view parallax" id="ember806">
+    <div class="top-gap hidden-xs hidden-sm"></div>
+    <div class="parallax__layer parallax__layer--base">
+        <div class="container-fluid">
+            <div class="row zone-signup-bottom-ano" style="background-image: url({{config.ftpCoverPath}}{{details.coverimage}})">
+                <div class="col-md-2 col-padding"></div>
+                <div class="col-md-8 col-padding">
+                    <div class="media">
+                        <div class="pull-left">
+                            <span class="online spin" style="display:none;">&nbsp;</span>
+                            <span class="offline spin" style="display:none;">&nbsp;</span>
+                            <a href="#">
+                                <div class="thum_photo">
+                                    <img class="avatar xlarge xlarge_radius ng-isolate-scope" ng-src="{{config.ftpAvatarPath}}{{details.profileimage}}">
+                                </div>
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading">{{details.fullname}}</h2>
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <!--<i class="fa fa-clock-o"></i>-->
+                                    <a class="text-bright" target="_blank" data-bindattr-1132="1132" href="http://{{details.link}}">{{details.link}}</a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-pills" role="tablist">
+                                <li role="presentation" class="active" ng-repeat="tag in tags"><a href="javascript:void(0);">{{tag.tag}}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-padding"></div>
+            </div>
+        </div>
+        <div style="background-color: #fff;" class="container-fluid">
+            <div class="row zone-signup-top-ano">
+                <div class="col-md-3 col-padding"></div>
+                <div class="col-md-6 col-padding text-center">
+                    <div class="form-about">
+                        <div class="form-group">
+                            <h4>About Me</h4>
+                            <h5>{{details.bio}}</h5>
+                        </div>
+                        <!--<div class="form-group">
+                      <h4>AMA</h4>
+                      <h5><i class="fa fa-info-circle fa-lg">&nbsp;</i> Host an event which are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration</h5>
+                    </div>
+                    <div class="form-group">
+                      <h4>Quick Tips</h4>
+                      <h5><i class="fa fa-info-circle fa-lg">&nbsp;</i> Tips of it is a long established fact that a reader will be distracted by the readable content</h5>
+                    </div>
+                    <div class="form-group">
+                      <h4>I can help you with</h4>
+                      <h5><i class="fa fa-info-circle fa-lg">&nbsp;</i> Helping lorem ipsum is simply dummy text of the printing and typesetting industry.</h5>
+                    </div>
+                    <div class="form-group">
+                      <h4>Expertise</h4>
+                      <h5><i class="fa fa-info-circle fa-lg">&nbsp;</i> Expertise about contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature, there are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined.</h5>
+                    </div>-->
+                        <div class="ember-view" id="ember1705" style="display:none;">
+                            <button class="btn btn-loading btn btn-primary btn-block" data-bindattr-1715="1715" style="" data-bindattr-1716="1716" type="submit">
+                                <div style="" class="ember-view loading-spinner" id="ember1717"></div>
+                                <div class="btn-loading-text">Submit</div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-padding"></div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row zone-value-proposition-buyer zone-alabums">
+                <div class="challenge-list container">
+                    <div>
+                        <h5>My Images</h5>
+                        <div class="collection-list" style="text-align:center;" ng-show="!showalbums">
+                            <h4>Sorry! You have not created any album yet.</h4>
+                            <div style="clear:both;"></div>
+                            <div class="grid-footer">
+                                <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+                            </div>
+                        </div>
+                        <div class="collection-list" ng-show="showalbums">
+                            <div id="ember2165" class="ember-view row">
+                                <div ng-if="allalbum.images.length > 0" ng-repeat="allalbum in allalbums | orderBy: 'createdate':true" class="col-lg-3 col-md-3 col-sm-3">
+                                    <a id="ember2175" class="ember-view collection-con " href="/#/albumdetails/{{allalbum._id}}">
+
+                                        <div>
+                                            <div class="clearfix view-hover " ng-repeat="imgpublicid in allalbum.images | orderBy: adddate | limitTo:1">
+
+
+                                                <img public-id="{{imgpublicid.publicid}}" class="ng-isolate-scope" ng-src="{{config.ftpFullPath}}{{config.crop300}}{{imgpublicid.publicid}}.{{imgpublicid.fileExtension}}">
+                                            </div>
+                                        </div>
+                                        <h4 class="thin list-group-item-heading">{{ allalbum.name | limitTo: 11 }}{{allalbum.name.length > 11 ? '...' : ''}} (${{allalbum.price}})</h4>
+                                        <h6 class="pannel-head">{{allalbum.images.length}} photos </h6>
+                                    </a>
+                                </div>
+                            </div>
+                            <div style="clear:both;"></div>
+                            <div class="grid-footer" style="width: 98.6%;">
+                                <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

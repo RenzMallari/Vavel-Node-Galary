@@ -1,0 +1,85 @@
+<div ng-show='!isloggedin'>
+  <header class="wrapper" id="header" data-stellar-background-ratio="0.5" style="background-position: 50% 0px;">
+    <div class="container">
+      <div id="header_inner" class="light_text">
+        <h2 id="slogan">404 Not Found</h2>
+      </div>
+    </div>
+  </header>
+</div>
+<!-------------------------------------->
+
+<div ng-show='isloggedin' class="ember-view parallax sale-page" id="ember806">
+  <div class="top-gap hidden-xs hidden-sm"></div>
+  <div class="parallax__layer parallax__layer--base">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <h4>Your Sales</h4>
+          <div class="artist-photos">
+            <div id="ember1596" class="ember-view">
+              <div class="container notification-list">
+                <div class="row clearfix" ng-show="!showtips">
+                  <div class="col-sm-4 purchase">
+                    <div class="stats-box">
+                      <h3>{{totalimagessold}}</h3>
+                      <p class="small text-dark">No. of Images Sold</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 purchase">
+                    <div class="stats-box">
+                      <h3>{{totalalbumssold}}</h3>
+                      <p class="small text-dark">No. of Albums Sold</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 purchase">
+                    <div class="stats-box">
+                      <h3>${{totalsales}}</h3>
+                      <p class="small text-dark">Total Sales</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 purchase">
+                    <div class="stats-box">
+                      <h3>${{totalearnings}}</h3>
+                      <p class="small text-dark">Total Earnings</p>
+                    </div>
+                  </div>
+                </div>
+                <p class="paypalmsg" ng-show="!showtips"><a id="ember1990" class="ember-view" href="/settings">Add your
+                    Paypal info </a>to ensure you get paid.</p>
+                <div class="clearfix" style="margin-top:10px;" ng-show="showtips">
+                  <div class="empty-con">
+                    <h5>{{salecms.title}}</h5>
+                    <hr>
+                    <p data-ng-bind-html="trustAsHtml(salecms.content)">
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+    </div>
+    <style>
+      .row.clearfix {
+        margin-top: 10px;
+      }
+
+      .purchase {
+        width: 93.333333%;
+        float: none;
+        margin: 0 auto;
+      }
+
+      .paypalmsg {
+        margin-left: 18px;
+      }
+
+      .empty-con {
+        margin: 0px;
+        padding: 0px 21px 45px 21px;
+      }
+    </style>

@@ -1,0 +1,37 @@
+<div class="container-fluid-full">
+  <div class="row-fluid">
+    <div class="row-fluid">
+      <div class="login-box">
+        <div class="icons">
+        </div>
+        <h3 style="text-align: center;font-size: 25px;margin-bottom: 30px;">Admin Control Panel</h3>
+        <h2>Login</h2>
+        <ng-form class="form-horizontal" name="loginform">
+          <fieldset>
+            <div class="input-prepend" title="Username">
+              <span class="add-on"><i class="halflings-icon user"></i></span>
+              <input class="input-large span10" name="email" type="text" ng-model="email" placeholder="type email" required/>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="input-prepend" title="Password">
+              <span class="add-on"><i class="halflings-icon lock"></i></span>
+              <input class="input-large span10" name="password" type="password" ng-model="password" placeholder="type password" required/>
+            </div>
+            <div class="clearfix"></div>
+
+
+            <div class="button-login">
+              <button type="submit" class="btn btn-primary" ng-click="login()">Login</button>
+            </div>
+            <div class="clearfix"></div>
+            </form>
+            <hr>
+      </div>
+      <!--/span-->
+    </div>
+    <!--/row-->
+  </div>
+  <!--/.fluid-container-->
+</div>
+<!--/fluid-row-->

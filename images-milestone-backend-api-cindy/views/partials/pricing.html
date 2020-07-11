@@ -1,0 +1,151 @@
+<!--<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal-price modal fade" id="myModal-price">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+          <a href="javascript:void(0);" class="logo-top"><img src="img/top20-logo.png" class="img-responsive"></a>
+          <h5 class="modal-title">Pricing</h5>
+          <h6 class="modal-slogan">{{subscription.selectedplanname}} (${{subscription.selectedprice}})</h6>
+        </div>
+        <div class="modal-body">
+          <div ng-show="paybycardmessage" class="{{alert.altclass}}">
+              <alert type="{{alert.type}}">{{alert.msg}}</alert>
+          </div>
+          <form class="form-price" ng-submit="pay()">
+            <div class="errors"></div>
+            <div class="form-group">
+              <input type="hidden" ng-model="subscription.selectedprice" name="selectedprice">
+              <input type="text" class="ember-view ember-text-field form-control" placeholder="Card Number" ng-model="subscription.cardnumber" name="cardnumber" required>
+            </div>
+            <div class="form-group form-group-left">
+              <input type="text" class="ember-view ember-text-field form-control form-control-left" placeholder="MM/YYYY" ng-model="subscription.expirydate" name="expirydate" required>
+            </div>
+            <div class="form-group form-group-left">
+              <input type="text" class="ember-view ember-text-field form-control form-control-left" placeholder="CVV" ng-model="subscription.cvcnumber" name="cvcnumber" required>
+            </div>
+            <hr class="clear">            
+            <div class="form-group">              	
+              <a aria-controls="collapseExample" aria-expanded="true" href="javascript:void(0);" data-toggle="collapse" class="btn btn-primary btn-prim">
+              	<div class="prettycheckbox" style="display:none;">
+                    <input type="checkbox" class="myClass" value="yes" id="Test1" name="Test1" data-color="green"/>
+                    <label for="Test1"></label>
+                </div>
+                <div class="popoverView" style="display:none;">
+       		   <div class="content">
+       		     <p></p>
+       		   </div>
+                </div>
+              </a>
+              <div id="collapseExample" class="collapse in" aria-expanded="true" style="">
+                  <div class="well" style="border:0px;box-shadow:0px 0px 0px 0px;">
+                    <p>For security, please enter your <strong>mobile phone number</strong>:</p>
+                    <input type="tel" class="ember-view ember-text-field form-control form-control-left" placeholder="+91-" ng-model="subscription.phonenumber" name="phonenumber">
+                  </div>
+              </div>
+            </div>
+            <div id="ember1705" class="form-group ember-view">
+              <button type="submit" class="btn btn-loading btn btn-primary btn-block">
+              	<div class="btn-loading-text" id="paybtn">Pay ${{subscription.selectedprice}} Now!</div>
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <p><a href="mailto:admin@vavel.com">admin@vavel.com</a></p>
+        </div>
+      </div>
+
+
+    </div>
+
+</div>
+<div id="ember806" class="ember-view parallax">
+        <div class="top-gap hidden-xs hidden-sm"></div>
+        <div class="parallax__layer parallax__layer--base">
+          <div class="container-fluid">
+            <h2 class="caps strong centered-heading" style="padding-top:0px;">{{subscriptioncms.title}}</h2>
+            <p style="text-align: center; margin-bottom: 5%" class="pannel-head text-large">{{subscriptioncms.subtitle}}</p>
+            <div class="subscription-options row" style="background:url({{subscriptioncms.backgroundimage}})">
+              <div class="col-12 price-table clearfix">
+              
+                <div class="col-md-3" ng-repeat="allsubscription in allsubscriptions">
+                  <div class="ember-view option {{allsubscription.ispopular ? 'popular' : ''}}" id="ember7337">
+                    <span class="callout" ng-if="allsubscription.ispopular === true">
+                     <p class="caps xsmall strong">Most Popular</p>
+                    </span>
+                    <h5 class="plan-name starter-icon" ng-if="allsubscription.subscriptionname === 'Starter'">{{allsubscription.subscriptionname}}</h5>
+                    <h5 class="plan-name pro-icon" ng-if="allsubscription.subscriptionname === 'Professional'">{{allsubscription.subscriptionname}}</h5>
+                    <h5 class="plan-name team-icon" ng-if="allsubscription.subscriptionname === 'Team'">{{allsubscription.subscriptionname}}</h5>
+                    <h5 class="plan-name custom-icon" ng-if="allsubscription.subscriptionname === 'Custom'">{{allsubscription.subscriptionname}}</h5>
+                    <h6 class="image-count">{{allsubscription.noofimages > 0 ? allsubscription.noofimages+' images/mo' : 'Custom plans for your team'}}</h6>
+                    <p class="text-medium">{{allsubscription.description}}</p>
+                    <hr class="light">
+                    <h5 class="plan-price">{{allsubscription.amount > 0 ? '$'+allsubscription.amount+'/month' : 'Custom Pricing'}}</h5>
+                    <div class="clearfix" ng-if="allsubscription.subscriptionname === 'Custom'">
+                      <a href="/contact" class="ember-view btn btn-primary btn-xs">Contact Us</a>
+                    </div>
+                    <div class="clearfix" ng-if="allsubscription.subscriptionname === 'Starter' || allsubscription.subscriptionname === 'Professional' || allsubscription.subscriptionname === 'Team'">
+                      <a href="javascript:void(0);" class="ember-view btn {{allsubscription.ispopular ? 'btn-success' : 'btn-primary'}} btn-xs" ng-click="showPricemodal(allsubscription._id,allsubscription.subscriptionname,allsubscription.amount,allsubscription.noofimages)">Choose Plan</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="margin-bottom: 5%;" class="container con-med">
+              <h3 style="margin: 8% 0 5%;" class="text-center">Questions &amp; Answers</h3>
+              <div class="col-md-5" style="margin-left:5%;" ng-repeat="allsubscriptionfaq in allsubscriptionfaqs">
+                <div class="qa-con">
+                  <h6 class="strong">{{allsubscriptionfaq.question}}</h6>
+                  <p data-ng-bind-html="trustAsHtml(allsubscriptionfaq.answer)"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <div class="row zone-value-proposition-buyer">
+              <div class="container">
+                <div class="col-md-7 col-padding" style="padding-bottom: 7% !important;">
+                  <p data-ng-bind-html="trustAsHtml(brandcms.title)"></p>
+                  <p data-ng-bind-html="trustAsHtml(brandcms.content)"></p>
+                  <a id="ember1021" class="ember-view btn btn-primary btn-large" ng-click="open_join_modal();" href="javascript:void(0);">Join today</a></div>
+                <div class="col-md-5 col-padding" style="padding-top: 7% !important;">
+                   <div style="float:left;width:45%;margin-right:15px;height:120px;" ng-repeat="allbrand in allbrands | limitTo:4">
+                         <cl-image public-id="{{allbrand.image}}" class="thumbnail inline" format="jpg" style="width:100%;">
+                            <cl-transformation  crop="fill" gravity="north"/>
+                        </cl-image>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+  <style>
+    .modal-header a.logo-top img {
+  margin: -25% auto 15px;
+  width: 150px;
+}
+    .modal-header h5.modal-title {text-align: center !important;display: inline-block;width: 100%;text-transform: capitalize;font-size: 19px;color: #41494f !important;font-weight: 500;}
+    .modal-header h6.modal-slogan {text-align: center !important;text-transform: capitalize;font-size: 14px;color: #41494f !important;font-weight: normal;}
+    .modal-price form.form-price .form-group-left {width: 50% !important;float: left;}
+    .modal-price form.form-price a.btn-prim {background-color: transparent;border-color: inherit;color: #0078b6;width: 100%;transition: all 0.3s ease-in-out;}
+    .modal-price form.form-price button.btn-block {padding: 14px;font-size: 16px;}
+    .modal-footer p {text-align: center !important;}
+  </style>
+  <script type='text/javascript'>
+    $(function(){
+	$( ".button-show" ).click(function() {
+           $( ".show-div" ).toggle();
+           $('html,body').animate({
+		scrollTop: $(".show-div").offset().top},
+	   'slow');
+        });
+        $('.btn-prim').click(function()
+	{
+	   $( ".popoverView" ).toggle();
+	});
+    });
+  </script>
+-->

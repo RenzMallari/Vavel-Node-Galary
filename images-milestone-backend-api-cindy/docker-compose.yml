@@ -1,0 +1,66 @@
+# docker exec -it mongo /bin/bash
+# mongorestore --drop -d img /home/img-dump/img
+
+version: '3'
+
+networks: 
+  img:  
+  
+volumes: 
+  img-volumes:
+
+services:
+  mongo_img:
+    image: mongo:3.4
+    container_name: mongo_img
+    restart: always
+    ports:
+      - 27017:27017
+    networks:
+      - img
+    volumes:
+      - /Volumes/DATA/docker-volumes/mongo/:/home
+
+  # mongo-express:
+  #   image: mongo-express
+  #   container_name: mongodb-express
+  #   restart: always
+  #   ports:
+  #     - 127.0.0.1:8081:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.0
+    container_name: elasticsearch
+    restart: always
+    ports:
+      - 127.0.0.1:9200:9200
+      - 127.0.0.1:9300:9300
+    environment:
+      - node.name=elasticsearch
+      - cluster.name=docker-cluster
+      - cluster.initial_master_nodes=elasticsearch
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256M -Xmx256M"
+      - http.cors.enabled=true
+      - http.cors.allow-origin=*
+      - network.host=_eth0_
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - img
+    volumes:
+      - /Volumes/DATA/docker-volumes:/usr/share/elasticsearch/data
+  
+  redis:
+    image: redis
+    container_name: redis
+    restart: always
+    ports:
+      - 127.0.0.1:6379:6379
+    networks:
+      - img

@@ -1,0 +1,339 @@
+<!-------------------------------------->
+<div ng-show='!loggedindetails._id'>
+  <header class="wrapper" id="header" data-stellar-background-ratio="0.5" style="background-position: 50% 0px;">
+    <div class="container">
+      <div id="header_inner" class="light_text">
+        <h2 id="slogan">404 Not Found</h2>
+      </div>
+    </div>
+  </header>
+</div>
+<!--page loader box end-->
+<div ng-show="loggedindetails._id" class="ember-view parallax" id="ember806">
+
+  <!--Alert Start-->
+  <div aria-hidden="false" aria-labelledby="myAlert" role="dialog" tabindex="-1" class="modal fade alert-error"
+    id="myAlert-download">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span
+              aria-hidden="true">×</span></button>
+          <div class='text-center mt-4 mb-3'>
+            <img src='img/cancel.svg' width="60" class="icon-error" />
+          </div>
+          <h4 id="myAlert" class="modal-title">Oops</h4>
+
+        </div>
+        <div class="modal-body">
+
+          <div class="message-error">
+            {{downloadMessage}}
+          </div>
+        </div>
+        <div class="modal-footer" style="text-align: center;"><button aria-label="Close" data-dismiss="modal"
+            class="close" type="button" aria-hidden="true">Close</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!--Alert End-->
+  <div class="top-gap hidden-xs hidden-sm"></div>
+  <div class="parallax__layer parallax__layer--base">
+    <div class="container-fluid">
+      <div class="row" ng-show="totalimagesbuy">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+          <!--   <h4>Your Purchases</h4> -->
+          <div class="artist-photos mgt15">
+            <div id="ember1596" class="ember-view">
+              <div class="container notification-list">
+                <div class="row clearfix" ng-show="!showtips">
+                  <div class="col-sm-4 purchase">
+                    <div class="stats-box">
+                      <h3>{{totalimagesbuy}}</h3>
+                      <p class="small text-dark">No. of Images Bought</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 purchase">
+                    <div class="stats-box">
+                      <h3>{{totalalbumsbuy}}</h3>
+                      <p class="small text-dark">No. of Albums Bought</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 purchase">
+                    <div class="stats-box">
+                      <h3>${{totalpaid}}</h3>
+                      <p class="small text-dark">Total Paid</p>
+                    </div>
+                  </div>
+                </div>
+                <p class="paypalmsg" ng-show="!showtips"
+                  style="text-align: center; width: 100%; display: inline-block;"><a id="ember1990" class="ember-view"
+                    href="/settings">Add your Paypal info </a>to ensure you get paid in Payment tab.</p>
+
+                <div class="clearfix" style="margin-top:10px;" ng-show="showtips">
+                  <div class="empty-con">
+                    <h5>{{purchasecms.title}}</h5>
+                    <hr>
+                    <p data-ng-bind-html="trustAsHtml(purchasecms.content)">
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3"></div>
+      </div>
+    </div>
+
+    <div id="ember806" class="ember-view parallax reload">
+      <div class="top-gap hidden-xs hidden-sm"></div>
+      <div class="parallax__layer parallax__layer--base">
+        <div class="container-fluid" style="background-color:#f5f5f6;">
+          <div class="row zone-value-proposition-buyer" style="background:none;">
+            <div style="padding-top:15px;" class="challenge-list container">
+              <h3 style="margin: 25px 0 20px 0px;" class="caps text-centered strong">Purchased List</h3>
+              <div class="row" ng-show="!totalimagesbuy"
+                style="text-align: center; margin: 0 auto; font-family: Open Sans, Ubuntu, Arial; font-size: 14px;">No
+                images have been bought yet. Checkout our <a href="https://images.vavel.com/albums">catalogs</a>!</div>
+              <div ng-show="totalimagesbuy"
+                style="text-align: center; margin: 0 auto; font-family: Open Sans, Ubuntu, Arial; font-size: 14px;">+
+                Can also download the image <b>clicking in mouse in right bottom and click in "Save link as..."</b>
+                option</div>
+
+              <div>
+                <div class="tab-download">
+                  <div class="tab active" onclick="addactive(this)" ng-click="tabdownload()">Photo</div>
+                  <div class="tab" onclick="addactive(this)" ng-click="tabdownload('true')">Album</div>
+
+                </div>
+              </div>
+
+              <!-- <img src='img/57ceebcddbcf7a1c367260c0/57ceebdddbcf7a1c367260c2.jpg'> -->
+              <div class="bg-black">
+
+                <div ng-show="loading">
+                  <div style='text-align: center'>
+                    <img class='loading-vavel' src='img/loadingv.gif' style="width: 100px">
+                  </div>
+                </div>
+                <div ng-show="!showalbums" class="ember-view grid">
+                  <div>
+                    <brick-wall bricks="filteredDownloads" item="alldownload">
+                      <div class="grid-photo-block">
+                        <a class="ember-view" style="display: block">
+                          <div style="position: absolute; height: 100%;width:100%;cursor:pointer;">
+                            <a href="/details/{{alldownload.gallery_id}}/{{alldownload.image_publicid}}"
+                              target="_blank">
+                              <img
+                                data-src="{{$parent.$parent.cloudinary_image_base_path}}h200_{{alldownload.image_id}}.{{alldownload.fileExtension}}"
+                                style="width:100%;height:100%" />
+                            </a>
+                            <span ng-disabled="alldownload.hidden" onclick="downloadPhoto(this)" dataimg={{alldownload}}
+                              class="btn btn-default btn-sm btnhover addcollectionbtn">
+                              <i class="download-icon"></i>
+                            </span>
+                          </div>
+                          <div ng-show="alldownload.hidden" class="lds-ripple">
+                            <div></div>
+                            <div></div>
+                          </div>
+
+                        </a>
+                      </div>
+                    </brick-wall>
+                    <div class="pagination" ng-show="paginationPhotos.numberOfPages > 1">
+                      <button type="button" ng-disabled="paginationPhotos.curPage === 0"
+                        ng-click="showPhotosPage(paginationPhotos.curPage-1)">
+                        < PREV</button> <button type="button"
+                          ng-disabled="paginationPhotos.curPage >= paginationPhotos.numberOfPages - 1"
+                          ng-click="showPhotosPage(paginationPhotos.curPage+1)">NEXT >
+                      </button>
+
+                    </div>
+                    <div class="pagination-info" ng-show="paginationPhotos.numberOfPages > 1"> <span>Page
+                        {{ paginationPhotos.curPage + 1}}
+                        of
+                        {{ paginationPhotos.numberOfPages }}</span>
+                      <span>Per page: </span>
+                      <select style="width: auto; display:inline-block; height: 22px;"
+                        ng-model="paginationPhotos.pageSize"
+                        ng-options="item for item in paginationPhotos.pageSizeList"></select>
+                    </div>
+                  </div>
+                </div>
+
+                <div ng-show="showalbums" class="ember-view grid">
+                  <brick-wall bricks="allalbumdownloads" item="alldownload">
+                    <div class="grid-photo-block">
+                      <a class="ember-view" style="display: block">
+                        <div" style="position: absolute; height: 100%;width:100%;cursor:pointer;">
+                          <a href="/mainalbumdetails/{{alldownload.gallery_id}}" target="_blank">
+                            <img
+                              data-src="{{$parent.$parent.cloudinary_image_base_path}}h200_{{alldownload.image_id}}.{{alldownload.fileExtension}}"
+                              style="width:100%;height:100%" />
+                          </a>
+                          <span ng-disabled="alldownload.hidden" datalbum={{alldownload}} onclick="downloadAlbum(this)"
+                            class="btn btn-default btn-sm btnhover addcollectionbtn">
+                            <i class="download-icon"></i>
+                          </span>
+                    </div>
+                    <div ng-show="alldownload.hidden" class="lds-ripple">
+                      <div></div>
+                      <div></div>
+                    </div>
+                    </a>
+                  </brick-wall>
+                  <div class="pagination" ng-show="paginationAlbums.numberOfPages > 1">
+                    <button type="button" ng-disabled="paginationAlbums.curPage === 0"
+                      ng-click="showAlbumsPage(paginationAlbums.curPage-1)">
+                      < PREV</button> <button type="button"
+                        ng-disabled="paginationAlbums.curPage >= paginationAlbums.numberOfPages - 1"
+                        ng-click="showAlbumsPage(paginationAlbums.curPage+1)">NEXT >
+                    </button>
+                  </div>
+                  <div class="pagination-info" ng-show="paginationAlbums.numberOfPages > 1"> <span>Page
+                      {{ paginationAlbums.curPage + 1}}
+                      of
+                      {{ paginationAlbums.numberOfPages }}</span>
+                    <span>Per page: </span>
+                    <select style="width: auto; display:inline-block; height: 22px;"
+                      ng-model="paginationAlbums.pageSize"
+                      ng-options="item for item in paginationAlbums.pageSizeList"></select>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- </div> -->
+              <!--<div style="text-align: center;">
+                    <a href="javascript:void(0)" class="load_more"  ng-click="loadmoredata()" ng-show="noloadmore" style="    " >Click to Load More</a>
+                     
+                </div>-->
+
+              <input type="hidden" name="load_number" id="load_number" value="4">
+              <!-- <div class="row" ng-show="!nodownload_album">
+                     
+                     <div class="col-lg-12 col-md-12 col-sm-12" >
+                        <div class="col-lg-3 col-md-3 col-sm-3" ng-repeat="alldownload in alldownloads_albums | orderBy: 'startdate':true">
+                        <a id="ember2175" href="{{cloudinary_image_base_path}}{{alldownload.image_id}}.jpg" download="myimage">
+                                <div> <img data-src="{{cloudinary_image_base_path}}c_fill,g_north,h_350,w_350/{{alldownload.image_id}}.jpg" ></div>
+                            </a>
+                             <div style="clear:both;"></div>
+                            <a href="{{cloudinary_image_base_path}}{{alldownload.image_id}}.jpg" download="myimage"   class="ember-view">
+                                <h5>DownLoad</h5>
+                            </a>
+                      </div>
+                     </div>
+                    </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="//stuk.github.io/jszip/dist/jszip.js"></script>
+    <script type="text/javascript" src="//stuk.github.io/jszip-utils/dist/jszip-utils.js"></script>
+    <script type="text/javascript" src="//stuk.github.io/jszip/vendor/FileSaver.js"></script>
+
+    <style>
+      .view-hover::after {
+        border: 2px solid white;
+        background: none;
+        border-radius: 3px;
+      }
+    </style>
+    <script type="text/javascript">
+      const _this = this;
+      $(window).ready(function() {
+        $(window).lazyLoadXT();
+      });
+
+      function forceDownload(url, filename) {
+        // console.log(url, filename);
+        var a = $("<a>").attr('href', url).attr('download', filename);
+
+        a[0].click();
+        a.remove()
+      }
+
+
+      function loadImgAsBase64(data, callback) {
+        let canvas = document.createElement('CANVAS');
+
+        let fileExtension = data.fileExtension;
+        let img = document.createElement('img');
+        img.setAttribute('crossorigin', 'anonymous');
+        img.onload = () => {
+          canvas.height = img.height;
+          canvas.width = img.width;
+          let context = canvas.getContext('2d');
+          context.drawImage(img, 0, 0);
+          dataURL = canvas.toDataURL('image/' + fileExtension);
+          callback(dataURL)
+          canvas = null;
+        };
+        img.src = 'https://cors-anywhere.herokuapp.com/' + data.downloadlink;
+      }
+      function addactive(ele) {
+        $('.tab-download .tab').removeClass("active")
+        ele.classList.add('active');
+      }
+      function downloadAlbum(ele) {
+        let album = ele.getAttribute('datalbum');
+        if (typeof album === 'string') album = JSON.parse(album);
+
+        let scope = angular.element($('#ember806')).scope();
+        scope.downloadAlbums(album);
+
+      }
+
+      function downloadPhoto(ele) {
+        let photo = ele.getAttribute('dataimg');
+        if (typeof photo === 'string') photo = JSON.parse(photo);
+        let scope = angular.element($('#ember806')).scope();
+        scope.downloadPhotos(photo);
+      }
+    </script>
+    <style>
+      .load_more:focus {
+        background-color: rgb(48, 48, 49) !important;
+        text-decoration: inherit;
+      }
+
+      .artist-photos {
+        min-height: inherit;
+      }
+
+      .load_more {
+        text-decoration: inherit;
+        border: solid rgb(34, 34, 34);
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 12px;
+        display: inline-block;
+        text-align: center;
+        margin: 10px auto;
+        border-radius: 6px;
+        color: rgb(245, 245, 246);
+      }
+
+      .tab-download {
+        display: flex;
+        margin-top: 32px;
+        margin-bottom: 16px;
+      }
+
+      .tab-download .tab {
+        width: 50%;
+        cursor: pointer;
+        text-align: center;
+        padding: 8px;
+      }
+
+      .tab-download .tab.active {
+        border-bottom: 5px solid #4a92db
+      }
+    </style>

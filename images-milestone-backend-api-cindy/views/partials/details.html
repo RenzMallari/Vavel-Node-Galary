@@ -1,0 +1,778 @@
+<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal-price modal fade"
+    id="myModal-price">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" ng-disabled="addingToCart" data-dismiss="modal" class="close"
+                    type="button"><span aria-hidden="true">×</span></button>
+                <a href="javascript:void(0);" class="logo-top"><img src="img/top20-logo.png" class="img-responsive"></a>
+                <h5 class="modal-title">Get License</h5>
+                <h6 class="modal-slogan">
+                    <div>{{imageDetailSelected.type}}</div>
+                    <div style='margin-top: 16px'><span
+                            ng-show='!getCurrency().is_converting'>${{imageDetailSelected.price}}</span> <span
+                            ng-show='getCurrency().is_converting'>{{getCurrency().symbol}}{{convert(imageDetailSelected.price, 'USD', getCurrency().currency)}}</span>
+                    </div>
+                </h6>
+            </div>
+            <div class="modal-body">
+                <div ng-show="paybycardmessage" class="{{alert.altclass}}">
+                    <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                </div>
+                <div style="top: -30px;" ng-show="addingToCart" class="lds-ripple lds-ripple-blue lds-ripple-center">
+                    <div></div>
+                    <div></div>
+                </div>
+
+                <div class="confirm_form">
+                    <!--                     <div ng-if="!loggedindetails">
+                        <a href="/signup/photographer" class="btn btn-loading btn btn-primary btn-block">Register</a>
+                        <span class="register-legend">* Register is needed to add this picture to your cart</span>
+                    </div> -->
+                    <input type="submit" ng-disabled="addingToCart" ng-click="addtocart(payment.imageprice)"
+                        class="btn btn-loading btn btn-primary btn-block" value="Add to Cart" />
+                    <input type="submit" ng-disabled="addingToCart" ng-click="addtocart(payment.imageprice, true)"
+                        class="btn btn-loading btn btn-primary btn-block" value="Complete Checkout" />
+                    <!--<a href="javascript:void(0)" onclick="continue_checkout()">Complete Checkout</a>-->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p><a href="mailto:admin@vavel.com">admin@vavel.com</a></p>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade"
+    id="mymodal-payment">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sml">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button aria-label="Close" ng-disabled="paying" data-dismiss="modal" class="close" type="button"><span
+                        aria-hidden="true">×</span></button>
+                <a href="javascript:void(0);" class="logo-top"><img src="img/top20-logo.png" class="img-responsive"></a>
+                <a href="javascript:void(0)" id="forcedownloadlink" style="display:none;" download></a>
+                <!--<h6 class="modal-slogan">{{payment.imagetype}} (${{payment.imageprice}})</h6>-->
+            </div>
+            <div class="modal-body">
+                <div ng-show="paybycardmessage" class="{{alert.altclass}}" style="text-align: center;">
+                    <alert type="{{alert.type}}">
+                        <img src="/img/loading.svg" ng-show="loaderimg" style="margin: 0 auto;"
+                            <br /><br />{{alert.msg}}</alert>
+                </div>
+
+
+                <div class="confirm_form">
+                    <!--<input type="submit" ng-click="addtocart(payment.imageprice)" class="btn btn-loading btn btn-primary btn-block" value="Continue Shopping" />
+                <input type="submit" ng-click="addtocart_final(payment.imageprice)" class="btn btn-loading btn btn-primary btn-block" value="Complete Checkout" />
+                <a href="javascript:void(0)" onclick="continue_checkout()">Complete Checkout</a>-->
+                </div>
+                <div class="checkout_form">
+
+                    <form class="form-price" ng-submit="signup()">
+                        <div class="errors"></div>
+                        <div ng-show="registrationError" class="{{alert.altclass}}">
+                            <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                        </div>
+                        <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                            <input type="text" id="login-firstname" ng-model="user.firstname"
+                                class="ember-view ember-text-field form-control" placeholder="First Name"
+                                name="firstname" required>
+                        </div>
+                        <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                            <input type="text" id="login-lastname" ng-model="user.lastname"
+                                class="ember-view ember-text-field form-control" placeholder="Last Name" name="lastname"
+                                required>
+                        </div>
+                        <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                            <input type="text" id="login-country" ng-model="user.country"
+                                class="ember-view ember-text-field form-control" placeholder="Country" name="country"
+                                required>
+                        </div>
+                        <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                            <input type="email" id="login-email" ng-model="user.email"
+                                class="ember-view ember-text-field form-control" placeholder="Email Address"
+                                name="email" required>
+                        </div>
+                        <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                            <input type="password" id="login-password" ng-model="user.password"
+                                class="ember-view ember-text-field form-control" placeholder="Create Password" required>
+                        </div>
+                        <!-- <div class="form-group">
+                        <input type="text" class="ember-view ember-text-field form-control" placeholder="Card Number" ng-model="payment.cardnumber" name="cardnumber" required>
+                    </div>
+                    <div class="form-group form-group-left">
+                        <input type="text" class="ember-view ember-text-field form-control form-control-left" placeholder="MM/YYYY" ng-model="payment.expirydate" name="expirydate" required>
+                    </div> -->
+                        <!-- <div class="form-group form-group-left">
+                        <input type="text" class="ember-view ember-text-field form-control form-control-left" placeholder="CVV" ng-model="payment.cvcnumber" name="cvcnumber" required>
+                    </div> -->
+                        <hr class="clear">
+                        <div id="ember1705" class="form-group ember-view">
+                            <button style=" padding: 20px; font-size: 20px;" type="submit"
+                                class="btn btn-loading btn btn-primary btn-block">
+                                <div class="btn-loading-text" id="paybtn">Pay Now</div>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- <hr class="hr-text" data-content="OR"> -->
+
+                    <!-- <div class="form-group" style="text-align: center;">
+                    <button style="padding: 20px; font-size: 20px; width: 100%" class="btn btn btn-primary" ng-click="payforcart_paypal()" ng-disabled="paying">Login</button>
+                </div> -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p><a href="javascript:void(0)">Have an account? Login</a></p>
+                <p><a href="mailto:admin@vavel.com">admin@vavel.com</a></p>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+
+<!-------------------------------------->
+<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade"
+    id="mymodal-addcollection">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sml">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">×</span><span
+                        class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Save to a Collection</h4>
+            </div>
+            <div class="modal-body" ng-show="showcollections">
+                <div id="collection-container" class="ember-view collection-group-stack" style="max-height:214px">
+                    <ul id="collection-list" style="margin-bottom: 0;" class="list-group">
+                        <li data-ember-action="22819" class="list-group-item clearfix collection-group-item"
+                            ng-repeat="allcollection in allcollections | orderBy: createdate"
+                            ng-click="addtocollection(allcollection._id)">
+                            <div style="float:left;width:50px;height:50px;background:#e5e5e5;">
+                                <div class="collection-cover"
+                                    ng-repeat="imgpublicid in allcollection.images | orderBy: adddate | limitTo:1">
+
+
+                                    <img public-id="{{imgpublicid.publicid}}" width="50px" height="50px"
+                                        class="ng-isolate-scope"
+                                        ng-src="{{config.ftpThumbnailPath}}{{imgpublicid.publicid}}.{{imgpublicid.fileExtension}}">
+
+                                </div>
+                            </div>
+                            <div class="collection-info">
+                                <h5 class="list-group-item-heading strong">{{allcollection.name}}</h5>
+                                <h5 class="pannel-head list-group-item-text small">{{allcollection.images.length}}
+                                    photos</h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form role="form" style="text-align: left;" data-ember-action="22825" class="form-inline"
+                    ng-submit="collectionsubmit()">
+                    <div class="form-group" style="float:left;width:auto;">
+                        <input id="new-collection-input" ng-model="gallerydetails.collectionname"
+                            class="ember-view ember-text-field form-control" placeholder="New Collection..." type="text"
+                            required>
+                        <input id="new-collection-input-gallerycollectionid" ng-model="albumdetls.collectiongalleryid"
+                            type="hidden">
+                    </div>
+                    <div id="ember22826" class="ember-view" style="float:left;width:auto;">
+                        <button class="btn btn-loading btn btn-primary" data-bindattr-22830="22830"
+                            data-bindattr-22831="22831" type="submit" data-bindattr-22832="22832"
+                            style="padding: 19px 17px;">
+                            <div id="ember22833" class="ember-view loading-spinner" style=""></div>
+                            <div class="btn-loading-text">Create</div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------------------------->
+
+
+<!-----------------modal embed--------------------->
+<div aria-hidden="false" aria-labelledby="myModalLabelEmbed" role="dialog" tabindex="-1" class="modal fade"
+    id="mymodal-embed">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sml">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">×</span><span
+                        class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Get Embed</h4>
+            </div>
+            <div class="modal-body">
+                <div class='img-embed'></div>
+            </div>
+            <div class="modal-footer" style='display: flex; justify-content: center;'>
+                <form role="form" style="text-align: left;" data-ember-action="22825" class="form-inline">
+                    <div class="form-group" style="float:left;width:auto;">
+                        <input id="input-embed" ng-model="embed_code" class="ember-view ember-text-field form-control"
+                            placeholder="Embed Free with Watermark..." type="text" required>
+                    </div>
+                    <div id="ember22826" class="ember-view" style="float:left;width:auto;">
+                        <button class="btn btn-loading btn btn-primary" data-bindattr-22830="22830"
+                            data-code={{embed_code}} onclick="copy_embed()" data-bindattr-22831="22831" type="submit"
+                            data-bindattr-22832="22832" style="padding: 19px 17px;">
+                            <div id="ember22833" class="ember-view loading-spinner" style=""></div>
+                            <div class="btn-loading-text">Copy</div>
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------------------------->
+
+
+<div ng-show='page404'>
+    <header class="wrapper" id="header" data-stellar-background-ratio="0.5" style="background-position: 50% 0px;">
+        <div class="container">
+            <div id="header_inner" class="light_text">
+                <h2 id="slogan">404 Not Found</h2>
+            </div>
+        </div>
+    </header>
+</div>
+<div ng-show='!page404' id="ember959" class="ember-view preview">
+    <div class="top-gap hidden-xs hidden-sm"></div>
+    <div class="preview-main-container">
+        <a class="close-control text-link dark caps small hidden-xs" data-ember-action="1124" data-bindattr-1123="1123"
+            href="/"><b>X</b></a>
+
+        <a data-ng-if="img.previous" data-ng-href="{{img.previousLink}}" style="" tablink="false" backlink="false"
+            class="prev-arrow visible-md visible-lg ember-view"> </a>
+
+        <a data-ng-if="img.next" data-ng-href="{{img.nextLink}}" style="" tablink="false" backlink="false"
+            class="next-arrow visible-md visible-lg ember-view"> </a>
+
+        <div class="container nopd" style="min-height:400px;">
+            <progress max="10" ng-if="!img.fileExtension" style="display:block;margin:180px auto;" />
+            <div class="row-image" ng-if="img.fileExtension">
+                <div class="col-md-8 col-sm-12" style="
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;">
+                    <div class="img-preview" style='width: 100%'>
+                        <div class="img-con-inner">
+                            <div class="ember-view pre-loading single-image" id="galleryimage">
+                                <!-- 
+                                
+                                style="background-image: url(img/loadingv-white.gif); background-position: center; 
+                                background-repeat: no-repeat; background-size: auto; width: 100%; min-height: 280px;"
+                                
+                                
+                                <div ng-show="loading">
+                                    <div style='text-align: center; margin-top: 100px'>
+                                        <img class='loading-vavel' src='img/loadingv-white.gif' style="width: 100px">
+                                        </div>
+                                </div> -->
+                                <div ng-show="!loading" style="display: block !important">
+
+                                    <a data-ng-if="img.next" data-ng-href="{{img.nextLink}}" tablink="false"
+                                        backlink="false">
+                                    </a>
+                                    <a data-ng-href="{{img.nextLink}}" tablink="false" backlink="false">
+                                        <img ng-if="img.fileExtension"
+                                            ng-src="{{config.ftpFullPath}}{{img.path}}"
+                                            width="100%">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="engage detail-bar">
+
+                            <a data-ember-action="1131" href="javascript:void(0)" ng-click="likepics()">
+                                <div data-bindattr-1132="1132" class="loved"
+                                    style="display: inline-block; margin-top: 8px; margin-right: 12px;" ng-show="liked">
+                                    <i class="love-icon-sprite-med"
+                                        style="display: inline-block; margin-right: 6px; position: relative; top: 2px;"></i><span
+                                        class="small">{{totallikes}}</span>
+                                </div>
+                                <div data-bindattr-1132="1132" class=""
+                                    style="display: inline-block; margin-top: 8px; margin-right: 12px;"
+                                    ng-show="unliked">
+                                    <i class="love-icon-sprite-med"
+                                        style="display: inline-block; margin-right: 6px; position: relative; top: 2px;"></i><span
+                                        class="small">{{totallikes}}</span>
+                                </div>
+                            </a>
+                            <a href="javascript:void(0);" ng-show="!loading" id="embed">
+                                <button ng-show="img" class="pull-right btn btn-link btn-xs has-icon"
+                                    style="border: 0; margin-right: -14px;" ng-click='getEmbed()'><i
+                                        class="download-icon"></i>Embed</button>
+                            </a>
+                            <!--  <a href="javascript:void(0);" class='hidden-xs' id="downloadimage" download ng-show="!logintogetlicense">
+                                <button class="pull-right btn btn-link btn-xs has-icon" data-ember-action="1136"
+                                    style="border: 0; margin-right: -14px;"><i class="download-icon"></i>Get a
+                                    Comp</button>
+                            </a>
+                            <a href="javascript:void(0);" class='hidden-xs' id="logindownloadimage" ng-show="logintogetlicense"
+                                ng-click="open_loginmodal()">
+                                <button class="pull-right btn btn-link btn-xs has-icon" data-ember-action="1136"
+                                    style="border: 0; margin-right: -14px;"><i class="download-icon"></i>Get a
+                                    Comp</button>
+                            </a> -->
+                            <!-- <span ng-include="'select-currency.html'"></span> -->
+                            <span class='display-xs' ng-controller='headersController'>
+                                <select class='select-mobile-currency select-custom-arrow' style='width: unset'
+                                    ng-change="changeCurrency(myCurrency.code)" type="text" required
+                                    ng-model="myCurrency.code" name="currency">
+                                    <option ng-repeat='currency in filter_currencies' value={{currency.code}}>
+                                        {{currency.code}}</option>
+                                </select>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="main w95m">
+                        <div>
+                            <div class="size-con" ng-repeat="imagedetail in imagedetails">
+                                <!--<input type="radio" id="{{imagedetail.type}}" class="ember-view radio-btn-white imageradio" name="size" value="{{imagedetail.type}}" ng-checked="imagedetail.ischecked==true" data-width="{{imagedetail.width}}" data-height="{{imagedetail.height}}" data-dpi="{{imagedetail.dpi}}"
+                  data-publicid="{{galleryphotopublicid}}" data-price="{{imagedetail.price}}">
+                <label data-bindattr-1146="1146" class="" style="display: block;" data-bindattr-1145="1145" for="{{imagedetail.type}}">
+                  <div class="caps text-bright strong"><span>{{imagedetail.type}}</span><span class="pull-right" style="text-transform: none;">${{imagedetail.price}}</span></div>
+                  <div class="small text-medium">{{imagedetail.width}} x {{imagedetail.height}} px | {{imagedetail.inch}} @ {{imagedetail.dpi}} dpi</div>
+                </label>-->
+                                <input type="radio" id="{{imagedetail.type}}" class="radio-btn-white imageradio"
+                                    name="size" ng-model="imagedetail.ischecked"
+                                    ng-click="checkImageDetail(imagedetail)">
+                                <label class="" style="display: block;" for="{{imagedetail.type}}">
+                                    <div class="caps text-bright strong clearfix">
+                                        <span>{{imagedetail.type}}</span>
+                                        <span class="pull-right text-right" style="text-transform: none;">
+                                            <div style='font-size:10px;' ng-show='getCurrency().is_converting'>
+                                                {{getCurrency().symbol}}{{convert(imagedetail.price, 'USD', getCurrency().currency)}}
+                                            </div>
+                                            <div>${{imagedetail.price}}</div>
+                                        </span>
+                                    </div>
+                                    <div class="small text-medium">{{imagedetail.width}} x {{imagedetail.height}} px |
+                                        {{imagedetail.inch}} @ {{imagedetail.dpi}} dpi</div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="purchase-con">
+                            <div ng-show='!soldout'>
+                                <a href="javascript:void(0)" id="forcedownloadlink" style="display:none;" download></a>
+                                <a class="btn btn-primary btn-block btn-lg" href="javascript:void(0);" id="getlicense"
+                                    ng-disabled="!imageDetailSelected" ng-click="open_pricingmodal()"><i
+                                        class="download-icon-md"></i>Get License</a>
+
+                                <div ng-show="waitmessage" class="{{alert.altclass}}">
+                                    <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                </div>
+                            </div>
+                            <div ng-show='soldout'>
+                                <a class="btn btn-primary btn-block btn-lg" href="javascript:void(0);"
+                                    id="getlicense">SOLD OUT</a>
+                            </div>
+
+                            <!--<a class="btn btn-primary btn-block btn-lg" href="javascript:void(0);" ng-show="getlicance" ng-disabled="!imageDetailSelected" ng-click="open_getlicenseerrormodal()"><i class="download-icon-md"></i>Get License</a>-->
+                            <!-- <a class="btn btn-primary btn-block btn-lg" href="javascript:void(0);" ng-disabled="!imageDetailSelected" ng-click="open_loginmodal()"><i class="download-icon-md"></i>Get License</a> -->
+                        </div>
+                        <div class="photo-actions"><a class="btn btn-secondary btn-sm btn-block has-icon"
+                                style="margin: 18px 0;" id="btn-collect"
+                                ng-click="open_collectionmodal(gallerypublicid)"><i class="collect-icon-reg"></i>Save to
+                                Collection</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <div class="preview-details-container">
+        <div class="container2">
+            <div class="row-image">
+                <div class="col-md-8 photo-details clearfix">
+                    <div class="album-title">
+                        <span>Album:</span>
+                        <a ng-href="{{albumLink}}">{{title_album}}</a>
+                    </div>
+                    <div class="clearfix" ng-show="keywordsshow">
+                        <div class="meta-group" ng-show="keywordsshow">
+                            <div class="keyword-list">
+                                <h6 class="pdl5 mgt20 mgb15">In this Photo:</h6>
+                                <span ng-repeat="singletag in tags">
+                                    <a id="ember1227" class="ember-view text-link light small" href="/?tag={{singletag.tag}}">
+
+                                        <img ng-show="singletag.logo" class='tag-logo'
+                                            ng-src="{{singletag.logo}}" /><span>{{singletag.tag}}</span></a>{{$last ? '' : ($index==tags.length-2) ? '' : ''}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ember1309" class="ember-view">
+                        <related-photos title="'Related photos'" user-id="userId" except-photo-id="img.imagepublicid"
+                            gallery-id="gallerypublicid" link="relatedLink" count="18"></related-photos>
+
+
+                        <!--  COMMENTS OUT   <div class="photo-comments" style="border:0px" ng-show="!hidecommentsnumber">
+                            <div>
+                                <button data-ember-action="5490" style="margin: 0 auto;background-color: #dee1e4;border: 1px solid #d9dbdc;color:#41494f" class="btn btn-xs btn-default" ng-click="hideComments()">Hide comment</button>
+                            </div>
+                            <div id="ember5492" class="ember-view">
+                                <div class="comment-con" ng-repeat="comment in comments | orderBy: commentdate">
+                                    <a id="ember5503" class="ember-view" href="/myaccount/{{comment.userid}}">
+                                        <div id="ember5507" class="ember-view inline-block pull-left">
+                                            <svg width="0" height="0">
+                                                <clipPath id="hexagonClip">
+                                                    <polygon points="24 0,45 12,45 37,24 50,3 37,3 12"></polygon>
+                                                </clipPath>
+                                            </svg>
+
+
+
+                                            <img public-id="{{comment.userimage}}" class="avatar hexagon-medium ng-isolate-scope" style="clip-path: url(#hexagonClip);" ng-src="{{config.ftpAvatarPath}}{{comment.userimage}}"></img>
+
+                                        </div>
+                                    </a>
+                                    <div class="comment-con-inner">
+                                        <a id="ember5504" class="ember-view" href="/myaccount/{{comment.userid}}">
+                                            <h5>{{comment.username}}</h5>
+                                        </a>
+                                        <p>{{comment.comment}}</p>
+                                    </div>
+                                </div>
+                                <div style="position: relative;">
+                                    <div id="ember5500" class="ember-view loading-spinner" style="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="ember5529" class="ember-view inline-block pull-left commenter">
+                                <svg width="0" height="0">
+                                    <clipPath id="hexagonClip">
+                                        <polygon points="24 0,45 12,45 37,24 50,3 37,3 12">
+                                        </polygon>
+                                    </clipPath>
+                                </svg>
+
+                                <img public-id="{{gallerydetails.image}}" class="avatar hexagon-medium ng-isolate-scope" style="clip-path: url(#hexagonClip);" src="{{config.ftpAvatarPath}}{{gallerydetails.image}}"></img>
+
+                            </div>
+                            <div class="form-group">
+                                <form role="form" name="profileupdateform" ng-submit="commentsubmit()">
+                                    <input id="userid" ng-model="gallerydetails._id" class="ember-view ember-text-field form-control" type="hidden" name="_id">
+                                    <input id="ember5530" class="ember-view ember-text-field form-control input-small" placeholder="Add a comment..." type="text" required ng-model="gallerydetails.comment" name="comment">
+                                    <button data-ember-action="5531" type="submit" class="btn btn-comment"><i class="comment-icon"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="photo-comments" style="border:0px" ng-show="showcommentbox">
+                            <div id="ember5529" class="ember-view inline-block pull-left commenter">
+                                <svg width="0" height="0">
+                                    <clipPath id="hexagonClip">
+                                        <polygon points="24 0,45 12,45 37,24 50,3 37,3 12">
+                                        </polygon>
+                                    </clipPath>
+                                </svg>
+
+                                <img public-id="{{gallerydetails.image}}" class="avatar hexagon-medium ng-isolate-scope" style="clip-path: url(#hexagonClip);" src="{{config.ftpAvatarPath}}{{gallerydetails.image}}"></img>
+
+                            </div>
+                            <div class="form-group">
+                                <form role="form" name="profileupdateform" ng-submit="commentsubmit()">
+                                    <input id="userid" ng-model="gallerydetails._id" class="ember-view ember-text-field form-control" type="hidden" name="_id">
+                                    <input id="ember5530" class="ember-view ember-text-field form-control input-small" placeholder="Add a comment..." type="text" required ng-model="gallerydetails.comment" name="comment">
+                                    <button data-ember-action="5531" type="submit" class="btn btn-comment"><i class="comment-icon"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+       
+                        <div class="photo-comments-one" style="margin-left:95px" ng-show="showcommentsnumber" ng-click="showComments()">
+                            <button class="btn btn-xs btn-default" data-ember-action="1316" style="display:block;background-color: #dee1e4;border: 1px solid #d9dbdc;color:#41494f">Show {{no_of_comments}} comments</button>
+                        </div>
+  -->
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4 col-sm-12">
+                    <div style="margin-top: 0px; display: inline-block;">
+                        <div id="ember1113" class="ember-view">
+                            <div class="addthis_custom_sharing" data-bindattr-1320="1320" data-title=""
+                                data-bindattr-1319="1319" data-url=""></div>
+                        </div>
+                    </div>
+
+
+
+                    <div style="position: absolute; margin-top: 10px;">
+                        <a id="ember1098" class="ember-view" href="/myaccount/{{usrid}}">
+                            <div id="ember1198" class="ember-view inline-block">
+                                <svg height="0" width="0">
+                                    <clipPath id="hexagonClipLarge">
+                                        <polygon points="40 0,74 18,74 62,40 80,6 62,6 18" />
+                                    </clipPath>
+                                </svg>
+
+                                <img ng-if="userphotopublicid" public-id="{{userphotopublicid}}"
+                                    class="avatar hexagon-large ng-isolate-scope"
+                                    style="clip-path: url(#hexagonClipLarge);"
+                                    ng-src="{{config.ftpAvatarPath}}{{config.cropt200}}{{userphotopublicid}}">
+
+                                <img ng-show="verified" src="/img/verified-icon.svg" style="
+                                        width: 24px;
+                                        position: absolute;
+                                        right: 0;
+                                        bottom: 0;
+                                    ">
+                            </div>
+                        </a>
+                    </div>
+                    <div style="padding-left: 95px; max-width: 635px;">
+                        <form role="form" name="profileupdateform" ng-submit="captionsubmit()">
+                            <div class="meta-group">
+
+                                <button
+                                    style="margin-left: 6px; margin-top: 10px;background-color: #dee1e4;border: 1px solid #d9dbdc;color:#41494f"
+                                    data-ember-action="2223" class="btn btn-default btn-xs pull-right"
+                                    ng-click="showEdit();" ng-show="showeditdiv" type="button">Edit</button>
+                                <div ng-show="hideeditdiv">
+                                    <button data-ember-action="2485" class="btn btn-primary btn-xs pull-right"
+                                        ng-disabled="updating" type="submit"><span ng-show="updating"><i
+                                                class="fa fa-spinner fa-spin"></i></span> Done</button>
+                                </div>
+
+                                <p class="pannel-head" style="margin: 30px 0 0px;">Photo by</p>
+                                <h4 class="username" style="margin-top: 0px;"><a id="ember1099" class="ember-view"
+                                        href="/myaccount/{{usrid}}">@{{username}}</a></h4>
+
+                                <div class="meta-group" ng-show="isauthor">
+                                    <a href="javascript:void(0)" data-ember-action="2152" class="text-medium"
+                                        ng-click="showEdit();" ng-show="showaddcaption">Add a caption...</a>
+                                </div>
+
+                                <div class="meta-group" style="margin-bottom: 20px;" ng-show="showcaption">
+                                    <p>{{gallerydetails.caption}}</p>
+                                </div>
+
+                                <div class="meta-group" ng-show="isauthor">
+                                    <a href="javascript:void(0)" data-ember-action="2152" class="text-medium"
+                                        ng-click="showEdit();" ng-show="showaddkeyword">Add keywords</a>
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 20px;" class="meta-group" ng-show="hideeditdiv">
+                                <textarea id="caption-field" class="ember-view ember-text-area form-control"
+                                    placeholder="Add a caption..." maxlength="510"
+                                    ng-model="gallerydetails.caption"></textarea>
+                            </div>
+
+                            <script type="text/ng-template" id="tags-autocomplete-template-details">
+                                <div style="cursor:pointer; display:flex; justify-content:space-between; align-items:center;">
+                                  <div style="display: flex;">
+                                    <p style="color:#333; margin:0;" ng-bind-html="$getDisplayText()"></p>
+                                    <svg ng-if="data.isofficial" x="0px" y="0px" viewBox="0 0 512 512" style="width:12px; height:12px; margin-left: 2px;">
+                                      <path fill="#008000" d="M256,0C114.8,0,0,114.8,0,256s114.8,256,256,256s256-114.8,256-256S397.2,0,256,0z"/>
+                                      <path fill="#FAFAFA" d="M385.8,201.8L247.1,340.4c-4.2,4.2-9.6,6.3-15.1,6.3s-10.9-2.1-15.1-6.3l-69.3-69.3c-8.3-8.3-8.3-21.8,0-30.2  c8.3-8.3,21.8-8.3,30.2,0l54.3,54.3l123.6-123.6c8.3-8.3,21.8-8.3,30.2,0C394.1,179.9,394.1,193.4,385.8,201.8z"/>
+                                    </svg>
+                                  </div>
+                                  <img ng-if="data.logo" ng-src="{{data.logo}}" alt="{{data.tag}}-logo" style="height:auto; width:25px; border-radius:50%; display:block!important;">
+                                </div>
+                              </script>
+
+                            <div class="meta-group" ng-show="hideeditdiv">
+                                <div class="keyword-list">
+                                    <h5 class="pannel-head">Keywords</h5>
+                                    <div style="height: auto;" class="form-control">
+                                        <tags-input ng-model="gallerydetails.tags" display-property="tag" replace-spaces-with-dashes="false" add-on-paste="true">
+                                        <auto-complete 
+                                            min-length="1"
+                                            load-on-focus="true"
+                                            load-on-empty="true"
+                                            template="tags-autocomplete-template-details"
+                                            source="loadTags($query)">
+                                            </auto-complete>
+                                        </tags-input>
+                                        <hr class="light slim">
+                                        <p class="xsmall" ng-show="keywordmsgshow">Keywords added by Photography</p>
+                                    </div>
+                                    <p class="xsmall text-medium">Enter tab or press enter to separate tags.</p>
+                                </div>
+                            </div>
+                        </form>
+
+
+                    </div>
+                    <div id="ember1106" class="ember-view loading-spinner" style=""></div>
+
+
+
+                    <div class="meta-group" style="margin:30px 0 20px;">
+                        <h6>Photo Details</h6>
+                        <hr class="light slim">
+                        <div class="row-img">
+                            <div class="col-md-4">
+                                <p class="small"><i class="license-icon"></i>License: <a data-ember-action="1114"
+                                        href="/cms/license">Photography License</a></p>
+                                <p class="small"><i class="{{editoriallicense_icon}}"></i>Editorial License:
+                                    {{editoriallicense}}</p>
+                                <p class="small"><i class="{{commerciallicense_icon}}"></i>Commercial License:
+                                    {{commerciallicense}}</p>
+                                <p class="small"><i class="{{albumaddress_icon}}"></i> {{albumaddress}}</p>
+                            </div>
+                            <div class="col-md-8">
+                                <ng-map center="{{center}}">
+                                    <marker position="{{position}}" title="{{title_album}}"></marker>
+                                </ng-map>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    #tags-field {
+        border: 0;
+    }
+
+    input:focus {
+        outline: 0 !important;
+    }
+
+    .modal-header a.logo-top img {
+        margin: -25% auto 15px;
+        width: 150px;
+    }
+
+    .modal-header h5.modal-title {
+        text-align: center !important;
+        display: inline-block;
+        width: 100%;
+        text-transform: capitalize;
+        font-size: 19px;
+        color: #41494f !important;
+        font-weight: 500;
+    }
+
+    .modal-header h6.modal-slogan {
+        text-align: center !important;
+        text-transform: capitalize;
+        font-size: 14px;
+        color: #41494f !important;
+        font-weight: normal;
+    }
+
+    .modal-price form.form-price .form-group-left {
+        width: 50% !important;
+        float: left;
+    }
+
+    .modal-price form.form-price a.btn-prim {
+        background-color: transparent;
+        border-color: inherit;
+        color: #0078b6;
+        width: 100%;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .modal-price form.form-price button.btn-block {
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    .modal-footer p {
+        text-align: center !important;
+    }
+
+    .register-legend {
+        display: 'inline-block';
+        margin: 10px 0 20px 0;
+        font-size: 10px;
+        color: rgb(204, 204, 204);
+    }
+
+    hr.hr-text {
+        line-height: 1em;
+        position: relative;
+        outline: 0;
+        border: 0;
+        color: black;
+        text-align: center;
+        height: 1.5em;
+        opacity: .5;
+    }
+
+    hr.hr-text:before {
+        content: '';
+        background: linear-gradient(to right, transparent, #818078, transparent);
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        height: 1px;
+    }
+
+    hr.hr-text:after {
+        content: attr(data-content);
+        position: relative;
+        display: inline-block;
+        color: black;
+        padding: 0 .5em;
+        line-height: 1.5em;
+        color: #818078;
+        background-color: #fcfcfa;
+    }
+</style>
+<script type='text/javascript'>
+    $(function() {
+        $(".button-show").click(function() {
+            $(".show-div").toggle();
+            $('html,body').animate({
+                scrollTop: $(".show-div").offset().top
+            }, 'slow');
+        });
+
+        $('.btn-prim').click(function() {
+            $(".popoverView").toggle();
+        });
+
+        $('ember-view.pre-loading.single-image img').on('load', function() {
+            $('.ember-view.pre-loading.single-image').removeClass('pre-loading')
+        });
+    });
+
+
+    function copy_embed() {
+        var copyText = document.getElementById("input-embed");
+
+        /* Select the text field */
+        copyText.select();
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+    }
+    function continue_checkout() {
+        $('.checkout_form').show();
+        $('.confirm_form').hide();
+    }
+</script>

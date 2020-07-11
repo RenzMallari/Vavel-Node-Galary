@@ -1,0 +1,212 @@
+<!-------------------------------------->
+<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="mymodal-addcollection">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sml">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title">Save to a Collection</h4>
+            </div>
+            <div class="modal-body" ng-show="showcollections">
+                <div id="collection-container" class="ember-view collection-group-stack" style="max-height:214px">
+                    <ul id="collection-list" style="margin-bottom: 0;" class="list-group">
+                        <li data-ember-action="22819" class="list-group-item clearfix collection-group-item" ng-repeat="allcollection in allcollections | orderBy: createdate" ng-click="addtocollection(allcollection._id)">
+                            <div style="float:left;width:50px;height:50px;background:#e5e5e5;">
+                                <div class="collection-cover" ng-repeat="imgpublicid in allcollection.images | orderBy: adddate | limitTo:1">
+                                    <cl-image public-id="{{imgpublicid.publicid}}" format="jpg">
+                                        <cl-transformation crop="fill" width="50" height="50" />
+                                    </cl-image>
+                                </div>
+                            </div>
+                            <div class="collection-info">
+                                <h5 class="list-group-item-heading strong">{{allcollection.name}}</h5>
+                                <h5 class="pannel-head list-group-item-text small">{{allcollection.images.length}} photos</h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <form role="form" style="text-align: left;" data-ember-action="22825" class="form-inline" ng-submit="collectionsubmit()">
+                    <div class="form-group" style="float:left;width:auto;">
+                        <input id="new-collection-input" ng-model="albumdetls.collectionname" class="ember-view ember-text-field form-control" placeholder="New Collection..." type="text" required>
+                        <input id="new-collection-input-gallerycollectionid" ng-model="albumdetls.collectiongalleryid" type="hidden">
+                    </div>
+                    <div id="ember22826" class="ember-view" style="float:left;width:auto;">
+                        <button class="btn btn-loading btn btn-primary" data-bindattr-22830="22830" data-bindattr-22831="22831" type="submit" data-bindattr-22832="22832" style="padding: 19px 17px;">
+                            <div id="ember22833" class="ember-view loading-spinner" style=""></div>
+                            <div class="btn-loading-text">Create</div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-------------------------------------->
+
+<div class="ember-view parallax" id="ember806">
+    <div class="top-gap hidden-xs hidden-sm"></div>
+    <div class="parallax__layer parallax__layer--base">
+        <div class="search" style="max-width:100%;">
+            <div data-bindattr-1721="1721" class="page-body">
+                <div id="ember1728" class="ember-view sidebar">
+                    <button class="btn btn-link pull-right" style="padding: 10px 25px;" data-ember-action="1756" id="slidesidebar"><i class="back-arrows-blue"></i></button>
+                    <p class="sidebar-inner text-light" style="margin: 6px 0 20px; border-bottom: 3px solid #41494f; padding-bottom: 15px; font-size: 18px;"><i class="filter-icon" style="margin-right: 8px;"></i>Filter by</p>
+                    <ul class="filters">
+                        <li id="ember1764" class="ember-view restricted-feature"></li>
+                        <li>
+                            <p class="pannel-head text-bright sidebar-inner">Sort order</p>
+                            <ul>
+                                <li>
+                                    <label data-ember-action="1766" data-bindattr-1765="1765" class="sidebar-inner caps"><span style="display: inline-block; margin-top: 4px;">Relevant</span>
+                                        <input type="checkbox" id="relevent_checkbox" class="ember-view ember-checkbox pull-right" ng-change="selectimage()" ng-model="searchkey" ng-true-value="relevant" ng-false-value="">
+                                        <span class="checkbox pull-right"></span></label>
+                                </li>
+                                <li>
+                                    <label data-ember-action="1768" data-bindattr-1767="1767" class="sidebar-inner caps"><span style="display: inline-block; margin-top: 4px;">Recent</span>
+                                        <input type="checkbox" id="recent_checkbox" class="ember-view ember-checkbox pull-right" ng-change="selectimage()" ng-model="searchorder" ng-true-value="recent" ng-false-value="">
+                                        <span class="checkbox pull-right"></span></label>
+                                </li>
+                                <li id="ember1789" class="ember-view restricted-feature"></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p class="pannel-head text-bright sidebar-inner">Size</p>
+                            <ul>
+                                <li>
+                                    <label data-bindattr-1769="1769" class="sidebar-inner caps with-desc"><span style="display: inline-block; margin-top: 4px;">Small <span>ex. 800x600px</span></span>
+                                        <input type="checkbox" id="small_checkbox" class="ember-view ember-checkbox pull-right" ng-change="selectimage()" ng-model="searchtype" ng-true-value="small" ng-false-value="">
+                                        <span class="checkbox pull-right"></span></label>
+                                </li>
+                                <li>
+                                    <label data-bindattr-1772="1772" class="sidebar-inner caps with-desc"><span style="display: inline-block; margin-top: 4px;">Medium <span>ex. 1600x1200px</span></span>
+                                        <input type="checkbox" id="medium_checkbox" class="ember-view ember-checkbox pull-right" ng-change="selectimage()" ng-model="searchtype" ng-true-value="medium" ng-false-value="">
+                                        <span class="checkbox pull-right"></span></label>
+                                </li>
+                                <li>
+                                    <label data-bindattr-1773="1773" class="sidebar-inner caps with-desc"><span style="display: inline-block; margin-top: 4px;">Large <span>ex. 2800x2100px</span></span>
+                                        <input type="checkbox" id="large_checkbox" class="ember-view ember-checkbox pull-right" ng-change="selectimage()" ng-model="searchtype" ng-true-value="large" ng-false-value="">
+                                        <span class="checkbox pull-right"></span></label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <p class="pannel-head text-bright sidebar-inner">Orientation</p>
+                            <ul>
+                                <li>
+                                    <label data-bindattr-1774="1774" class="sidebar-inner caps"><span style="display: inline-block; margin-top: 4px;">Square</span>
+                                        <input type="checkbox" id="square_checkbox" class="ember-view ember-checkbox pull-right" ng-change="selectimage()" ng-model="searchtype" ng-true-value="square" ng-false-value="">
+                                        <span class="checkbox pull-right"></span></label>
+                                </li>
+                                <li>
+                                    <label data-bindattr-1775="1775" class="sidebar-inner caps"><span style="display: inline-block; margin-top: 4px;">Portrait</span>
+                                        <input type="checkbox" id="portrait_checkbox" class="ember-view ember-checkbox pull-right" ng-change="selectimage()" ng-model="searchtype" ng-true-value="portrait" ng-false-value="">
+                                        <span class="checkbox pull-right"></span></label>
+                                </li>
+                                <li>
+                                    <label data-bindattr-1776="1776" class="sidebar-inner caps"><span style="display: inline-block; margin-top: 4px;">Landscape</span>
+                                        <input type="checkbox" id="landscape_checkbox" class="ember-view ember-checkbox pull-right" ng-change="selectimage()" ng-model="searchtype" ng-true-value="landscape" ng-false-value="">
+                                        <span class="checkbox pull-right"></span></label>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="ember1786" class="ember-view restricted-feature"></li>
+                    </ul>
+                </div>
+                <div class="advanced-search-additional">
+                    <div ng-click="search()"><i class="search-icon-white"></i></div>
+                    <input ng-on-key-press="search" key="enter" type="text" placeholder="Advanced search..." ng-model="advanced" />
+                </div>
+                <div>
+                    <div class="filter-info" style="padding-left:70px;">
+                        <span class="pull-left" style="margin-right: 14px;">{{searchnoofimages}} photos</span>
+                        <span class="pull-left capitalize" style="display:none;">
+                    <a href="javascript:void(0);" data-ember-action="993" style="margin-left: 20px;" class="pull-left" data-bindattr-994="994" id="showfilterdiv"><p style="margin-bottom: 0;font-size: 13px;" class="filter-text small"><i class="filter-icon-blue collection-icons"></i>Filter</p></a>
+                 </span>
+                    </div>
+                    <div id="ember1737" class="ember-view grid">
+
+                        <div class="grid-real clearfix" ng-show="searchimage">
+                            <brick-wall bricks="searchresultimages" item="photo">
+                                <div class="grid-photo-block">
+                                    <img ng-src="{{photo.src}}" ng-click="$parent.$parent.showDetails(photo.galleryid,photo.imageid)" style="cursor:pointer;height:{{photo.height}}px; width:{{photo.width}}px;">
+                                    <span class="btn btn-default btn-sm btnhover addcollectionbtn" ng-show="!spnAddCollection">
+                                      <a id="btn-collect" href="javascript:void(0);" ng-click="$parent.$parent.open_collectionmodal(photo.galleryid,photo.imageid)">
+                                        <i class="collect-icon"></i>
+                                      </a>
+                                    </span>
+                                </div>
+                            </brick-wall>
+                            <!--<div href="javascript:void(0);" ng-repeat="searchresultimage in searchresultimages">
+                     <div id="ember2052" class="ember-view photo" style="height:260px; width:260px;">
+                      <div data-bindattr-2054="2054" class="grid-photo-block">
+                        <cl-image public-id="{{searchresultimage.imageid}}"  format="jpg" style="cursor:pointer;" ng-click="showDetails(searchresultimage.galleryid,searchresultimage.imageid)">
+                           <cl-transformation crop="fill" gravity="north"  width="260" height="260"/>
+                        </cl-image>
+                        <div>
+                          <a class="btn btn-default btn-sm" data-ember-action="2061" href="javascript:void(0);" ng-click="open_collectionmodal(searchresultimage.galleryid,searchresultimage.imageid)"><i class="collect-icon"></i></a>
+                        </div>
+                      </div>
+                     </div>
+                   </div>-->
+                        </div>
+
+                        <div id="ember2755" class="ember-view" style="text-align: center" ng-show="!searchimage">
+                            <div class="empty-con">
+                                <h5>Sorry, there are no results.</h5>
+                            </div>
+                        </div>
+
+                        <div class="grid-footer">
+                            <hr class="light" style="margin-left: 4px; margin-right: 4px;">
+                        </div>
+                        <button data-bindattr-1811="1811" class="btn btn-default sticky-bottom-right hidden" data-ember-action="1810" id="scrollToTop"><i class="arrow-up-sm pull-left" style="width: 22px; height: 28px;"></i></button>
+                    </div>
+                    <div style="margin-top: 48px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<style>
+    .search:before {
+        content: '';
+    }
+
+    .filter-info a {
+        margin-top: 3px;
+    }
+
+    .capitalize {
+        border-left: 1px solid #DAD8D8;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        $('#slidesidebar').on('click', function() {
+            $('.sidebar').animate({
+                width: 'toggle'
+            }, 'slow', function() {
+                $('.page-body').css({
+                    'margin-left': '0px'
+                });
+                $('.capitalize').show();
+            });
+        });
+        $('#showfilterdiv').on('click', function() {
+            $('.page-body').css({
+                'margin-left': '250px'
+            });
+            $('.capitalize').hide();
+            $('.sidebar').animate({
+                width: 'toggle'
+            }, 'slow', function() {
+
+            });
+        });
+    });
+</script>

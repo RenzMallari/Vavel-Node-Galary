@@ -1,0 +1,94 @@
+<div id="ember806" class="ember-view parallax">
+        <div class="top-gap hidden-xs hidden-sm"></div>
+        <div class="parallax__layer parallax__layer--base">
+          <div class="container-fluid" style="background-color:#f5f5f6;">
+            <div class="row zone-value-proposition-buyer" style="background:none;">
+              <div class="container">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-padding">
+                  <h5 class="caps text-centered strong">Trending Keywords</h5>
+                  <hr class="light">
+                  <a href="/catalogdetails/{{key}}" ng-repeat="(key, value) in allkeywords">{{key}}{{$last ? '' : ($index==allkeywords.length-2) ? ',  ' : ',  '}}</a>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-padding">
+                  <h5 class="caps text-centered strong">Trending Searches</h5>
+                  <hr class="light">
+                  <!--<ul class="list-unstyled keyword-item">
+                  </ul>-->
+                  <a href="javascript:void(0);" ng-click="searchTrending(key)" ng-repeat="(key, value) in alltrendingkeywords">{{key}}{{$last ? '' : ($index==alltrendingkeywords.length-2) ? ',  ' : ',  '}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+         <div class="container-fluid" style="background-color:#f5f5f6;">
+            <div class="row zone-value-proposition-buyer" style="background:none;">
+              <div class="challenge-list container">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-padding">
+                  <h5 class="caps text-centered strong">Popular Keywords</h5>
+                  <div class="clearfix">
+                  <div class="collection-list" style="text-align:center;" ng-show="nokeyword">
+                        <h4>Sorry! No keywords found.</h4>
+                         <div style="clear:both;"></div>
+                         <div class="grid-footer">
+                             <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+                         </div>
+                   </div>
+                    <div ng-show="!nokeyword">
+                      <brick-wall bricks="allkeywords" item="photo">
+                        <a href="/catalogdetails/{{photo.name}}">
+                          <img style="background: url({{photo.src}}) no-repeat center center; background-size: cover; height: 100%; width: {{photo.width}}px;">
+                          <div class="album-brick-title">{{photo.name}}</div>
+                          <div class="album-brick-subtitle">{{photo.length}} photos</div>
+                        </a>
+                      </brick-wall>
+<!--
+                      <div class="challenge-con" ng-repeat="(key, value) in allkeywords | orderBy:'value.length'">
+                       <a href="/catalogdetails/{{key}}">
+                         <div class="ember-view challenge-meta view-hover" id="ember3191">
+                          <div style="background: url({{cloudinary_image_base_path}}c_fill,g_north,h_300,w_350/{{ value[value.length-1].imageid }}) no-repeat center center; background-size: cover !important; width:100%; height:100%;" class="ember-view" id="ember3193">
+                            <div class="overlay-container" data-bindattr-3194="3194">
+                              <div class="overlay-centered">
+                                <h4 class="caps list-group-item-heading">{{key}}</h4>
+                                <p class="pannel-head">{{value.length}} photos</p>
+                              </div>
+                            </div>
+                            <span class="dark-overlay"></span>
+                          </div>
+                        </div>
+                       </a>
+                     </div> -->
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container-fluid">
+            <div class="row zone-value-proposition-buyer">
+              <div class="container">
+                <div class="col-md-7 col-padding" style="padding-bottom: 7% !important;">
+                  <p data-ng-bind-html="trustAsHtml(brandcms.title)"></p>
+                  <p data-ng-bind-html="trustAsHtml(brandcms.content)"></p>
+                  <a id="ember1021" class="ember-view btn btn-primary btn-large" ng-click="open_join_modal();" href="javascript:void(0);">Join today</a></div>
+                  <div class="col-md-5 col-padding" style="padding-top: 7% !important;">
+                   <div style="float:left;width:45%;margin-right:15px;height:120px;" ng-repeat="allbrand in allbrands | limitTo:4">
+                         <cl-image public-id="{{allbrand.image}}" class="thumbnail inline" format="jpg" style="width:100%;">
+                            <cl-transformation  crop="fill" gravity="north"/>
+                        </cl-image>
+                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+ <style>
+  .view-hover::after
+  {
+    background:none;
+    border:2px solid #000;
+    border-radius:3px;
+    color:#000;
+  }
+ </style>

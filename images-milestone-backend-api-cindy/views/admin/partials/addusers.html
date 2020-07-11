@@ -1,0 +1,141 @@
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="/admin/index">Home</a>
+					<i class="icon-angle-right"></i> 
+				</li>
+				<li>
+					<i class="icon-edit"></i>
+					<a href="#">Add Users</a>
+				</li>
+			</ul>
+			
+			
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="halflings-icon white edit"></i><span class="break"></span>Add Users</h2>
+						<!--<div class="box-icon">
+							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+						</div>-->
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal" name="adduser" id="adduser" method="post" action="./">
+							<fieldset>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">First Name</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="firstname" ng-model="users.firstname" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Middle Name</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="middlename" ng-model="users.middlename" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Last Name</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="lastname" ng-model="users.lastname" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Email</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="email" ng-model="users.email" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Password</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="password" ng-model="users.password" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Phone Number</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="phonenumber" ng-model="users.phonenumber" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Country</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="country" ng-model="users.country" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">City</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="city" ng-model="users.city" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">State</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="state" ng-model="users.state" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Address Line 1</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="addressline1" ng-model="users.addressline1" type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Address Line 2</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" size="16" name="addressline2" ng-model="users.addressline2" type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  
+							  
+							  <div class="form-actions">
+								<button type="button" class="btn btn-primary" ng-click="addUser()">Save changes</button>
+								<button class="btn">Cancel</button>
+							  </div>
+							</fieldset>
+						</form>
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->

@@ -1,0 +1,148 @@
+<div ng-show="loggedIn" id="sidebar-left" class="span2">
+	<div class="nav-collapse sidebar-nav">
+		<ul class="nav nav-tabs nav-stacked main-menu">
+			<li><a href="./"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>
+
+			<!--<li>
+				<a class="dropmenu" href="#"><i class="icon-group"></i><span class="hidden-tablet"> Roles</span></a>
+				<ul>
+				<li><a class="submenu" href="/admin/roles"><i class="icon-user-md"></i><span class="hidden-tablet"> List Role</span></a></li>
+				</ul>
+				</li>-->
+
+			<li>
+			<li><a href="/admin/tag?page=1&limit=10"><i class="icon-bar-chart"></i><span class="hidden-tablet">
+						Tags</span></a></li>
+
+			<!--<li>
+				<a class="dropmenu" href="#"><i class="icon-group"></i><span class="hidden-tablet"> Roles</span></a>
+				<ul>
+				<li><a class="submenu" href="/admin/roles"><i class="icon-user-md"></i><span class="hidden-tablet"> List Role</span></a></li>
+				</ul>
+				</li>-->
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-user"></i><span class="hidden-tablet"> Users</span></a>
+				<ul>
+					<li><a class="submenu" href="/admin/users?page=1&limit=10"><i class="icon-list"></i><span
+								class="hidden-tablet"> Users List</span></a></li>
+					<li><a class="submenu" href="/admin/usersubscription"><i class="icon-credit-card"></i><span
+								class="hidden-tablet"> Users Subscription</span></a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-group"></i><span class="hidden-tablet"> Team</span></a>
+				<ul>
+					<li><a class="submenu" href="/admin/teamlist"><i class="icon-user-md"></i><span class="hidden-tablet"> Team
+								Members</span></a></li>
+					<li><a class="submenu" href="/admin/teamcms"><i class="icon-inbox"></i><span class="hidden-tablet"> Team
+								CMS</span></a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-table"></i><span class="hidden-tablet"> Brands</span></a>
+				<ul>
+					<li><a class="submenu" href="/admin/brandlist"><i class="icon-list"></i><span class="hidden-tablet"> Brands
+								List</span></a></li>
+					<li><a class="submenu" href="/admin/brandcms"><i class="icon-inbox"></i><span class="hidden-tablet"> Brands
+								CMS</span></a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-credit-card"></i><span class="hidden-tablet">
+						Subscriptions</span></a>
+				<ul>
+					<li><a class="submenu" href="/admin/subscriptions"><i class="icon-list"></i><span class="hidden-tablet">
+								Subscriptions List</span></a></li>
+					<li><a class="submenu" href="/admin/subscriptioncms"><i class="icon-inbox"></i><span class="hidden-tablet">
+								Subscription CMS</span></a></li>
+					<li><a class="submenu" href="/admin/subscriptionfaq"><i class="icon-question-sign"></i><span
+								class="hidden-tablet"> Subscription FAQ</span></a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-money"></i><span class="hidden-tablet"> Payments</span></a>
+				<ul>
+					<li><a class="submenu" href="/admin/paymentlist"><i class="icon-list"></i><span class="hidden-tablet">
+								Payments List</span></a></li>
+					<li><a class="submenu" href="/admin/sales"><i class="icon-list"></i><span class="hidden-tablet">
+								Sales</span></a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-question-sign"></i><span class="hidden-tablet">FAQ</span></a>
+				<ul>
+					<li><a class="submenu" href="/admin/faqlist"><i class="icon-list"></i><span class="hidden-tablet"> FAQs
+								List</span></a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-th"></i><span class="hidden-tablet"> CMS</span></a>
+				<ul>
+
+					<li><a class="submenu" href="/admin/cms"><i class="icon-list"></i><span class="hidden-tablet"> Pages
+								List</span></a></li>
+					<li><a class="submenu" href="/admin/joinuscms"><i class="icon-inbox"></i><span class="hidden-tablet"> Join Us
+								CMS</span></a></li>
+					<li><a class="submenu" href="/admin/explorecms"><i class="icon-inbox"></i><span class="hidden-tablet"> Explore
+								CMS</span></a></li>
+					<li><a class="submenu" href="/admin/salecms"><i class="icon-inbox"></i><span class="hidden-tablet"> Sale
+								CMS</span></a></li>
+					<li><a class="submenu" href="/admin/purchasecms"><i class="icon-inbox"></i><span class="hidden-tablet">
+								Purchase CMS</span></a></li>
+				</ul>
+			</li>
+
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-envelope"></i><span class="hidden-tablet"> Contact Us</span></a>
+				<ul>
+					<li><a class="submenu" href="/admin/contactuslist"><i class="icon-list"></i><span class="hidden-tablet">
+								Contacts List</span></a></li>
+					<li><a class="submenu" href="/admin/contactcms"><i class="icon-inbox"></i><span class="hidden-tablet"> Contact
+								CMS</span></a></li>
+				</ul>
+			</li>
+
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-upload"></i><span class="hidden-tablet"> User Uploads</span></a>
+				<ul>
+
+					<li><a class="submenu" href="/admin/listcollections"><i class="icon-picture"></i><span class="hidden-tablet">
+								Collections List</span></a></li>
+
+					<li><a class="submenu" href="/admin/listcatalogs"><i class="icon-picture"></i><span class="hidden-tablet">
+								Catalogs List</span></a></li>
+
+					<li><a class="submenu" href="/admin/listalbums"><i class="icon-picture"></i><span class="hidden-tablet">
+								Albums List</span></a></li>
+
+					<li><a class="submenu" href="/admin/listimages"><i class="icon-picture"></i><span class="hidden-tablet">
+								Images List</span></a></li>
+
+				</ul>
+			</li>
+
+			<li>
+				<a class="dropmenu" href="#"><i class="icon-cogs"></i><span class="hidden-tablet"> Manage Settings</span></a>
+				<ul>
+
+					<li><a class="submenu" href="/admin/settings"><i class="icon-cog"></i><span class="hidden-tablet">
+								Settings</span></a></li>
+
+				</ul>
+			</li>
+
+
+
+
+		</ul>
+	</div>
+</div>

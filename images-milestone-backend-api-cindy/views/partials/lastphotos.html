@@ -1,0 +1,75 @@
+<div class="ember-view parallax reload">
+    <div class="top-gap hidden-xs hidden-sm"></div>
+    <div class="parallax__layer parallax__layer--base">
+        <div ng-if="tag" class="tag-bar">
+                    <div class="tag-avatar-bar" ng-if="tagPreview">
+                        <img class="tag-avatar-bar-image" ng-src="{{tagPreview}}">
+                    </div>
+                    <div class="tag-name-bar">
+                        <div>{{tag}}</div>
+                        <div class="count-tag-photos" ng-if="countPhotos > 0">
+                            {{countPhotos}} {{countPhotos === 1 ? 'photo': 'photos'}}
+                        </div>
+                    </div>
+                    <div class="tag-images-word-bar">Images</div>
+                </div>
+                <div class="container-fluid" style="background-color:#ffffff;">
+            <div class="row zone-value-proposition-buyer" style="background:none;">
+                <div>
+                    <div ng-show="noalbum" style="padding: 50px 0px">
+                        <div ng-show="updating" style='text-align: center'>
+                            <img class='loading-vavel' src='img/loadingv.gif' style="width: 100px">
+                            <!-- <div style='background-image: url(/img/loadingv.gif); width: -webkit-fill-available;
+                            height: 200px;
+                            background-repeat: no-repeat;
+                            border: none;
+                            background-position: center;'></div> -->
+                        </div>
+                        <!-- <i ng-show="updating"class="fa fa-spinner fa-spin" style='font-size: 40px'></i> -->
+                    </div>
+                    <div class="row" ng-show="!noalbum">
+                        <div>
+                            <brick-wall bricks="filteredUserphotos" item="photo">
+                                <a href="/details/{{photo._id}}/{{photo.images.publicid}}">
+                                    <div class="thum_photo">
+                                        <img
+                                            src="{{photo.config.ftpFullPath}}{{photo.config.crop300}}{{photo.images.publicid}}.{{photo.images.fileExtension}}">
+                                    </div>
+                                </a>
+                            </brick-wall>
+                        </div>
+                        <div class="pagination" ng-if="pagination.numberOfPages > 1">
+                            <button type="button" 
+                                    ng-disabled="pagination.curPage == 0"
+                                    ng-hide="pagination.curPage == 0"
+                                    ng-click="showPage(pagination.curPage-1)">
+                                < PREV
+                            </button>
+                            <button type="button"
+                                    ng-disabled="pagination.curPage >= pagination.numberOfPages - 1"
+                                    ng-hide="pagination.curPage >= pagination.numberOfPages - 1"
+                                    ng-click="showPage(pagination.curPage+1)">
+                                    NEXT >
+                            </button>
+                        </div>
+                        <div class="pagination-info" ng-show="alluserphotos.length"> <span>Page
+                                {{ pagination.curPage + 1}} of {{ pagination.numberOfPages }}</span>
+                            <span>Per page: </span>
+                            <select style="width: auto; display:inline-block; height: 22px;"
+                                ng-model="pagination.pageSize"
+                                ng-options="item for item in pagination.pageSizeList"></select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(window).ready(function () {
+        $(window).lazyLoadXT();
+    });
+</script>

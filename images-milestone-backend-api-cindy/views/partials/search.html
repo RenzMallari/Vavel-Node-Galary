@@ -1,0 +1,303 @@
+<div ng-show='page404'>
+    <header class="wrapper" id="header" data-stellar-background-ratio="0.5" style="background-position: 50% 0px;">
+        <div class="container">
+            <div id="header_inner" class="light_text">
+                <h2 id="slogan">404 Not Found</h2>
+            </div>
+        </div>
+    </header>
+</div>
+<div ng-show='!page404' id="ember806" class="searching ember-view parallax reload" style='margin-bottom: 50px;'>
+    <div class="top-gap hidden-xs hidden-sm"></div>
+    <div class="parallax__layer parallax__layer--base">
+        <div class="container-fluid" style="background-color:#ffffff;">
+            <div class="row zone-value-proposition-buyer" style="background:none;">
+                <div class="pdt5" class="challenge-list container">
+
+                    <div style="text-align: center"
+                        ng-show="!search_album_exist && !nokeyword && !userexist && !search_albumimage_exist">
+                        <div class="empty-con"
+                            ng-show="!search_album_exist && !nokeyword && !userexist && !search_albumimage_exist">
+                            <h5 ng-show="!search_album_exist && !nokeyword && !userexist && !search_albumimage_exist">Sorry,
+                                there are no results. Try another keyword</h5>
+                        </div>
+                    </div>
+
+
+                    <div class="row album" ng-show="search_album_exist" style='position: relative'>
+                        <h3 ng-show="search_album_exist">Album Found</h3>
+                        <div class='col-md-12 carousel-scroll'>
+                            <div class="one-block" ng-repeat="allalbum in search_album | orderBy: 'createdate':true">
+                                <div class="collection-thumb">
+                                    <a href="/mainalbumdetails/{{allalbum._id}}" target="_blank">
+                                        <div class='block-info'>
+                                            <div class="ember-view view-hover">
+                                                <div class="thum_photo">
+                                                    <img class='thumbnail-list'
+                                                    data-src="{{cloudinary_image_base_path}}{{config.crop200}}{{allalbum.thumbnail.publicid}}.{{allalbum.thumbnail.fileExtension || 'jpg'}}" >
+                                                    <div class="image-title-background">
+                                                        <div class="image-title">
+                                                            <a href="/mainalbumdetails/{{allalbum._id}}" target="_blank">
+                                                                <h5>{{allalbum.name}}</h5>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="paddles">
+                            <button onclick="scrollToLeft(this, '.album .carousel-scroll')" class="left-paddle paddle hidden" style="position: absolute; top: 50%;"> < </button>
+                            <button onclick="scrollToRight(this, '.album .carousel-scroll')" class="right-paddle paddle" style="position: absolute; top: 50%;"> > </button>
+                        </div>
+                    </div>
+                    <div class="row" ng-show="search_albumimage_exist">
+                        <h3 ng-show="search_albumimage_exist">Picture Found</h3>
+                        <brick-wall bricks="search_albumimage" item="allalbum">
+                            <a href="/details/{{allalbum.galleryid}}/{{allalbum.publicid}}">
+                              <img
+                                style="background: url({{allalbum.url}}) no-repeat center center; background-size: cover; height: {{allalbum.height+2}}px; width: {{allalbum.width+2}}px;top: -1px;left: -1px;position: relative;">                             
+                            </a>
+                        </brick-wall>
+                        <div>
+                            <div class='pagination' ng-show="pagination.curPage < search_allalbumimage.length/pagination.pageSize - 1 || (pagination.curPage != 0 && pagination.curPage > search_allalbumimage.length/pagination.pageSize - 1)">
+                                <button type="button" ng-disabled="pagination.curPage == 0"
+                                    ng-click="changeURL(pagination.curPage-1)">
+                                    < PREV</button> <button type="button"
+                                        ng-disabled="pagination.curPage >= search_allalbumimage.length/pagination.pageSize - 1"
+                                        ng-click="changeURL(pagination.curPage+1)">NEXT >
+                                </button>
+                            </div>
+                            <div class="pagination-info" ng-show="search_allalbumimage.length"> <span>Page {{ pagination.curPage + 1}}
+                                    of
+                                    {{ pagination.numberOfPages }}</span>
+                                <span>Per page: </span>
+                                <select style="width: auto; display:inline-block; height: 22px;"
+                                    ng-model="pagination.pageSize"
+                                    ng-options="item for item in pagination.pageSizeList"></select>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row keyword" ng-show="nokeyword" style='position: relative'>
+                        <h3 ng-show="nokeyword">Keywords Found</h3>
+                        <div class='col-md-12 carousel-scroll'>
+                            <div class="one-block"
+                                ng-repeat="(key, value) in allkeywords | orderBy:'value.length'">
+                                    <div class="collection-thumb">
+                                        <a id="ember2175" href="/catalogdetails/{{key}}">
+                                            <div class='block-info'>
+                                                <div class="ember-view view-hover">
+                                                    <div class="thum_photo">
+                                                        <img  class='thumbnail-list'
+                                                            data-src="{{cloudinary_image_base_path}}{{config.crop200}}{{ value[value.length-1].imageid }}.jpg">
+                                                        <div class="image-title-background">
+
+                                                            <div class="image-title">
+
+                                                                <a href="/?tag={{key}}" target="_blank">
+                                                                    <p class="pannel-head">{{value.length}} photos</p>
+                                                                </a>
+
+                                                                <a href="/?tag={{key}}" target="_blank">
+                                                                    <h5 style="text-transform: capitalize">{{key}}</h5>
+                                                                </a>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div style="clear:both;"></div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="paddles">
+                            <button onclick="scrollToLeft(this, '.keyword .carousel-scroll')" class="left-paddle paddle hidden" style="position: absolute; top: 50%;"> < </button>
+                            <button onclick="scrollToRight(this, '.keyword .carousel-scroll')" class="right-paddle paddle" style="position: absolute; top: 50%;"> > </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row user" ng-show="userexist" style='position: relative'>
+                    <h3 ng-show="userexist">Users Found:</h3>
+                    <div class="col-md-12 carousel-scroll">
+                        <div class="one-block"
+                            ng-repeat="alluser in alluserfind | orderBy: 'createdate':true">
+                            <div class="collection-thumb">
+                                <a id="ember2175" href="/myaccount/{{alluser._id}}">
+                                    <div class='block-info'>
+                                        <div class="ember-view view-hover">
+                                            <div class="thum_photo">
+                                                <img class='thumbnail-list' data-src="{{config.ftpAvatarPath}}{{alluser.profileimage}}">
+                                                <div class="image-title-background">
+                                                    <div class="image-title">
+                                                        <a href="/myaccount/{{alluser._id}}" target="_blank">
+                                                            <h5>{{alluser.fullname}}</h5>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="paddles">
+                        <button onclick="scrollToLeft(this, '.user .carousel-scroll')" class="left-paddle paddle hidden" style="position: absolute; top: 50%;"> < </button>
+                        <button onclick="scrollToRight(this, '.user .carousel-scroll')" class="right-paddle paddle" style="position: absolute; top: 50%;"> > </button>
+                    </div>
+                </div>
+
+
+                <div class="row collection" ng-show="collectionexist" style='position: relative'>
+                    <h3 ng-show="collectionexist">Collections Found:</h3>
+                    <div class='col-md-12 carousel-scroll'>
+                        <div class="one-block"
+                            ng-repeat="allcollection in usercollections | orderBy: 'createdate':true">
+                            <div class="collection-thumb">
+                                <a id="ember2175" href="/maincollectiondetails/{{allcollection._id}}">
+                                    <div class='block-info'>
+                                        <div class="ember-view view-hover"
+                                            ng-repeat="collectionimg in allcollection.images | orderBy: adddate | limitTo:1">
+                                            <div class="thum_photo">
+                                                <img class='thumbnail-list' 
+                                                    data-src="{{cloudinary_image_base_path}}{{config.crop200}}{{collectionimg.publicid}}.jpg">
+                                                <div class="image-title-background">
+                                                    <div class="image-title">
+                                                        <a href="/maincollectiondetails/{{allcollection._id}}"
+                                                            target="_blank">
+                                                            <h5>{{allcollection.name}}</h5>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div style="clear:both;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="paddles">
+                        <button onclick="scrollToLeft(this, '.collection .carousel-scroll')" class="left-paddle paddle hidden" style="position: absolute; top: 50%;"> < </button>
+                        <button onclick="scrollToRight(this, '.collection .carousel-scroll')" class="right-paddle paddle" style="position: absolute; top: 50%;"> > </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+    .search:before {
+        content: '';
+    }
+
+    .filter-info a {
+        margin-top: 3px;
+    }
+
+    .capitalize {
+        border-left: 1px solid #DAD8D8;
+    }
+
+    .image-title a {
+        color: inherit
+    }
+
+    .image-title h5,
+    .image-title p {
+        color: inherit !important;
+        margin: 0;
+    }
+
+    .view-hover:hover:after,
+    .view-hover:hover:before {
+        opacity: 0;
+    }
+    .carousel-scroll {
+        display: -webkit-box;
+        position: relative;
+        overflow-x: auto;
+        box-sizing: content-box;
+        padding-bottom: 8px;
+    }
+    .carousel-scroll > div {
+        padding: 4px;
+    }
+    .one-block {
+        display: block;
+        width: 156px;
+        height: 156px;
+    }
+    .carousel-scroll .collection-thumb {
+        margin-bottom: 0
+    }
+    .one-block > div, .one-block .collection-thumb, 
+    .collection-thumb > div.block-info, 
+    .one-block .ember-view{
+        width: 100%;
+        height: 100%;
+    }
+    .thumbnail-list {
+        width: 100%;
+        height: 100%;
+    }
+    .carousel-scroll > div:last-child {
+        padding-right: 0;
+    }
+    
+    .carousel-scroll > div:first-child {
+        padding-left: 0;
+    }
+    @media(min-width: 768px) {
+
+        ::-webkit-scrollbar {
+            -webkit-appearance: unset;
+            width: 7px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 4px;
+            background-color: rgba(0,0,0,.5);
+            -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+        }
+    }
+    
+</style>
+
+<script type="text/javascript ">
+    $(window).ready(function() {
+         $(window).lazyLoadXT();
+    });
+    
+    var scrollDuration = 300;
+    
+    function scrollToRight(_this, value) {
+        var maxscroll = $(value + '')[0].scrollWidth
+        $(_this).addClass('hidden');
+        $(_this).siblings(".left-paddle").removeClass('hidden');
+        $(value + '').animate({ scrollLeft: maxscroll }, scrollDuration);
+    }
+    function scrollToLeft(_this, value) {
+        $(_this).addClass('hidden');
+        $(_this).siblings(".right-paddle").removeClass('hidden');
+        $(value + '').animate({ scrollLeft: 0 }, scrollDuration);
+    }
+    
+    //$(window).load(function() {
+    //$('#status').fadeOut();
+    //$('#preloader').fadeOut('slow');
+    //$('body').css({'overflow':'visible'});
+    //});
+  </script>

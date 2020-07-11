@@ -1,0 +1,147 @@
+<div ng-hide="editMode">
+<ul class="breadcrumb">
+	<li> <i class="icon-home"></i> <a href="./">Home</a> <i class="icon-angle-right"></i> </li>
+	<li><a href="javascript:void(0);">Contact Us List</a></li>
+</ul>
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header" data-original-title>
+			<h2><i class="halflings-icon white user"></i><span class="break"></span>Contact List</h2>	
+			<div class="box-icon">
+							<!--<a class="btn-add" href="javascript:void(0);" ng-click=""><i class="halflings-icon white plus"></i></a>-->
+							<!--<a href="javascript:void(0);" class="btn-setting22"><i class="halflings-icon white wrench"></i></a>-->
+						</div>		
+		</div>
+		<div class="box-content">
+		
+			<div id="list">
+			
+				<table class="table table-striped table-bordered bootstrap-datatable datatable" id="contactlist">
+					<thead>
+						<tr>
+							<th>Email</th>
+							<th>Subject</th>
+							<th>Descriptions</th>
+							<th>Send Date</th>
+							<th align="center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="clist in contactus">
+							<td>{{ clist.email }}</td>
+							<td>{{ clist.subject }}</td>
+							<td>{{ clist.descriptions }}</td>
+							<td>{{ clist.senddate|date: "yyyy-MM-dd" }}</td>
+							<td align="center"><a class="btn btn-success btnview" href="javascript:void(0);" ng-click="view(clist)"  title="View"><i class="halflings-icon white zoom-in"></i></a> <a class="btn btn-info editdata" href="javascript:void(0);" ng-click="getcontactlistbyid(clist)" title="Reply" ><i class="halflings-icon white edit"></i></a> <a class="btn btn-danger delete"  ng-click="deletecontact(clist._id)" title="Delete"><i class="halflings-icon white trash"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!--/span-->
+</div>
+</div>
+<div ng-hide="!editMode">
+<div ng-show="sendmailError" class="{{alert.altclass}}">
+	<alert type="{{alert.type}}">{{alert.msg}}</alert>
+</div>
+<div ng-show="sendmailSuccess" class="{{alert.altclass}}">
+	<alert type="{{alert.type}}">{{alert.msg}}</alert>
+</div>
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="./">Home</a>
+					<i class="icon-angle-right"></i> 
+				</li>
+				<li>
+					<i class="icon-edit"></i>
+					<a href="javascript:void(0);">{{mode}}</a>
+				</li>
+			</ul>
+			
+			
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="halflings-icon white edit"></i><span class="break"></span>{{mode}}</h2>
+						<!--<div class="box-icon">
+							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+						</div>-->
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal" name="sendmail" id="sendmail" method="post" ng-submit="save()">
+						
+						<input id="hdnid" size="16" name="id" ng-model="sendmail._id" required type="hidden" value="{{id}}">
+						<input id="hdnidsub" size="16" name="id" ng-model="sendmail.subject" required type="hidden" value="{{subject}}">
+							<fieldset>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Email</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<input id="appendedPrependedInput" readonly="readonly" size="16" name="email" ng-model="sendmail.email" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedPrependedInput">Email Body</label>
+								<div class="controls">
+								  <div class="input-prepend input-append">
+									<textarea id="appendedPrependedInput" size="16" name="descriptions" ng-model="sendmail.descriptions" type="text"></textarea>
+								  </div>
+								</div>
+							  </div>
+							  
+							  
+							  
+							  <div class="form-actions">
+								<button type="submit" class="btn btn-primary" >Save changes</button>
+								<button type="button" class="btn" ng-click="changeMode();">Cancel</button>
+							  </div>
+							</fieldset>
+						</form>
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
+</div>
+<!--/row-->
+
+
+
+<div class="modal hide fade" id="viewModal">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">x</button>
+			
+			<h3>Subject:  {{viewdata.subject}}</h3>
+		</div>
+		<table>
+			<tr>
+				<td>
+					<div class="modal-body">
+						<b>Email:</b>	{{viewdata.email}}
+					</div>
+				</td>
+			</tr>
+			
+			<tr>
+				<td>
+					<div  class="modal-body">
+							<b>Message:</b>	{{viewdata.descriptions}}
+					</div>
+				</td>
+			<tr>
+
+		</table>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>			
+		</div>
+	</div>
+	<script>
+	$('textarea').cleditor();
+	</script>

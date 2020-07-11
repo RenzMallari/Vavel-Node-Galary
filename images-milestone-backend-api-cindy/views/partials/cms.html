@@ -1,0 +1,59 @@
+
+      <div class="ember-view parallax" id="ember806">
+        <div class="top-gap hidden-xs hidden-sm"></div>
+        <div class="parallax__layer parallax__layer--base about">
+          <div class="container page-body">
+            <h3 style="text-transform:capitalize;">{{pageheading}}</h3>
+            <hr class="light" style="margin-bottom: 0;">
+            <!--<ul role="tablist" class="nav nav-tabs" id="myTab">
+              <li class="active" role="presentation"><a aria-expanded="true" aria-controls="aag1" data-toggle="tab" role="tab" id="aag1-tab" href="/cms/#aag1">Image License Agreement</a></li>
+              <li role="presentation"><a aria-controls="aag1" data-toggle="tab" id="aag2-tab" role="tab" href="/cms/#aag2">Licensing Subscription Terms</a></li>
+              <li role="presentation"><a aria-controls="aag2" data-toggle="tab" id="aag3-tab" role="tab" href="/cms/#aag3">Terms of Service</a></li>
+              <li role="presentation"><a aria-controls="aag3" data-toggle="tab" id="aag4-tab" role="tab" href="/cms/#aag4">Privacy Policy</a></li>
+            </ul>-->
+            <div class="tab-content" id="myTabContent">
+              <div aria-labelledby="aag1-tab" id="aag1" class="tab-pane fade in active" role="tabpanel">
+                <div class="tab-content" id="tabcontent" data-ng-bind-html="trustAsHtml(tabcontent)">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type='text/javascript'>
+    $(function() {
+      $('#myTab li a').click(function() {
+            var id = $(this).attr('id');
+            var id_split=id.split('-');
+            $("#myTab li").removeClass("active");
+            $('#'+id).parent().addClass('active'); 
+            
+            $(".tab-pane").removeClass("active");
+            $('#'+id_split[0]).addClass('in');
+            $('#'+id_split[0]).addClass('active'); 
+            return false;
+      });
+   });
+    
+    $(function(){
+
+
+		$( ".button-show" ).click(function() {
+
+		  $( ".show-div" ).toggle();
+
+			  $('html,body').animate({
+
+				scrollTop: $(".show-div").offset().top},
+
+				'slow');
+
+		});
+
+    });
+  </script>
+

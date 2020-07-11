@@ -1,0 +1,272 @@
+
+
+<!-- start header -->
+
+<header class="wrapper dark_scheme" id="header" data-stellar-background-ratio="0.5" style="background-position: 50% 0px;">
+        <div class="container">
+
+      
+          
+          <div id="header_inner" class="light_text">
+
+            
+              <h1 class="sitename_logo"><a href="https://vavel.photos" title="Stocky">VAVEL</a></h1>
+
+              <h2 id="slogan">Search photos</h2>
+
+              
+
+           <!--   <form class="js-search-form searchform" style="padding:0px;" data-ember-action="811" ng-submit="searchimage_new()">
+                  <div>
+                    <input type="text" id="search_key" class="ember-view ember-text-field form-control search_input" placeholder="Search..." ng-model="searchkeyword" ng-keyup="searchimage_autoload(  )" autocomplete="off">
+                    <button class="btn2 btn-link srchbtn" type="submit" name="commit" formnovalidate>
+                      <i class="search-icon-white"></i>
+                    </button>
+                    <div id="loadsearch"></div>
+                  </div>
+                </form>
+-->
+            
+          </div>
+          
+        </div>
+      </header>
+
+
+
+
+
+
+
+<!--<div id="ember806" class="ember-view parallax">
+  <div class="parallax__layer parallax__layer--deep">
+    <div class="video-container">
+      <div style="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden; background-size: cover; background-repeat: no-repeat; background-position: 50% 50%; background-image: none;">
+        <video muted="" controls="" style="visibility: visible; margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1905px; height: auto;" autoplay="" loop="">
+          <source type="video/mp4" src="media/samplee.mp4"></source>
+        </video>
+      </div>
+      <div class="dark-overlay"></div>
+    </div>
+  </div>
+  <div class="parallax__layer parallax__layer--back">
+    <div class="zone-header">
+      <div class="jumbotron" style="opacity: 1;">
+        <div>
+          <pre style="color:#fff;background:none;border:0px;"><h1>{{explorecms.title}}</h1></pre>
+          <p class="pannel-head" data-ng-bind-html="trustAsHtml(explorecms.subtitle)"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="parallax__layer parallax__layer--base">
+    <div class="container-fluid" style="background-color: #fff;">
+      <div class="row zone-signup-top">
+        <div class="col-md-6 col-padding">
+          <div id="photog-info">
+            <h4>{{explorecms.photographertitle}}</h4>
+            <p data-ng-bind-html="trustAsHtml(explorecms.photographercontent)"></p>
+            <a id="ember928" class="ember-view btn btn-primary btn-sm" href="javascript:void(0);" ng-click="join_as_user('photographer')">{{explorecms.photographerbuttonvalue}}</a></div>
+        </div>
+        <div class="col-md-6 col-padding">
+          <div id="buyer-info">
+            <h4>{{explorecms.usertitle}}</h4>
+            <p data-ng-bind-html="trustAsHtml(explorecms.usercontent)"></p>
+            <a id="ember929" class="ember-view btn btn-primary btn-sm" href="javascript:void(0);" ng-click="join_as_user('photographer')">{{explorecms.userbuttonvalue}}</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row zone-signature-featured">
+
+        <div class="col-md-6 col-no-padding mozaic-left-zone featured-photographer">
+          <a id="ember892" class="ember-view" href="/myaccount/{{featuredphotographer.usrid}}">
+            <input type="hidden" value="{{featuredphotographer.backgroundimage}}" id="first_hide">
+            <div id="ember965" class="ember-view" style="background-repeat: no-repeat; baground-position: center center; background-size: cover !important; width:100%; height:100%; ;">
+              <div data-bindattr-966="966" class="overlay-container col-padding">
+                <div class="overlay-centered">
+                  <div id="ember974" class="ember-view inline-block">
+                    <svg height="0" width="0">
+                      <clipPath id="hexagonClipXLarge">
+                        <polygon points="60 0,112 30,112 90,60 120,7 90,7 30" />
+                      </clipPath>
+                    </svg>
+
+                    <img public-id="" class="avatar xlarge hexagon-xlg ng-isolate-scope" format="jpg" style="clip-path: url(#hexagonClipXLarge);" src="{{config.ftpAvatarPath}}{{featuredphotographer.image}}"></img>
+
+                  </div>
+                  <h5 class="title-over-image">{{featuredphotographer.firstname}} {{featuredphotographer.lastname}} - @{{featuredphotographer.username}}</h5>
+                  <p class="pannel-head">Featured Photographer</p>
+                </div>
+              </div>
+              <span class="dark-overlay"></span></div>
+          </a>
+        </div>
+
+        <div class="col-md-6 col-no-padding mozaic-zone signature-collection">
+       
+          <a id="ember893" class="ember-view" href="/maincollectiondetails/{{signaturecollections._id}}">
+            <div class="desc col-padding">
+              <h5 class="title-over-image">{{explorecms.signaturecollectiontitle}}</h5>
+              <p class="pannel-head">{{explorecms.signaturecollectionsubtitle}}</p>
+            </div>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-6 col-no-padding" ng-repeat="signaturecollection in signaturecollections.images | limitTo:4">
+                  <div id="ember1256" class="ember-view" style="background: url({{cloudinary_image_base_path}}c_fill,g_north,h_350,w_350/{{signaturecollection.publicid}}) no-repeat center center; background-size: cover !important; width:100%; height:100%; ;">
+                    <div data-bindattr-1257="1257" class="overlay-container col-padding">
+                      <div class="overlay-centered"></div>
+                    </div>
+                    <span class="dark-overlay"></span></div>
+                </div>
+
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row zone-stats">
+        <div class="col-md-4 col-padding">
+          <h1>{{users.length}}</h1>
+          <p class="pannel-head">Photographers</p>
+        </div>
+        <div class="col-md-4 col-padding">
+          <h1>{{noofalbums.length}}</h1>
+          <p class="pannel-head">Albums</p>
+        </div>
+        <div class="col-md-4 col-padding">
+          <h1>{{noofpics}}</h1>
+          <p class="pannel-head">Photos</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid" ng-show="!nocollection">
+      <div class="row zone-featured-collections">
+        <div class="col-md-4 col-no-padding" ng-repeat="allcollection in allcollections | orderBy: createdate | limitTo:3">
+
+          <a id="ember994" class="ember-view" href="/maincollectiondetails/{{allcollection._id}}">
+            <div ng-repeat="imgpublicid in allcollection.images | orderBy: adddate | limitTo:1" style="width:100%; height:100%;">
+              <div id="ember996" class="ember-view" style="background: url(https://stock.vavel.com/s/photoImages/bunch/h200_{{imgpublicid.publicid}}.jpg) no-repeat center center; background-size: cover !important; width:100%; height:100%; ">
+
+                <div data-bindattr-997="997" class="overlay-container col-padding">
+                  <div class="overlay-centered">
+                    <h5 class="title-over-image">{{allcollection.name}}</h5>
+                    <p class="pannel-head">{{allcollection.images.length}} Photos in collection</p>
+                  </div>
+                </div>
+                <span class="dark-overlay"></span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row zone-value-proposition-buyer">
+        <div class="container">
+          <div class="col-md-7 col-padding" style="padding-bottom: 7% !important;">
+            <p data-ng-bind-html="trustAsHtml(brandcms.title)"></p>
+            <p data-ng-bind-html="trustAsHtml(brandcms.content)"></p>
+            <a id="ember1021" class="ember-view btn btn-primary btn-large" ng-click="open_join_modal();" href="javascript:void(0);">Join Today</a></div>
+          <div class="col-md-5 col-padding" style="padding-top: 7% !important;">
+            <div style="float:left;width:45%;margin-right:15px;height:120px;" ng-repeat="allbrand in allbrands | limitTo:4">
+              <cl-image public-id="{{allbrand.image}}" class="thumbnail inline" format="jpg" style="width:100%;">
+                <cl-transformation crop="fill" gravity="north" />
+              </cl-image>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row zone-active-keyword">
+        <div class="col-md-6 col-no-padding mozaic-left-zone">
+          <a href="/catalogdetails/{{higlightkeyword}}" class="ember-view">
+            <input type="hidden" value="{{higlightkeywordimage}}" id="last_hide">
+            <div style="background-repeat: no-repeat background-position:center center; background-size: cover !important; width:100%; height:100%;" class="ember-view" id="ember_last">
+              <div class="overlay-container col-padding">
+                <div class="overlay-centered">
+                  <h5 class="title-over-image">Explore our catalog</h5>
+                  <h2> <span class="title-over image">{{higlightkeyword}}</span> <span class="dropdown-down-btn button-show" ><i></i></span> </h2>
+                </div>
+              </div>
+              <span class="dark-overlay"></span> </div>
+          </a>
+        </div>
+        <div class="col-md-6 col-no-padding mozaic-zone signature-collection" style="position: relative;">
+    
+          <a id="ember893" class="ember-view" href="/maincollectiondetails/{{signaturecollectionsbelow._id}}">
+            <div class="desc col-padding" style="position: absolute;z-index: 20;">
+              <h5 class="title-over-image" style="color: #fff;font-size: 1.2vw;letter-spacing: 1.5px;">{{explorecms.signaturecollectiontitle}}</h5>
+              <p class="pannel-head">{{explorecms.signaturecollectionsubtitle}}</p>
+            </div>
+            <div class="container-fluid">
+              <div class="row">
+
+                <div class="col-md-6 col-no-padding" ng-repeat="signaturecollection in signaturecollectionsbelow.images | limitTo:4">
+                  <div id="ember1256" class="ember-view" style="background: url({{cloudinary_image_base_path}}c_fill,g_north,h_350,w_350/{{signaturecollection.publicid}}) no-repeat center center; background-size: cover !important; width:100%; height:100%; ;">
+                    <div data-bindattr-1257="1257" class="overlay-container col-padding">
+                      <div class="overlay-centered"></div>
+                    </div>
+                    <span class="dark-overlay"></span></div>
+                </div>
+
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid show-div">
+      <div class="row zone-keyword-list">
+        <div style="opacity: 1;" class="col-md-12 col-padding opacity-zone">
+          <h5 style="margin-bottom: 30px;">Popular Catalogs</h5>
+          <div>
+            <a href="/catalogdetails/{{hidecatalog[0].keyword}}" class="ember-view btn btn-sm btn-outline hollow btn-dark" id="ember1626" ng-repeat="hidecatalog in hidecatalogs">{{hidecatalog[0].keyword}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row zone-signup-bottom">
+        <div class="col-md-12 col-padding">
+          <h2 class="title-over-image" style="margin-bottom: 30px;">{{explorecms.belowtitle}}</h2>
+          <div class="row">
+            <div class="col-md-6"><a id="ember1035" class="ember-view btn btn-primary btn-sm btn-outline hollow pull-right" href="javascript:void(0);" ng-click="join_as_user('photographer')">{{explorecms.belowphotographerbuttonvalue}}</a></div>
+            <div class="col-md-6"><a id="ember1036" class="ember-view btn btn-primary btn-sm btn-outline hollow pull-left" href="javascript:void(0);" ng-click="join_as_user('buyer')">{{explorecms.belowuserbuttonvalue}}</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type='text/javascript'>
+  $(function() {
+    $(".button-show").click(function() {
+      event.preventDefault();
+      $(".show-div").toggle();
+      $('html,body').animate({
+          scrollTop: $(".show-div").offset().top
+        },
+        'slow');
+    });
+  });
+  $(window).load(function() {
+
+    var link1 = $('#first_hide').val();
+    var demo = link1.replace("upload/", "upload/c_fill,g_north,h_675,w_675/");
+    $('#ember965').css('background-image', 'url(' + demo + ')');
+
+    var link1 = $('#last_hide').val();
+    var demo = link1.replace("upload/", "upload/c_fill,g_north,h_675,w_675/");
+    $('#ember_last').css('background-image', 'url(' + demo + ')');
+
+  });
+</script>
+

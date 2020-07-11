@@ -1,0 +1,276 @@
+<!--page loader box end-->
+<div>
+  <div class="top-gap hidden-xs hidden-sm"></div>
+  <div>
+    <div class="container-fluid" style="background-color:#f5f5f6;">
+      <div class="row zone-value-proposition-buyer" style="background:none;">
+        <div style="padding-top:15px;" class="challenge-list container">
+          <h5 style="margin: 25px 0 4px 0px;" class="caps text-centered strong">Your Cart</h5>
+          <div style="margin-bottom: 30px" class='display-xs' >
+              <span>Currency:  </span>
+              <span ng-controller='headersController'>
+                  <select class='select-mobile-currency' style="color: inherit; display: inline-block !important" type="text" ng-change="changeCurrency(myCurrency.code)" required ng-model="myCurrency.code" name="currency">
+                      <option ng-repeat='currency in filter_currencies' value={{currency.code}}>{{currency.code}}</option>
+                   </select>
+              </span>
+          </div>
+          <div class="collection-list" style="text-align:center;" ng-show="!allcarts.length">
+            <h4>The cart is empty!</h4>
+            <div style="clear:both;"></div>
+            <div class="grid-footer">
+              <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+            </div>
+          </div>
+          <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%" ng-show="allcarts.length">
+            <thead>
+              <tr>
+                <th>Image</th>
+                <th>Created By</th>
+                <th>Price</th>
+                <th>Image Type</th>
+                <th>Option</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr ng-repeat="allalbum in allcarts | orderBy: 'startdate':true" style="height:100px">
+                <td>
+                  <a href="/details/{{allalbum.gallery_id}}/{{allalbum.image_id}}">
+                    <img ng-src="https://stock.vavel.com/s/photoImages/bunch/{{config.cropt200}}{{allalbum.image_id}}.{{allalbum.image_extension}}" style="max-width: 80px; max-height: 80px;" class="img-responsive">
+                  </a>
+                </td>
+                <td>{{allalbum.seller_name}}</td>
+                <td>
+                  <div ng-show="!getCurrency().is_converting">${{allalbum.price}}</div>
+                  <div ng-show="getCurrency().is_converting">{{getCurrency().symbol}}{{convert(allalbum.price, 'USD', getCurrency().currency)}}</div>
+                </td>
+                <td style="text-transform: capitalize">{{allalbum.type}}</td>
+                <td><a href="javascript:void(0)" ng-disabled="allalbum.removing" ng-click="removecart(allalbum)">Remove</a></td>
+              </tr>
+
+              <tr style="height:100px">
+                  <td></td>
+                  <td></td>
+                  <td>
+                    <div ng-show="!getCurrency().is_converting">${{totalAmount}}</div>
+                    <div ng-show="getCurrency().is_converting">{{getCurrency().symbol}}{{convert(totalAmount, 'USD', getCurrency().currency)}}</div>
+                  </td>
+                  <td style="text-transform: capitalize"></td>
+                  <td></td>
+                </tr>
+            </tbody>
+          </table>
+          <button ng-show="allcarts.length" data-toggle="modal" data-backdrop="static" data-keyboard="false" style="margin-bottom: 23px; float: right;" class="ember-view btn btn-primary btn-sm" ng-click="openPaymentModal()">Checkout</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT BRAINTREE FORM -->
+<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="mymodal-payment">
+  <div class="modal-backdrop fade in"></div>
+  <div class="modal-dialog modal-sml">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" ng-disabled="paying" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <a href="javascript:void(0);" class="logo-top"><img src="img/top20-logo.png" class="img-responsive"></a>
+      </div>
+      <div class="modal-body">
+        <div ng-show="paybycardmessage" class="{{alert.altclass}}" style="    text-align: center;">
+          <alert type="{{alert.type}}">
+            <img src="/img/loading.svg" ng-show="loaderimg" style="margin: 0 auto;"
+            <br /><br />{{alert.msg}}</alert>
+        </div>
+        <div class="checkout_form">
+            <form class="form-price" ng-submit="payNow()">
+                <div class="errors"></div>
+                <div ng-show="registrationError" class="{{alert.altclass}}">
+                    <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                </div>
+                <div ng-if="!loggedindetails.loginstatus">
+                    <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                        <input type="text" id="login-firstname" ng-model="user.firstname" class="ember-view ember-text-field form-control" placeholder="First Name" name="firstname" required>
+                    </div>
+                    <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                        <input type="text" id="login-lastname" ng-model="user.lastname" class="ember-view ember-text-field form-control" placeholder="Last Name" name="lastname" required>
+                    </div>
+                    <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                      <select type="text" style='color: black' id="login-country" ng-model="user.country" class="not-add ember-view ember-text-field form-control" placeholder="Country" name="country" required>
+                        <option value=''>Please, select your country</option>
+                        <option ng-repeat='country in list_countries' value='{{country.name}}'>{{country.name}}</option>
+                      </select>
+                        <!-- <input type="text" id="login-country" ng-model="user.country" class="ember-view ember-text-field form-control" placeholder="Country" name="country" required> -->
+                    </div>
+                    <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                        <input type="email" id="login-email" ng-model="user.email" class="ember-view ember-text-field form-control" placeholder="Email Address" name="email" required>
+                    </div>
+                    <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                        <input type="password" id="login-password" ng-model="user.password" class="ember-view ember-text-field form-control" placeholder="Create Password" required>
+                    </div>
+                </div>
+
+                <div id="bt-wrap">
+                  <div id="bt-dropin"></div>
+                </div>
+                <hr class="clear">
+                <div id="ember1705" class="form-group ember-view">
+                  <div style="margin: 10px 0;" vc-recaptcha key="recaptchaPublicKey"></div>
+                  <button  ng-disabled="paying" style=" padding: 20px; font-size: 20px;" type="submit" class="btn btn-loading btn btn-primary btn-block">
+                      <div class="btn-loading-text" id="paybtn">Pay Now (<span ng-show="!getCurrency().is_converting">${{totalAmount}}</span><span ng-show="getCurrency().is_converting">{{getCurrency().symbol}}{{convert(totalAmount, 'USD', getCurrency().currency)}}</span>)</div>
+                      <div ng-show="paying" class="lds-ripple"><div></div><div></div></div>
+                  </button>
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <p><a ng-click="showModalLogin()">Have an account? Login</a></p>
+          <p><a href="mailto:admin@vavel.com">admin@vavel.com</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END PAYMENT WITH BRAINTREE -->
+
+<div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="mymodal-payment-old">
+  <div class="modal-backdrop fade in"></div>
+  <div class="modal-dialog modal-sml">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-label="Close" ng-disabled="paying" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+        <a href="javascript:void(0);" class="logo-top"><img src="img/top20-logo.png" class="img-responsive"></a>
+        <h5 class="modal-title">Payment</h5>
+        <a href="javascript:void(0)" id="forcedownloadlink" style="display:none;" download></a>
+        <!--<h6 class="modal-slogan">{{payment.imagetype}} (${{payment.imageprice}})</h6>-->
+      </div>
+      <div class="modal-body">
+        <div ng-show="paybycardmessage" class="{{alert.altclass}}" style="    text-align: center;">
+          <alert type="{{alert.type}}">
+            <img src="/img/loading.svg" ng-show="loaderimg" style="margin: 0 auto;"
+            <br /><br />{{alert.msg}}</alert>
+        </div>
+
+
+        <div class="confirm_form">
+          <!--<input type="submit" ng-click="addtocart(payment.imageprice)" class="btn btn-loading btn btn-primary btn-block" value="Continue Shopping" />
+		   <input type="submit" ng-click="addtocart_final(payment.imageprice)" class="btn btn-loading btn btn-primary btn-block" value="Complete Checkout" />
+		   <a href="javascript:void(0)" onclick="continue_checkout()">Complete Checkout</a>-->
+        </div>
+        <div class="checkout_form">
+            <form class="form-price" ng-submit="signup()">
+                <div class="errors"></div>
+                <div ng-show="registrationError" class="{{alert.altclass}}">
+                    <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                </div>
+                <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                    <input type="text" id="login-firstname" ng-model="user.firstname" class="ember-view ember-text-field form-control" placeholder="First Name" name="firstname" required>
+                </div>
+                <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                    <input type="text" id="login-lastname" ng-model="user.lastname" class="ember-view ember-text-field form-control" placeholder="Last Name" name="lastname" required>
+                </div>
+                <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                    <input type="text" id="login-country" ng-model="user.country" class="ember-view ember-text-field form-control" placeholder="Country" name="country" required>
+                </div>
+                <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                    <input type="email" id="login-email" ng-model="user.email" class="ember-view ember-text-field form-control" placeholder="Email Address" name="email" required>
+                </div>
+                <div class="form-group" ng-if="!loggedindetails.loginStatus">
+                    <input type="password" id="login-password" ng-model="user.password" class="ember-view ember-text-field form-control" placeholder="Create Password" required>
+                </div>
+                <hr class="clear">
+                <div id="ember1705" class="form-group ember-view">
+                <button style=" padding: 20px; font-size: 20px;" type="submit" class="btn btn-loading btn btn-primary btn-block">
+                    <div class="btn-loading-text" id="paybtn">Pay Now</div>
+                </button>
+                </div>
+            </form>
+        </div>
+        <!-- <div class="checkout_form">
+
+          <form class="form-price" ng-submit="pay_cart()">
+            <div class="errors"></div>
+            <div class="form-group">
+              <input type="text" class="ember-view ember-text-field form-control" placeholder="Card Number" ng-model="payment.cardnumber" name="cardnumber" required>
+            </div>
+            <div class="form-group form-group-left">
+              <input type="text" class="ember-view ember-text-field form-control form-control-left" placeholder="MM/YYYY" ng-model="payment.expirydate" name="expirydate" required>
+            </div>
+            <div class="form-group form-group-left">
+              <input type="text" class="ember-view ember-text-field form-control form-control-left" placeholder="CVV" ng-model="payment.cvcnumber" name="cvcnumber" required>
+            </div>
+            <hr class="clear">
+            <div class="form-group">
+              <a style="display: none;" aria-controls="collapseExample" aria-expanded="true" href="javascript:void(0);" data-toggle="collapse" class="btn btn-primary btn-prim">
+                <div class="prettycheckbox" style="display:none;">
+                  <input type="checkbox" class="myClass" value="yes" id="Test1" name="Test1" data-color="green" />
+                  <label for="Test1"></label>
+                </div>
+                <div class="popoverView" style="display:none;">
+                  <div class="content">
+                    <p></p>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div id="ember1705" class="form-group ember-view">
+              <button style=" padding: 20px; font-size: 20px;" type="submit" class="btn btn-loading btn btn-primary btn-block">
+                <div class="btn-loading-text" id="paybtn">Pay with card</div>
+              </button>
+            </div>
+          </form>
+
+          <hr class="hr-text" data-content="OR">
+
+          <div class="form-group" style="text-align: center;">
+            <button style="padding: 20px; font-size: 20px; width: 100%" class="btn btn btn-primary" ng-click="payforcart_paypal()" ng-disabled="paying">Pay Now! (Using Paypal)</button>
+          </div>
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <p><a href="mailto:admin@vavel.com">admin@vavel.com</a></p>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<style>
+  .view-hover::after {
+    border: 2px solid white;
+    background: none;
+    border-radius: 3px;
+  }
+  hr.hr-text {
+    line-height: 1em;
+    position: relative;
+    outline: 0;
+    border: 0;
+    color: black;
+    text-align: center;
+    height: 1.5em;
+    opacity: .5;
+  }
+  .bottom-bar {display: none;}
+  hr.hr-text:before {
+    content: '';
+    background: linear-gradient(to right, transparent, #818078, transparent);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    height: 1px;
+  }
+  hr.hr-text:after {
+    content: attr(data-content);
+    position: relative;
+    display: inline-block;
+    color: black;
+    padding: 0 .5em;
+    line-height: 1.5em;
+    color: #818078;
+    background-color: #fcfcfa;
+  }
+</style>
+

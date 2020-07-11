@@ -1,0 +1,77 @@
+<div ng-show='!isloggedin'>
+    <header class="wrapper" id="header" data-stellar-background-ratio="0.5" style="background-position: 50% 0px;">
+        <div class="container">
+            <div id="header_inner" class="light_text">
+                <h2 id="slogan">404 Not Found</h2>
+            </div>
+        </div>
+    </header>
+</div>
+<!-------------------------------------->
+
+<div ng-show='isloggedin' class="page-body mycollection">
+    <div class="page-title-bar">
+        <div class="page-title-bar-inner">
+            <h5>My Collections</h5>
+        </div>
+        <hr class="light">
+    </div>
+    <div class="collection-list" style="text-align:center;" ng-show="!showcollections">
+        <h4>Sorry! You have not created any collection yet.</h4>
+        <div style="clear:both;"></div>
+        <div class="grid-footer">
+            <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+        </div>
+    </div>
+    <div class="collection-list" ng-show="showcollections">
+        <brick-wall bricks="allcollections" item="collection">
+            <a href="/collectiondetails/{{collection._id}}">
+                <img
+                    style="background: url({{collection.src}}) no-repeat center center; background-size: cover; height: 100%; width: {{collection.width}}px;">
+                <div class="image-title-background">
+                    <div class="album-brick-title">{{collection.name}}</div>
+                    <div class="album-brick-subtitle">{{collection.images.length}} photos </div>
+                </div>
+            </a>
+        </brick-wall>
+        <div class="pagination" ng-show="pagination.numberOfPages > 1">
+            <button type="button" ng-disabled="pagination.curPage === 0" ng-click="showPage(pagination.curPage-1)">
+                < PREV</button> <button type="button" ng-disabled="pagination.curPage >= pagination.numberOfPages - 1"
+                    ng-click="showPage(pagination.curPage+1)">NEXT >
+            </button>
+
+        </div>
+        <div class="pagination-info" ng-show="allcollections.length"> <span>Page {{ pagination.curPage + 1}} of
+                {{ pagination.numberOfPages }}</span>
+            <span>Per page: </span>
+            <select style="width: auto; display:inline-block; height: 22px;" ng-model="pagination.pageSize"
+                ng-options="item for item in pagination.pageSizeList"></select>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="grid-footer" style="width: 98.6%;">
+            <hr style="margin-left: 4px; margin-right: 4px;" class="light">
+        </div>
+    </div>
+</div>
+
+<style>
+    .view-hover::after {
+        border: 2px solid white;
+        background: none;
+        border-radius: 3px;
+    }
+
+    .collection-con img {
+        max-width: 100%;
+    }
+
+    .collection-con {
+        width: 100%;
+    }
+
+    /*.collection-con img {width: 250px;min-width: 250px;max-width: 250px;height: 250px;min-height: 250px;max-height: 250px;}
+    .collection-con {width: 250px;min-height: 250px;display: inline-block;margin-right: 11px;margin-bottom: 40px;cursor: pointer;}*/
+    .photogallery {
+        background-color: red;
+    }
+</style>

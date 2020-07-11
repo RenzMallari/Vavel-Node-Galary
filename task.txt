@@ -1,0 +1,41 @@
+need create .env file 
+
+and inside MONGO_URL=mongodb://localhost:27018/img
+already exist.
+
+
+?? you have whatsapp web?
+how run the npm start now
+
+need run elastic search
+Okay?
+
+yes
+
+now T1 is edit tasks/es-reindex.js file
+
+to fix the script and can index from mongo to elastgic search index
+
+(in version 6.8.3 it works but in 7.8 no) illegal mapping in a field
+
+you mean 7.6? yes, sorry 7.6
+
+curl localhost:9200/_cat/indices?v with this command you can see elastic indexes and numbers of docs
+
+ty without '
+
+
+seems a field in users collection is not compatible with elastic 7 and need fix, the type of some fields is what no allow index
+
+Do you think it will be done by only editing es-reindex.js file? open it,
+
+if i am right, are 2 or 3 indexes thatin this file have type:keyword or something like this
+each index has a file, check in log what index fail
+
+i havce to go 20 minutes to get out dog, backn ow, check what i mean
+Okay, but what time is it there?
+
+im back
+Okay. :)
+n whatsapp you have it in mobile rifht? for no weite here in this way you can code
+?

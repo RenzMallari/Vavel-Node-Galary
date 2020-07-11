@@ -1,0 +1,4 @@
+D:\Projects\Node\photogallery\obj\Debug\Photogallery.njsprojResolveAssemblyReference.cache
+D:\Projects\Node\photogallery\bin\Microsoft.NodejsTools.WebRole.dll
+E:\Krishnendu\photogallery\obj\Debug\Photogallery.njsprojResolveAssemblyReference.cache
+E:\Krishnendu\photogallery\bin\Microsoft.NodejsTools.WebRole.dll

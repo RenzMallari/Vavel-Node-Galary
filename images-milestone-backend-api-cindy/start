@@ -1,0 +1,4 @@
+#!/bin/bash
+git pull origin master
+sudo grunt dev --force
+node bin/www

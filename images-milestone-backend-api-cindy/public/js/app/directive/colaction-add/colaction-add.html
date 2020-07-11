@@ -1,0 +1,38 @@
+<div>
+
+  <button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#add-collaction" >Add collection</button>
+
+  <!-------------------------------------->
+ <div id="add-collaction" aria-hidden="false" role="dialog" tabindex="-1" class="modal fade" >
+ <div class="modal-backdrop fade in"></div>
+  <div class="modal-dialog modal-sml">
+   <div class="modal-content">
+    <div class="modal-header">
+     <button data-dismiss="modal" class="close">×</button>
+     <span class="modal-title">Enter collection data</span>
+    </div>
+    <div class="modal-body">
+
+      <form ng-submit="addCollection()">
+
+        <div class="well">
+          <a href="javascript:void(0);" id="openname" class="btn btn-link">Add collection Name</a>
+          <div id="collapseExample-three" aria-expanded="true" style="display:block;">
+            <input type="text" placeholder="add collection name" id="collectionname" name="collectionname"  class="form-control" ng-model="mycollection.collectionname">
+          </div>
+        </div>
+
+        <div class="alert alert-danger" id="add-collection-error" role="alert">Enter all data</div>
+
+        <div class="clear fuuter">
+          <button data-dismiss="modal" class="btn btn-default btn-xs ">Cancel</button>
+          <button class="btn btn-default btn-xs " type="submit">Create</button>
+        </div>
+      </form>
+
+    </div>
+   </div>
+  </div>
+ </div>
+<!-------------------------------------->
+</div>

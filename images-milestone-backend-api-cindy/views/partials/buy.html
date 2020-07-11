@@ -1,0 +1,54 @@
+<div class="ember-view parallax" id="ember806">
+        <div class="top-gap hidden-xs hidden-sm"></div>
+        <div class="parallax__layer parallax__layer--base">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-6">
+                <h4>Your Purchases</h4>
+                <div class="artist-photos">
+                  <div id="ember1596" class="ember-view">
+                    <div class="container notification-list">
+                      <div class="row clearfix" ng-show="!showtips">
+                        <div class="col-sm-4 purchase">
+                          <div class="stats-box">
+                            <h3>{{totalimagesbuy}}</h3>
+                            <p class="small text-dark">No. of Images Bought</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 purchase">
+                          <div class="stats-box">
+                            <h3>{{totalalbumsbuy}}</h3>
+                            <p class="small text-dark">No. of Albums Bought</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 purchase">
+                          <div class="stats-box">
+                            <h3>${{totalpaid}}</h3>
+                            <p class="small text-dark">Total Paid</p>
+                          </div>
+                        </div>
+                      </div>
+                      <p class="paypalmsg" ng-show="!showtips" style="text-align: center; width: 100%; display: inline-block;" ><a id="ember1990" class="ember-view" href="/settings">Add your Paypal info </a>to ensure you get paid.</p>
+                      <a href="/downloads" style="text-align: center; width: 100%; display: inline-block;">List of All Purchased Images</a>
+                      <div class="clearfix" style="margin-top:10px;" ng-show="showtips">
+                        <div class="empty-con">
+                          <h5>{{purchasecms.title}}</h5>
+                          <hr>
+                          <p data-ng-bind-html="trustAsHtml(purchasecms.content)">
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3"></div>
+         </div>
+</div>
+<style>
+ .row.clearfix{margin-top:33px;}
+ .purchase{width:93.333333%;float:none;margin:0 auto;}
+ .paypalmsg{margin-left:18px;}
+ .empty-con{margin:0px;padding:0px 21px 45px 21px;}
+</style>

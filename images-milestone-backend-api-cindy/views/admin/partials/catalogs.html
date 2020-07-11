@@ -1,0 +1,47 @@
+<div ng-hide="editMode">
+<ul class="breadcrumb">
+	<li> <i class="icon-home"></i> <a href="./">Home</a> <i class="icon-angle-right"></i> </li>
+	<li><a href="javascript:void(0);">List Catalogs</a></li>
+</ul>
+<div class="row-fluid sortable">
+	<div class="box span12">
+		<div class="box-header" data-original-title>
+			<h2><i class="halflings-icon white user"></i><span class="break"></span>Catalogs</h2>	
+			<div class="box-icon">
+							
+			</div>		
+		</div>
+		<div class="box-content">
+		
+			<div id="list">
+			
+				<table class="table table-striped table-bordered bootstrap-datatable datatable" id="cataloglist">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Image</th>
+							<th>No Of Images</th>
+							<th>Show In Explore</th>
+							<th align="center">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="(key, value) in allkeywords | orderBy:'value.length'">
+						        <td><a href="/#/catalogdetails/{{key}}" target="_blank" style="color:#69B9A3">{{key}}</a></td>
+							<td >
+							  <cl-image public-id="{{ value[value.length-1].imageid }}" format="jpg">
+                                                            <cl-transformation crop="fill" gravity="north" width="60" height="60" />
+                                                         </cl-image>
+							</td>
+							<td>{{value.length}}</td>
+							<td><span class="label" ng-class="{'label-success':value[0].showinexplore}">{{value[0].showinexplore ? 'Yes' : 'No'}}</span></td>
+							<td align="center"><a class="btn btn-success btnview" href="/#/catalogdetails/{{key}}" title="View" target="_blank"><i class="halflings-icon white zoom-in"></i></a> <a class="btn btn-info editdata" href="javascript:void(0);" ng-click="showinexplore(key)" title="Show in explore" ng-if="value[0].showinexplore === false"><i class="halflings-icon white ok"></i></a> <a class="btn btn-info editdata" href="javascript:void(0);" ng-click="removefromexplore(key)" title="Remove from explore" ng-if="value[0].showinexplore === true"><i class="halflings-icon white remove"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!--/span-->
+</div>
+</div>

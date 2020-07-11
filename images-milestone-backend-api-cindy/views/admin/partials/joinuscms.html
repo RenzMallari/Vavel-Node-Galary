@@ -1,0 +1,203 @@
+<div ng-hide="editMode">
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="./">Home</a>
+					<i class="icon-angle-right"></i> 
+				</li>
+				<li>
+					<i class="icon-edit"></i>
+					<a href="javascript:void(0);">Join Us CMS</a>
+				</li>
+			</ul>
+			
+			
+			<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header" data-original-title>
+						<h2><i class="halflings-icon white edit"></i><span class="break"></span>Join Us CMS</h2>
+					</div>
+					<div class="box-content">
+						
+						<input id="appendedInput" size="16" name="joinusid" ng-model="joinus._id" type="hidden">
+						<input id="appendedInput" size="16" name="hidimage" ng-model="joinus.rightimage" type="hidden">
+						<input id="appendedInput" size="16" name="imageid" ng-model="joinus.imageid" type="hidden">
+						    <fieldset>
+						     <div class="control-group">
+						      <label class="control-label" for="appendedInput">&nbsp;</label>
+						      <div class="controls">
+							<cl-image public-id="{{joinus.rightimage}}" class="thumbnail inline" format="jpg">
+                                                            <cl-transformation height="150" width="150" crop="fill" gravity="north" />
+                                                        </cl-image>
+                                                       </div>
+                                                      </div>
+                                                        <div class="form_line">
+                                                            <label class="control-label" for="appendedInput">Image</label>
+                                                            <div class="controls">
+                                                                <div class="upload_button_holder">
+                                                                    <input type="file" name="file" class="cloudinary_fileupload">
+                                                                </div>
+                                                                <div class="status">{{status}}</div>
+                                                                <div class="progress-bar" ng-show="showupload">
+                                                                    <div class="progress" style="width: {{progress}}%" ng-init="progress=0"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+							<div class="control-group">
+								<label class="control-label" for="appendedInput">Join Us Modal Heading</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="joinmodaltitle" ng-model="joinus.joinmodaltitle" required type="text">
+								  </div>
+								</div>
+							</div>
+							  
+							 <div class="control-group">
+								<label class="control-label" for="appendedInput">Join Us Modal User Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="usertitle" ng-model="joinus.usertitle" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							 <div class="control-group hidden-phone">
+							  <label class="control-label" for="textarea2">Join Us Modal User Content</label>
+							  <div class="controls">
+							    <wysiwyg textarea-id="question" 
+                                                                  textarea-class="form-control"  
+                                                                  textarea-height="180px" 
+                                                                  textarea-name="textareaQuestion" 
+                                                                  textarea-required 
+                                                                  ng-model="joinus.usercontent" 
+                                                                  enable-bootstrap-title="true"
+                                                                  textarea-menu="menu"
+                                                                  textarea-custom-menu="custom"
+                                                                  disabled="disabled">
+                                                              </wysiwyg>
+							  </div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label" for="appendedInput">Join Us Modal User Button Text</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="userbuttonvalue" ng-model="joinus.userbuttonvalue" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Join Us Modal Photographer Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="photographertitle" ng-model="joinus.photographertitle" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							 <div class="control-group hidden-phone">
+							  <label class="control-label" for="textarea2">Join Us Modal Photographer Content</label>
+							  <div class="controls">
+							    <wysiwyg textarea-id="question" 
+                                                                  textarea-class="form-control"  
+                                                                  textarea-height="180px" 
+                                                                  textarea-name="textareaQuestion" 
+                                                                  textarea-required 
+                                                                  ng-model="joinus.photographercontent" 
+                                                                  enable-bootstrap-title="true"
+                                                                  textarea-menu="menu"
+                                                                  textarea-custom-menu="custom"
+                                                                  disabled="disabled">
+                                                              </wysiwyg>
+							  </div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label" for="appendedInput">Join Us Modal Photographer Button Text</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="photographerbuttonvalue" ng-model="joinus.photographerbuttonvalue" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Join Us Page Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="title" ng-model="joinus.title" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label" for="appendedInput">Join Us Page Sub Title</label>
+								<div class="controls">
+								  <div class="input-append">
+								   <textarea name="subtitle" ng-model="joinus.subtitle" style="width:350px"></textarea>
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group hidden-phone">
+							  <label class="control-label" for="textarea2">Join Us Page Below Form Content</label>
+							  <div class="controls">
+							    <wysiwyg textarea-id="question" 
+                                                                  textarea-class="form-control"  
+                                                                  textarea-height="180px" 
+                                                                  textarea-name="textareaQuestion" 
+                                                                  textarea-required 
+                                                                  ng-model="joinus.formbelowcontent" 
+                                                                  enable-bootstrap-title="true"
+                                                                  textarea-menu="menu"
+                                                                  textarea-custom-menu="custom"
+                                                                  disabled="disabled">
+                                                              </wysiwyg>
+							  </div>
+							</div>
+							
+							<div class="control-group">
+								<label class="control-label" for="appendedInput">Join Us Page Right Title</label>
+								<div class="controls">
+								  <div class="input-append">
+									<input id="appendedInput" size="16" name="righttitle" ng-model="joinus.righttitle" required type="text">
+								  </div>
+								</div>
+							  </div>
+							  
+							  <div class="control-group hidden-phone">
+							  <label class="control-label" for="textarea2">Join Us Page Right Content</label>
+							  <div class="controls">
+							    <wysiwyg textarea-id="question" 
+                                                                  textarea-class="form-control"  
+                                                                  textarea-height="180px" 
+                                                                  textarea-name="textareaQuestion" 
+                                                                  textarea-required 
+                                                                  ng-model="joinus.rightcontent" 
+                                                                  enable-bootstrap-title="true"
+                                                                  textarea-menu="menu"
+                                                                  textarea-custom-menu="custom"
+                                                                  disabled="disabled">
+                                                              </wysiwyg>
+							  </div>
+							</div>
+                           
+							  <div class="form-actions">
+								<button type="button" class="btn btn-primary" ng-click="save()">Save changes</button>
+							  </div>
+							</fieldset>
+
+					</div>
+				</div><!--/span-->
+
+			</div><!--/row-->
+</div>
+<!--/row-->
+        
+<style>
+ .thumbnail{border:0px;}
+ textarea, input[type="text"]{border:1px solid #000 !important;}
+ #question,.wysiwyg-select{border:1px solid #C5C3C3;}
+</style>
+

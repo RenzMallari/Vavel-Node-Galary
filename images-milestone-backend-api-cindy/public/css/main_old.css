@@ -1,0 +1,52 @@
+.alert-danger, .alert-success {
+    margin-bottom: 20px;
+    padding: 15px
+}
+.alert-danger {
+    background-color: #f2dede;
+    color: #a94442;
+    border-radius: 4px
+}
+.alert-danger, .alert-success {
+    border: 1px solid transparent
+}
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border-radius: 4px
+}
+.cloudinary_fileupload, .cloudinary_galleryupload {
+    display: inline!important
+}
+.form_controls {
+    color: #000!important
+}
+.progress {
+    background-color: #72c272!important
+}
+.upload_button_holder {
+    margin-bottom: 10px!important
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+@-webkit-keyframes fadeOut {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+.fade-out {
+    animation: fadeOut 3s;
+    -webkit-animation: fadeOut 3s
+}
+.xlarge_radius {
+    border-radius: 50px;
+}

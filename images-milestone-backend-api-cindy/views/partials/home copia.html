@@ -1,0 +1,242 @@
+<!-------------------------------------->
+    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" class="modal fade" id="mymodal-addcollection">
+    <div class="modal-backdrop fade in"></div>
+    <div class="modal-dialog modal-sml">
+     <div class="modal-content">
+      <div class="modal-header">
+       <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span>
+       </button>
+       <h4 class="modal-title">Save to a Collection</h4>
+      </div>
+      <div class="modal-body" ng-show="showcollections">
+       <div id="collection-container" class="ember-view collection-group-stack" style="max-height:214px">
+        <ul id="collection-list" style="margin-bottom: 0;" class="list-group">
+         <li data-ember-action="22819" class="list-group-item clearfix collection-group-item" ng-repeat="allcollection in allcollections | orderBy: 'createdate':true" ng-click="addtocollection(allcollection._id)">
+         <div style="float:left;width:50px;height:50px;background:#e5e5e5;">
+          <div class="collection-cover" ng-repeat="imgpublicid in allcollection.images | orderBy: adddate | limitTo:1">
+           <cl-image public-id="{{imgpublicid.publicid}}" format="jpg">
+            <cl-transformation  crop="fill" width="50" height="50"/>
+           </cl-image>
+          </div>
+         </div>
+          <div class="collection-info">
+            <h5 class="list-group-item-heading strong">{{allcollection.name}}</h5>
+            <h5 class="pannel-head list-group-item-text small">{{allcollection.images.length}} photos</h5>
+          </div>
+        </li>
+       </ul>
+      </div>
+      </div>
+      <div class="modal-footer">
+       <form role="form" style="text-align: left;" data-ember-action="22825" class="form-inline" ng-submit="collectionsubmit()">
+       <div class="form-group" style="float:left;width:auto;">
+        <input id="new-collection-input" ng-model="albumdetls.collectionname" class="ember-view ember-text-field form-control" placeholder="New Collection..." type="text" required>
+        <input id="new-collection-input-gallerycollectionid" ng-model="albumdetls.collectiongalleryid" type="hidden">
+       </div>
+       <div id="ember22826" class="ember-view"style="float:left;width:auto;">
+        <button class="btn btn-loading btn btn-primary" data-bindattr-22830="22830" data-bindattr-22831="22831" type="submit" data-bindattr-22832="22832" style="padding: 19px 17px;">
+        <div id="ember22833" class="ember-view loading-spinner" style=""></div>
+        <div class="btn-loading-text">Create</div>
+       </button>
+      </div>
+     </form>
+     </div>
+    </div>
+   </div>
+  </div>
+<!-------------------------------------->
+<div class="ember-view application explore-signature" id="ember647">
+  <div class="ember-view-wrap">
+    <div class="ember-view" id="ember774">
+      <div class="ember-view">
+        <div class="top-gap hidden-xs hidden-sm"></div>
+        <div class="container-fluid">
+          <div class="row zone-featured-collections">
+            <div class="col-md-6 col-no-padding mozaic-left-zone">
+             <!--<a class="ember-view" href="javascript:void(0);" ng-click="redirectwithid('maincollectiondetails',leftcollection._id)">-->
+             <a class="ember-view" href="/maincollectiondetails/{{leftcollection._id}}">
+              <input type="hidden" value="{{leftbackimage}}" id="left_image">
+              <div id="ember1228" class="ember-view photo-background-component" style="position: relative; background-repeat:no-repeat; background-position: center center; background-size: cover !important; width:100%; height:99.8%;">
+                <div class="overlay-container col-padding">
+                  <div class="overlay-centered">
+                    <h4 class="title-over-image">{{leftcollection.name}}</h4>
+                    <p class="pannel-head">Curated by @<span ng-repeat="user in users">{{user._id==leftcollection.userid?user.username:''}}</span></p>
+                  </div>
+                </div>
+                <span class="dark-overlay-block"></span></div>
+              </a>
+            </div>
+            <div class="col-md-6 col-no-padding mozaic-zone">
+              <div class="container-fluid">
+                <div class="row">
+                
+                 <div class="col-md-6 col-no-padding" ng-repeat="rightcollection in rightcollections | orderBy: createdate | limitTo:4">
+                  <!--<a class="ember-view" href="javascript:void(0);" ng-click="redirectwithid('maincollectiondetails',rightcollection._id)">-->
+                  <a class="ember-view" href="/maincollectiondetails/{{rightcollection._id}}">
+                    <div id="ember1245" class="ember-view photo-background-component" style="position: relative;background: url({{cloudinary_image_base_path}}c_fill,h_110,w_335/{{rightcollection.images[rightcollection.images.length-1].publicid}}) no-repeat center center; background-size: cover !important; width:100%; height:100%;">
+                      <div class="overlay-container col-padding">
+                        <div class="overlay-centered">
+                          <h5 class="title-over-image">{{rightcollection.name}}</h5>
+                          <p class="pannel-head">Curated by @<span ng-repeat="user in users">{{user._id==rightcollection.userid?user.username:''}}</span></p>
+                        </div>
+                      </div>
+                      <span class="dark-overlay-block"></span></div>
+                    </a>
+                   </div>
+                   
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div>
+               <!--<a id="ember1044" class="ember-view pull-right btn btn-link btn-xs" href="javascript:void(0);" ng-click="redirect('collections')">-->
+               <a id="ember1044" class="ember-view pull-right btn btn-link btn-xs" href="/collections">
+               See More Collections</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="signature-followin">
+                <ul role="tablist" class="nav nav-tabs" id="myTab">
+                  <li class="active" role="presentation"><a aria-expanded="true" aria-controls="signature" data-toggle="tab" role="tab" id="signature-tab" href="javascript:void(0);">Signature Collection</a></li>
+                  <li class="" role="presentation" ng-show="isloggedin"><a aria-controls="follow" data-toggle="tab" id="follow-tab" role="tab" href="javascript:void(0);">Following</a></li>
+                  <li class="" role="presentation" ng-show="!isloggedin" style="letter-spacing: 1px;text-transform: uppercase;line-height: 24px;font-size: 12px;padding: 10px 12px;">Following</li>
+                </ul>
+               
+                <div class="tab-content" id="myTabContent">
+                <!--page loader box start-->
+               <!-- <div id="preloader">
+	                <div id="status">
+                    	<div class="spinner1">
+                            <div class="bounce1"></div>
+                            <div class="bounce2"></div>
+                            <div class="bounce3"></div>
+                        </div>
+                    </div>
+                </div>-->
+                <!--page loader box end-->
+                  <div aria-labelledby="signature-tab" id="signature" class="tab-pane fade in active" role="tabpanel">
+                    <div class="container-fluid no-pad">
+                      <div class="ember-view grid" style="padding:20px 0 0 38px;">
+                       <div class="grid-real clearfix" ng-show="nosignature">
+                       <div ng-repeat="signaturecollection in signaturecollections | orderBy: createdate" id="thumbnails">
+                        <div id="ember1384" class="ember-view photo" style="height:265px; width:265px;" ng-repeat="image in signaturecollection.images | orderBy: adddate">
+                          <div data-bindattr-1386="1386" class="grid-photo-block"> 
+                            <!--<cl-image public-id="{{image.publicid}}"  format="jpg" style="cursor:pointer;" ng-click="showDetails(image.galleryid,image.publicid)">
+                               <cl-transformation crop="fill" gravity="north"  width="260" height="260"/>
+                            </cl-image>-->
+                            <div class="thum_photo_det">
+                                <img data-src="{{cloudinary_image_base_path}}c_fill,h_260,w_260/{{image.publicid}}.jpg" width="260" height="260" ng-click="showDetails(image.galleryid,image.publicid)" style="cursor:pointer;">
+                            </div>
+                            <span class="btn btn-default btn-sm btnhover addcollectionbtn" ng-show="!spnAddCollection" data-ember-action="1392"><a data-ember-action="1190" id="btn-collect" href="javascript:void(0);" ng-click="open_collectionmodal(image.galleryid,image.publicid)"><i class="collect-icon"></i></a></span>
+                          </div>
+                        </div>
+                       </div>
+                       </div>
+                       <div id="ember1195" class="ember-view" style="text-align: center" ng-show="!nosignature">
+                         <div class="empty-con">
+                           <h5>Nothing's been added to signature collection yet.</h5>
+                         </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div aria-labelledby="follow-tab" id="follow" class="tab-pane fade" role="tabpanel">
+                    <div class="container-fluid no-pad">
+                      <div class="ember-view grid" style="padding:20px 0 0 38px;">
+                      
+                        <!--<div class="grid-real clearfix" ng-show="noimage">
+                            <div ng-repeat="gallery in galleries | orderBy: createdate" id="thumbnails">
+                                <div id="ember1384" class="ember-view photo" style="height:265px; width:265px;">
+                                  <div data-bindattr-1386="1386" class="grid-photo-block"> 
+                                    <div class="thum_photo_det">
+                                        <img data-src="{{cloudinary_image_base_path}}c_fill,g_north,h_260,w_260/{{gallery.imagepublicid}}.jpg" width="260" height="260" ng-click="showDetails(gallery._id,gallery.imagepublicid)" style="cursor:pointer;">
+                                    </div>
+                                    <span class="btn btn-default btn-sm btnhover addcollectionbtn" ng-show="!spnAddCollection" data-ember-action="1392"><a data-ember-action="1190" id="btn-collect" href="javascript:void(0);" ng-click="open_collectionmodal(gallery._id,gallery.imagepublicid)"></a><i class="collect-icon"></i></span>
+                                  </div>
+                                </div>
+                             </div>
+                        </div>
+                        <div id="ember1195" class="ember-view" style="text-align: center" ng-show="!noimage">
+                         <div class="empty-con">
+                           <h5>Nothing's been added to your gallery yet.</h5>
+                         </div>
+                        </div>-->
+                        
+                        <div class="grid-real clearfix" ng-show="nolikeimage">
+                            <div ng-repeat="following in followings" id="thumbnails">
+                                <div id="ember1384" class="ember-view photo" style="height:265px; width:265px;">
+                                  <div data-bindattr-1386="1386" class="grid-photo-block"> 
+                                    <div class="thum_photo_det">
+                                        <img data-src="{{cloudinary_image_base_path}}c_fill,h_260,w_260/{{following.imageid}}.jpg" width="260" height="260" ng-click="showDetails(following.galleryid,following.imageid)" style="cursor:pointer;">
+                                    </div>
+                                    <span class="btn btn-default btn-sm btnhover addcollectionbtn" ng-show="!spnAddCollection" data-ember-action="1392"><a data-ember-action="1190" id="btn-collect" href="javascript:void(0);" ng-click="open_collectionmodal(following.galleryid,following.imageid)"><i class="collect-icon"></i></a></span>
+                                  </div>
+                                </div>
+                             </div>
+                        </div>
+                        <div id="ember1195" class="ember-view" style="text-align: center" ng-show="!nolikeimage">
+                         <div class="empty-con">
+                           <h5>You have not followed amy images yet.</h5>
+                         </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<style>
+ .explore-signature .zone-featured-collections .mozaic-zone .row > div{height:25vh;}
+ .explore-signature .zone-featured-collections .mozaic-left-zone {height: 50vh;}
+ .photo-background-component .dark-overlay-block {display: block;width: 100%;height: 100%;position: absolute;z-index: 10;top: 0px;left: 0px;background-color: rgba(0,0,0,0.4);-moz-transition: all 0.2s ease-in;-webkit-transition: all 0.2s ease-in;
+o-transition: all 0.2s ease-in;transition: all 0.2s ease-in;}
+.photo-background-component:hover .dark-overlay-block {background-color: rgba(0,0,0,0);}
+</style>
+<script>
+ $(function() {
+      $('#myTab li a').click(function() {
+            var id = $(this).attr('id');
+            var id_split=id.split('-');
+            $("#myTab li").removeClass("active");
+            $('#'+id).parent().addClass('active'); 
+            
+            $(".tab-pane").removeClass("active");
+            $('#'+id_split[0]).addClass('in');
+            $('#'+id_split[0]).addClass('active'); 
+            return false;
+      });
+   });
+</script>
+<script type="text/javascript">
+  $(window).ready(function() {
+         $(window).lazyLoadXT();
+  });
+  //    $(window).load(function() { 
+  //	$('#status').fadeOut(); 
+  //	$('#preloader').fadeOut('slow');
+  //	$('body').css({'overflow':'visible'});
+  //    });
+  $(window).load(function() {
+                
+                var link1 = $('#left_image').val();
+                var demo = link1.replace("upload/" , "upload/c_fill,h_202,w_675/");
+                $('#ember1228').css('background-image', 'url(' + demo + ')');
+                
+        
+       }); 
+</script>

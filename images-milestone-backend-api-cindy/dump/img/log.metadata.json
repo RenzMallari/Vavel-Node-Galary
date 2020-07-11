@@ -1,0 +1,1 @@
+{"options":{"capped":true,"size":5242880,"max":5000},"indexes":[{"v":2,"key":{"_id":1},"name":"_id_","ns":"img.log"}],"uuid":"a86452136eeb415ea819a4814a063817"}

@@ -1,0 +1,63 @@
+
+      <div class="ember-view parallax" id="ember806">
+        <div class="top-gap hidden-xs hidden-sm"></div>
+        <div class="parallax__layer parallax__layer--base about">
+          <div class="container page-body">
+            <h3>FAQ</h3>
+            <hr class="light" style="margin-bottom: 0;">
+			
+            <div class="tab-content" id="myTabContent">
+              <div aria-labelledby="aag1-tab" id="aag1" class="tab-pane fade in active" role="tabpanel">
+                <div class="tab-content" id="tabcontent">
+					<div ng-repeat="faq in faqlist">
+					  
+                    <div id="demo{{faq._id}}" class="" style="background-color: #fff; padding: 20px; margin-top:20px;">
+                      <h5 style="margin: 0 0 20px;">{{faq.questions}}</h5>
+                      <ul>
+                        <li style="list-style: none" data-ng-bind-html="trustAsHtml(faq.answer)"></li>                       
+                      </ul>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script type='text/javascript'>
+
+    $(function() {
+      $('#myTab li a').click(function() {
+            var id = $(this).attr('id');
+            var id_split=id.split('-');
+            $("#myTab li").removeClass("active");
+            $('#'+id).parent().addClass('active'); 
+            
+            $(".tab-pane").removeClass("active");
+            $('#'+id_split[0]).addClass('in');
+            $('#'+id_split[0]).addClass('active'); 
+            return false;
+      });
+   });
+    
+    $(function(){
+
+
+		$( ".button-show" ).click(function() {
+
+		  $( ".show-div" ).toggle();
+
+			  $('html,body').animate({
+
+				scrollTop: $(".show-div").offset().top},
+
+				'slow');
+
+		});
+
+    });
+  </script>
+

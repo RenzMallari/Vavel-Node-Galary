@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="photographer">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv=”expires” content=”date” />
+    <meta http-equiv=”content-encoding” content="gzip" />
+    <meta name="fragment" content="!">
+    <meta name="google-site-verification" content="5TklK3SCmMX2n68SMIryDKd4fJH2Dtwr4sAe4hXl2Ek" />
+
+
+    <base href="/">
+
+    <title>VAVEL Images: The Latest Stock Sports Professional Photographies</title>
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="css/angular-loading-bar.min.css">
+    <link rel="stylesheet" href="css/index.min.css" type="text/css">
+    <!-- <link rel="stylesheet" href="css/ga.theme.css" type="text/css"> -->
+    <!-- Google Tag Manager -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N25V4KB');
+    </script> -->
+    <!-- End Google Tag Manager -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-87440131-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-87440131-1');
+    </script>
+
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script> -->
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBostcE61uc6HQAVfo76Xp59PQ2S4gMYtc&libraries=places&language=en"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+    <script script-src src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script script-src src="js/bootstrap-3.3.7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@3.1.9-1/crypto-js.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular.merge.js"></script>
+    <script src="js/lib/ng-analytics.js"></script>
+
+    <script src="js/lib/chartjs/Chart.min.js"></script>
+    <script src="js/lib/chartjs/angular-chart.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ta-date-range-picker.css">
+    
+    <script type="text/javascript" src="js/lib/daterangepicker/bindonce.min.js"></script>
+    <script src="js/lib/daterangepicker/ta-date-range-picker.js"></script>
+    <script type="text/javascript" src="js/lib/daterangepicker/moment.min.js"></script>
+    <script type="text/javascript" src="js/lib/daterangepicker/moment-range.min.js"></script>
+
+    <script type="text/javascript" src="https://js.braintreegateway.com/web/dropin/1.18.0/js/dropin.min.js"></script>
+    <script script-src src="dist/js/combined.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <style>
+        #menuholder_top {
+            height: 85px;
+        }
+
+        .list-tags_vavel {
+            z-index: 9999;
+            background-color: #222;
+            background-image: url(/images/menu/bg_menu.gif);
+            background: linear-gradient(180deg, #626262, #141514);
+        }
+
+
+        .list-tags-background,
+        .list-tags-background-liquid {
+            width: 96%;
+            height: 70px;
+            color: #fff;
+            font-size: 14px;
+            padding-bottom: 10px;
+            font-weight: 700;
+            margin: 0 auto;
+            position: relative;
+            padding-top: 5px;
+        }
+
+        .logo-vavel-menu {
+            width: 170px;
+            float: left;
+            z-index: 9993;
+            margin-right: 2%;
+            margin-top: 2px;
+            margin-left: 4px;
+        }
+
+        .mgr10 {
+            margin-right: 10px;
+        }
+
+
+        .hofJYC {
+            position: absolute;
+
+            display: block;
+
+            text-align: center;
+
+            border: 0;
+
+            top: 0;
+
+            bottom: 0;
+
+            right: 0px;
+
+            left: auto;
+
+            z-index: 2;
+
+            outline: 0;
+
+            margin: auto;
+
+            width: 65px;
+
+            border-radius: 0 30px 30px 0;
+
+            height: 55px;
+
+            background: #1f9cca;
+
+        }
+
+        /*.hofJYC:hover 
+{ background-color: #FFF!important;
+}
+.jQQhIU {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}*/
+        .sb-toggle-right {
+            position: absolute;
+            top: 16px;
+            right: 10px;
+            z-index: 9;
+            display: block;
+        }
+
+
+        .bOWhzt {
+            position: relative;
+            width: 100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-align-content: center;
+            -ms-flex-line-pack: center;
+            align-content: center;
+            -webkit-box-pack: end;
+            -webkit-justify-content: flex-end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+        }
+
+        .bOWhzt img {
+            margin: 5px;
+            width: 50px;
+            height: 50px;
+            margin: 0 5px !important;
+        }
+
+        .searchbox .search-input {
+            padding-left: 20px;
+        }
+
+
+        .searchbox-mobile .search-input {
+            height: 45px;
+        }
+
+
+        .logo-vavel-menu {
+            width: 170px;
+            float: left;
+            z-index: 9993;
+            margin-right: 2%;
+            margin-left: 1%;
+        }
+
+        .filter-wapper {
+            padding: 0;
+            height: auto !important;
+            min-height: auto !important;
+        }
+
+        .vavel-web-filter-menu {
+            width: 100%;
+        }
+
+        .vavel-web-filter-menu .dropdown {
+            color: black;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        .vavel-web-filter-menu .dropdown .dropdown-header {
+            color: black;
+            font-size: 12px;
+            display: flex;
+            text-transform: unset;
+        }
+
+        .vavel-web-filter-menu .dropdown .dropdown-down-btn {
+            margin-left: 10px
+        }
+
+        .vavel-web-filter-menu .dropdown .dropdown-down-btn img {
+            width: 70%
+        }
+
+        .vavel-web-filter-menu .dropdown:hover .dropdown-menu {
+            display: block;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .vavel-web-filter-menu .dropdown .dropdown-menu {
+            top: unset;
+            left: 0;
+            display: none;
+            position: absolute;
+            z-index: 9999;
+        }
+
+        .vavel-web-filter-menu .dropdown .dropdown-menu .dropdown-item a {
+            text-transform: unset;
+        }
+
+        .dropdown .line-menu {
+            margin: 0 !important;
+            height: 1px;
+            width: 100%;
+            background-color: black;
+            /* top: 0; */
+            padding: 0;
+        }
+
+        #filter-controller {
+            display: none;
+            align-items: center;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s;
+            padding: 0 12px;
+            z-index: 1048;
+            position: relative;
+            width: 100%;
+        }
+
+        #filter-controller.active {
+            display: flex;
+            opacity: 1;
+            transition: all 0.3s;
+            transform: translateY(0%)
+        }
+
+        #filter-controller>div {
+            width: 100%;
+            align-items: center;
+            display: flex;
+        }
+
+        #filter-controller .row>div {
+            display: inline-block;
+            padding: 8px 0;
+            max-width: 100%;
+        }
+
+        #filter-controller .search-location {
+            overflow-x: auto;
+
+        }
+
+        #filter-controller input[type=text] {
+            line-height: 24px;
+            color: #41494f;
+            padding: 7px 7px 7px 20px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            min-width: 200px;
+        }
+
+        .search-location>div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            float: left;
+        }
+
+        .search-location input {
+            height: auto;
+        }
+
+        .search-location form {
+            padding: 0;
+            margin: 0
+                /* width: -webkit-fill-available; */
+        }
+
+        .search-location .list-chip {
+            display: flex;
+            padding: 0 8px;
+            align-items: center;
+        }
+        .icon-remove {
+            width: 30px;
+            cursor: pointer
+        }
+
+        #myModal-time input {
+            height: auto;
+        }
+
+        .picker-date {
+            padding: 6px 32px;
+            border: none;
+            color: white;
+            background-color: #3d72b7;
+        }
+
+        .range-date {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .range-date .form-group {
+            margin: 4px 8px;
+        }
+
+        .range-date .form-group:last-child {
+            margin-right: 0px;
+        }
+
+        .bar-chip {
+            transition: all .2s ease-in;
+            float: left;
+            font-family: Open Sans, Ubuntu, Arial;
+            font-size: 14px;
+            margin-right: 12px;
+            border-radius: 20px;
+            background: #EEE;
+            padding: 10px;
+            display: block;
+            position: relative
+        }
+
+        .bar-chip:last-child {
+            margin-right: 0px;
+        }
+
+        .bar-chip .clear-chip {
+            position: absolute;
+            top: -8px;
+            right: -6px;
+            z-index: 1;
+            font-size: 0.8rem;
+            /* line-height: unset; */
+            border-radius: 50%;
+            background-color: #af3d30;
+            color: white;
+            padding: 0px 6px;
+            cursor: pointer;
+        }
+
+        .bar-chip>a {
+            color: inherit;
+            display: block;
+            font-weight: 500;
+            width: max-content;
+            text-decoration: unset;
+        }
+
+        .dropdown-filter-bar {
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .dropdown-filter-bar img {
+            margin: 16px 8px;
+            width: 24px;
+        }
+
+
+        .flex-center-center {
+            display: flex;
+            justify-content: center;
+            align-items: center
+        }
+        .tag-logo {
+
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 1px solid gray;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body class="ember-application explore">
+    <!-- Google Tag Manager (noscript) -->
+    <!-- <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N25V4KB"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript> -->
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- <div id="menuholder_top"><div class="menu_vavel menu_vavel_fixed"><div class="sb-toggle-left"><div class="navicon-line"></div><div class="navicon-line"></div><div class="navicon-line"></div></div><div class="menu-background"><div class="logo-vavel-menu mgr10"><a href="/"><img src="https://assets.vavel.com/images/vavel_logo_png.png" alt="VAVEL logo" title="VAVEL logo"></a></div>
+
+  <div class="sb-toggle-right"><div class="LocalBar__Container-hlbwwg bOWhzt"><img src="https://assets.vavel.com/images/flags/es.png" alt="VAVEL España - The international newspaper"><img alt="Login" src="https://assets.vavel.com/images/user-icon.png"></div></div></div></div></div> -->
+    <!-- <div ng-controller='lastphotosController' id='lastphotos-controller'></div> -->
+    <div ng-controller='allalbumsController' id='allalbums-controller'></div>
+
+
+    <div ng-cloak class="ember-view application" id="ember647">
+        <div class="ember-view" id="ember774">
+            <div class="ember-view-wrap">
+                <div id='header-controller' ng-controller="headerController">
+
+                    <noscript>
+                        <div class="js-off-message"
+                            style="margin: 20% auto; display: block; width: 100%; max-width: 600px; background: #fff; padding: 3%;">
+                            <p data-ng-bind-html="trustAsHtml(settingsheader.noscriptcontent)"></p>
+                        </div>
+                    </noscript>
+
+
+                    <div id="header-menu" ng-hide="hideHeader()" class="ember-view navbar-zone">
+                        <nav data-bindattr-807="807" class="navbar" role="navigation">
+                            <div class="navbar-header">
+                                <button class="sb-toggle-left" type="button" data-toggle="collapse"
+                                    data-target="#myNavbar">
+                                    <div class="navicon-line"></div>
+                                    <div class="navicon-line"></div>
+                                    <div class="navicon-line"></div>
+                                </button>
+
+
+
+
+                                <!--  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span><span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button> -->
+
+                                <div class="logo-vavel-menu-mobile mgr10">
+
+                                    <a href="/" class="logo" ><img
+                                            src="https://assets.vavel.com/images/logo-vavel-17.png" alt="VAVEL logo"
+                                            title="VAVEL logo"></a>
+
+                                </div>
+
+                                <div class="sb-toggle-right">
+                                    <button class="mobile-login" ng-hide="submissionSuccess"><a
+                                            data-target="#myModal-login" data-toggle="modal" data-backdrop="static"
+                                            data-keyboard="false" data-backdrop="static" data-keyboard="false"
+                                            id="signinbuttonlink"><span>Login</span></a></button>
+
+                                    <li class="dropdown login-mobile" ng-show="submissionSuccess">
+                                        <a class="icon-nav-item" data-toggle="dropdown" href="javascript:void(0)"
+                                            ng-class="getClass('/myaccount')">
+                                            <div id="ember2447" class="ember-view inline-block">
+                                                <svg height="0" width="0">
+                                                    <clipPath id="hexagonClipSmall">
+                                                        <polygon points="12 0,23 6,23 18,12 25,2 18,2 6,12 0" />
+                                                    </clipPath>
+                                                </svg>
+
+                                                <img ng-if="loggedindetails && loggedindetails.image"
+                                                    public-id="{{loggedindetails.image}}" class="avatar hexagon-medium"
+                                                    ng-src="{{config.ftpAvatarPath}}{{loggedindetails.image}}"
+                                                    height="150" width="150"></img>
+
+                                                <!--
+                                                {{loggedindetails.image == 'a7odgjwaipcyizvdxvfh' ? 'dra9rytyly6lbcnavvtw' : loggedindetails.image}}
+                                                -->
+                                            </div>
+                                            <span style="margin-left: 4px;display:none; text-transform: uppercase"
+                                                id="usernamespan">
+                                                {{ loggedindetails.username | limitTo: 3 }}
+                                                <!--{{loggedindetails.username.length > 3 ? '...' : ''}}-->
+                                            </span>
+                                            <i class="icon-carrot"></i>
+                                            <span data-bindattr-2449="2449" class=""></span>
+                                        </a>
+
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a class="ember-view menuitem" href="/upload"><span>Upload</span></a>
+                                            </li>
+                                            <li><a class="ember-view menuitem" href="/mymetrics"><span>My 
+                                                        Metrics</span></a></li>
+                                            <li><a class="ember-view menuitem" href="/checkout">My Cart<span>
+                                                        &nbsp;{{$root.cartcount}}</span></a></li>
+                                            <li><a id="ember2468" class="ember-view menuitem" href="/downloads">My
+                                                    Purchases</a></li>
+
+                                            <!--<li ng-show="!showMyaccount"><a id="ember2467" class="ember-view menuitem" href="javascript:void(0);">Activity</a></li>-->
+                                            <li ng-show="!showMyaccount"><a id="ember2468" class="ember-view menuitem"
+                                                    href="/sale">Sales</a></li>
+
+
+                                            <hr class="xlight slim">
+                                            <li><a id="ember2452" class="ember-view menuitem" href="/mycollection">My
+                                                    Collections</a></li>
+
+                                            <hr class="xlight slim">
+                                            <li><a id="ember2450" class="ember-view"
+                                                    href="/myaccount/{{loggedindetails._id}}">My Account</a></li>
+                                            <li><a id="ember2453" class="ember-view menuitem"
+                                                    href="/settings">Settings</a></li>
+                                            <li ng-show="!showMyaccount"><a id="ember2450" class="ember-view"
+                                                    href="/myaccount/{{loggedindetails._id}}">My Gallery</a></li>
+                                            <li ng-show="showMyalbum"><a id="ember2468" class="ember-view menuitem"
+                                                    href="/myalbums">My Albums</a></li>
+
+                                            <li><a id="ember2468" class="ember-view menuitem"
+                                                    href="/#/widget/{{loggedindetails.username}}">My Widget</a></li>
+                                            <li><a class="menuitem" style="cursor: pointer;" data-ember-action="2454"
+                                                    tabindex="-1" href="javascript:void(0)"
+                                                    ng-click="logout()">Logout</a></li>
+                                        </ul>
+                                    </li>
+
+
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+                            <div id="myNavbar" class="collapse navbar-collapse">
+
+                                <div class="logo-vavel-menu mgr10" ng-controller='headersController'>
+
+                                    <a href="/" class="logo" target="_self"><img
+                                            src="https://assets.vavel.com/images/logo-vavel-17.png" alt="VAVEL logo"
+                                            title="VAVEL logo"></a>
+
+                                </div>
+
+                                <form class="navbar-form hidden-xs js-search-form out-mobile" data-ember-action="811"
+                                    ng-submit="searchimage_new()" style='display: inline'>
+                                    <div class="form-group">
+                                        <input type="text" id="search_key"
+                                            class="ember-view ember-text-field form-control input-sm"
+                                            placeholder="Search and Buy Stock Images..." ng-model="searchkeyword"
+                                            ng-keyup="searchimage_autoload()" autocomplete="off">
+                                        <button type="submit" name="commit" formnovalidate
+                                            class="SearchBoxInput__SearchButton-blanUK hofJYC"><svg fill="#FFFFFF"
+                                                height="40" width="40" viewBox="0 0 24 24">
+                                                <path
+                                                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                                                </path>
+                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                            </svg>
+                                        </button>
+
+
+                                        <!--<button class="btn btn-link srchbtn" type="submit" name="commit" formnovalidate>
+                                            <i class="search-icon-white"></i>
+                                        </button> -->
+                                        <div id="loadsearch"></div>
+                                    </div>
+                                    <div class='dropdown-filter-bar'>
+                                        <img src='img/down-arrow.png'>
+                                    </div>
+                                </form>
+
+
+                                <!--<a href="/advancesearch"><img src="../img/advanced-icon.png" class="advancedsearch" /></a> -->
+                                <ul class="nav navbar-nav navbar-right"
+                                    style='display: flex;   flex-wrap: wrap; align-items: center'>
+                                    <li class="dropdown" style='min-width: 60px'>
+                                        <a class="icon-nav-item flex-center-center" data-toggle="dropdown"
+                                            ng-controller='headersController' style="padding-bottom: 0;">
+                                            <span style="margin-left: 4px" ng-controller='headersController'
+                                                class='dropdown-currency'>
+                                                {{myCurrency.code || 'USD'}}
+                                            </span>
+                                            <i class="icon-carrot"></i>
+                                            <span data-bindattr-2449="2449" class=""></span>
+
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu" ng-controller='headersController'
+                                            style='min-width: 60px'>
+                                            <li ng-repeat="currency in filter_currencies" class="currency-item"
+                                                ng-click="changeCurrency(currency.code, true)">
+                                                <a href="javascript:void(0)" title="{{currency.symbol}}"
+                                                    class="currency-symbol black3">
+                                                    <span class="fltl mgr10"></span><span
+                                                        class="text">{{currency.code}}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown" style='min-width: 100px'>
+                                        <a class="icon-nav-item" data-toggle="dropdown"
+                                            ng-controller='headersController' style="padding-bottom: 0;">
+                                            <div id="ember2447" class="ember-view inline-block">
+                                                <svg height="0" width="0">
+                                                    <clipPath id="hexagonClipSmall">
+                                                        <polygon points="12 0,23 6,23 18,12 25,2 18,2 6,12 0" />
+                                                    </clipPath>
+                                                </svg>
+
+                                                <!-- <img ng-if="loggedindetails && loggedindetails.image" public-id="{{loggedindetails.image}}" class="avatar hexagon-medium" ng-src="{{config.ftpAvatarPath}}{{loggedindetails.image}}" height="150" width="150"></img> -->
+                                                <img id='flag-selected-country'
+                                                    ng-src="../img/flag-{{myCountry.toLowerCase().trim().replace(' ', '-')}}.svg"
+                                                    alt="{{myCountry}}" data-tip="Select editions">
+                                                <!--
+                                                        {{loggedindetails.image == 'a7odgjwaipcyizvdxvfh' ? 'dra9rytyly6lbcnavvtw' : loggedindetails.image}}
+                                                        -->
+                                            </div>
+                                            <!-- <span style="margin-left: 4px;display:none;"> -->
+                                            <span style="margin-left: 4px; display:none;"
+                                                ng-controller='headersController' id='select-country'>
+                                                {{myCountry || 'Country'}}
+                                            </span>
+                                            <i class="icon-carrot"></i>
+                                            <span data-bindattr-2449="2449" class=""></span>
+
+                                        </a>
+                                        <ul class="dropdown-menu" role="menu" ng-controller='headersController' ng-init="getIP()">
+                                            <li class="country-item" ng-click="changeCountry()">
+                                                <a title="ALL" class="country-flag black3"
+                                                    ng-click="changeCountry('country')">
+                                                    <span class="flag flag-country fltl mgr10"></span><span
+                                                        class="text">ALL</span>
+                                                </a>
+                                            </li>
+                                            <li ng-repeat="country in countries" class="country-item"
+                                                ng-click="changeCountry(country.name)">
+                                                <a title="{{country.name}}"
+                                                    class="country-flag black3">
+                                                    <span
+                                                        class="flag-{{country.name.trim().replace(' ', '-')}} flag fltl mgr10"></span><span
+                                                        class="text">{{country.name}}</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li ng-if="cartcount > 0" style='min-width: 60px'>
+                                        <!--<a href="/checkout" class="hide_buy" style="text-align: center;background-color: #005EA8 !important;color: #FFFFFF !important;">Buy <span class="hide_buy"  style="background-color: red;border-radius: 50%;padding: 10%;">{{cartcount}}</span></a>-->
+                                        <!--  <a style="transition: none" ng-if="cartUpdating" href="javascript:void(0)" class="ember-view"><span>Processing...</span></a> -->
+                                        <a style="transition: none" ng-if="cartUpdating" class='flex-center-center'
+                                            href="/checkout"><span>Cart
+                                            </span><span class="badge" ng-bind-html="cartcount"></span></a>
+                                        <a style="transition: none" ng-if="!cartUpdating" href="/checkout"><span>Cart
+                                            </span><span class="badge" ng-bind-html="cartcount"></span></a>
+                                    </li>
+
+                                    <!--<li><a href="/explore" class="ember-view" ng-class="getClass('/explore')" id="explore"  onclick="selectmenu('explore')">Explore</a></li>-->
+
+                                    <li><a href="/albums" class="ember-view" ng-class="getClass('/albums')" id="albums"
+                                            onclick="selectmenu('albums')" 
+                                            ng-click="changeTag()">Albums</a></li>
+                                    <li><a href="/" class="ember-view" ng-class="getClass('/')" id="albums"
+                                            onclick="selectmenu('last-photos')" 
+                                            ng-click="changeTag()">Photos</a></li>
+
+
+                                    <!--   <li><a href="/home" class="ember-view" ng-class="getClass('/home')" id="home" onclick="selectmenu('home')">Home</a></li> -->
+
+                                    <!--  <li><a href="/catalog" class="ember-view" ng-class="getClass('/catalog')" id="catalog"  onclick="selectmenu('catalog')">Catalog</a></li>-->
+
+
+                                    <li class="dropdown" ng-show="submissionSuccess">
+                                        <a class="icon-nav-item login-desktop" data-toggle="dropdown" href="javascript:void(0)"
+                                            ng-class="getClass('/myaccount')">
+                                            <div id="ember2447" class="ember-view inline-block">
+                                                <svg height="0" width="0">
+                                                    <clipPath id="hexagonClipSmall">
+                                                        <polygon points="12 0,23 6,23 18,12 25,2 18,2 6,12 0" />
+                                                    </clipPath>
+                                                </svg>
+
+                                                <img ng-if="loggedindetails && loggedindetails.image"
+                                                    public-id="{{loggedindetails.image}}" class="avatar hexagon-medium"
+                                                    ng-src="{{config.ftpAvatarPath}}{{loggedindetails.image}}"
+                                                    height="150" width="150"></img>
+
+                                                <!--
+                                                    {{loggedindetails.image == 'a7odgjwaipcyizvdxvfh' ? 'dra9rytyly6lbcnavvtw' : loggedindetails.image}}
+                                                    -->
+                                            </div>
+                                            <span style="margin-left: 4px;display:none;" id="usernamespan">
+                                                {{ loggedindetails.username | limitTo: 3 }}
+                                                <!--{{loggedindetails.username.length > 3 ? '...' : ''}}-->
+                                            </span>
+                                            <i class="icon-carrot"></i>
+                                            <span data-bindattr-2449="2449" class=""></span>
+                                        </a>
+
+                                        <ul class="dropdown-menu" role="menu">
+
+
+                                            <li><a class="ember-view menuitem" href="/upload"><span>+
+                                                        Upload</span></a></li>
+                                            <li><a class="ember-view menuitem" href="/mymetrics"><span>My 
+                                                        Metrics</span></a></li>
+                                            <li><a class="ember-view menuitem" href="/checkout">My Cart<span>
+                                                        &nbsp;{{$root.cartcount}}</span></a></li>
+
+                                            <li><a id="ember2468" class="ember-view menuitem" href="/downloads">My
+                                                    Purchases</a></li>
+
+
+
+
+
+
+                                            <!--  <li ng-show="!showMyaccount"><a id="ember2467" class="ember-view menuitem" href="javascript:void(0);">Activity</a></li> -->
+                                            <li ng-show="!showMyaccount"><a id="ember2468" class="ember-view menuitem"
+                                                    href="/sale">Sales</a></li>
+
+                                            <hr class="xlight slim">
+
+
+                                            <hr class="xlight slim">
+                                            <li><a id="ember2453" class="ember-view menuitem"
+                                                    href="/settings">Settings</a></li>
+                                            <li><a id="ember2450" class="ember-view"
+                                                    href="/myaccount/{{loggedindetails._id}}">My Account</a></li>
+                                            <li ng-show="!showMyaccount"><a id="ember2450" class="ember-view"
+                                                    href="/myaccount/{{loggedindetails._id}}">My Gallery</a></li>
+                                            <li ng-show="showMyalbum"><a id="ember2468" class="ember-view menuitem"
+                                                    href="/myalbums">My Albums</a></li>
+                                            <li><a id="ember2452" class="ember-view menuitem" href="/mycollection">My
+                                                    Collections</a></li>
+                                            <li><a id="ember2468" class="ember-view menuitem"
+                                                    href="/#/widget/{{loggedindetails.username}}">My Widget</a></li>
+                                            <li><a class="menuitem" style="cursor: pointer;" data-ember-action="2454"
+                                                    tabindex="-1" href="javascript:void(0)"
+                                                    ng-click="logout()">Logout</a></li>
+                                        </ul>
+                                    </li>
+
+
+                                    <!-- <li class="dropdown" ng-show="submissionSuccess">
+                                        <a class="icon-nav-item" data-toggle="dropdown" href="javascript:void(0)" ng-class="getClass('/myaccount')">
+                                            <div id="ember2447" class="ember-view inline-block">
+                                                <svg height="0" width="0">
+                                                    <clipPath id="hexagonClipSmall">
+                                                        <polygon points="12 0,23 6,23 18,12 25,2 18,2 6,12 0" />
+                                                    </clipPath>
+                                                </svg>
+
+                                                <img ng-if="loggedindetails && loggedindetails.image" public-id="{{loggedindetails.image}}" class="avatar hexagon-medium" ng-src="{{config.ftpAvatarPath}}{{loggedindetails.image}}" height="150" width="150"></img>
+
+                                            </div>
+                                            <span style="margin-left: 4px;display:none;" id="usernamespan">
+                                                {{ loggedindetails.username | limitTo: 3 }}
+                                            </span>
+<i class="icon-carrot"></i>
+                                            <span data-bindattr-2449="2449" class=""></span>
+                                        </a>
+
+                                        <ul class="dropdown-menu" role="menu">
+                                            
+                                            
+                                            <li><a class="ember-view menuitem" href="/upload"><span>+ Upload</span></a></li>
+                                            <li><a class="ember-view menuitem" href="/checkout">My Cart<span> &nbsp;{{$root.cartcount}}</span></a></li>
+
+                                            <li><a id="ember2468" class="ember-view menuitem" href="/downloads">My Purchases</a></li>
+                                            <li ng-show="!showMyaccount"><a id="ember2468" class="ember-view menuitem" href="/sale">Sales</a></li>
+                                        
+                                            <hr class="xlight slim">
+                                        
+
+                                            <hr class="xlight slim">
+                                            <li><a id="ember2453" class="ember-view menuitem" href="/settings">Settings</a></li>
+                                            <li><a id="ember2450" class="ember-view" href="/myaccount/{{loggedindetails._id}}">My Account</a></li>
+                                            <li ng-show="!showMyaccount"><a id="ember2450" class="ember-view" href="/myaccount/{{loggedindetails._id}}" >My Gallery</a></li>
+                                            <li ng-show="showMyalbum"><a id="ember2468" class="ember-view menuitem" href="/myalbums">My Albums</a></li>
+                                            <li><a id="ember2452" class="ember-view menuitem" href="/mycollection">My Collections</a></li>
+                                            <li><a id="ember2468" class="ember-view menuitem" href="/#/widget/{{loggedindetails.username}}">My Widget</a></li>
+                                            <li><a class="menuitem" style="cursor: pointer;" data-ember-action="2454" tabindex="-1" href="javascript:void(0)" ng-click="logout()">Logout</a></li>
+                                        </ul>
+                                    </li> 
+                                    <li><a href="/signup/photographer" data-toggle="modal" data-backdrop="static"
+                                            data-keyboard="false" class="nav-btn-primary" ng-hide="submissionSuccess"
+                                            style="display:none;" id="joinbuttonlink"><span>SELL PHOTOS</span></a></li>
+-->
+                                    <li><a data-target="#myModal-login" data-toggle="modal" data-backdrop="static"
+                                            data-keyboard="false" class="desktop-login" ng-hide="submissionSuccess"
+                                            id="signinbuttonlink">Login</a></li>
+                                </ul>
+
+
+                            </div>
+
+
+
+
+                            <nav class="searchbox-mobile" role="navigation">
+
+
+
+
+                                <div class="searchbox mgr15">
+
+
+
+                                    <form class="navbar-form js-search-form" style="padding:0px; display: flex"
+                                        data-ember-action="811" ng-submit="searchimage_new()">
+                                        <div class="form-group-mobile">
+                                            <input type="text" id="search_key"
+                                                class="ember-view ember-text-field form-control input-sm"
+                                                placeholder="Search images" ng-model="searchkeyword"
+                                                ng-keyup="searchimage_autoload(  )" autocomplete="off">
+                                            <button type="submit" name="commit" formnovalidate
+                                                class="SearchBoxInput__SearchButton-blanUK hofJYC"><svg fill="#FFFFFF"
+                                                    height="40" width="40" viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                                                    </path>
+                                                    <path d="M0 0h24v24H0z" fill="none"></path>
+                                                </svg>
+                                            </button>
+
+
+                                            <!--<button class="btn btn-link srchbtn" type="submit" name="commit" formnovalidate>
+                                            <i class="search-icon-white"></i>
+                                        </button> -->
+                                            <div id="loadsearch"></div>
+                                        </div>
+
+                                        <div class='dropdown-filter-bar'>
+                                            <img src='img/down-arrow.png'>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </nav>
+
+
+                    </div>
+
+
+                    <div class="vavel-web-bar-menu main-menu">
+
+                        <div class="bar-button"><a href="https://www.vavel.com/en/" rel="nofollow">on VAVEL</a></div>
+
+                        <div class="bar-button"><a href="https://search.vavel.com/" rel="nofollow">on the Web</a></div>
+
+                        <div class="bar-button"><a href="http://images.vavel.com/" rel="nofollow">Pictures</a></div>
+
+                    </div>
+
+                    <div ng-controller='filterController'>
+
+                        <!--Custom Range Date Modal Start-->
+                        <div aria-hidden="false" aria-labelledby="myModalTime" role="dialog" tabindex="-1"
+                            class="modal fade" id="myModal-time">
+                            <div class="modal-backdrop fade in"></div>
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button aria-label="Close" data-dismiss="modal" class="close"
+                                            type="button"><span aria-hidden="true">×</span></button>
+                                        <h4 id="myModalTime" class="modal-title">{{'Customed Date Range'}}</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div ng-show="rangeError" class="{{alert.altclass}}">
+                                            <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                        </div>
+                                        <form class="navbar-form js-search-form">
+                                            <div class='range-date'>
+                                                <div class="form-group">
+                                                    <label>From</label>
+                                                    <input placeholder="Enter date" id='datepicker1' ng-model="from"
+                                                        datepicker type="text" class="form-control input-sm">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>To</label>
+                                                    <input placeholder="Enter date" id='datepicker2' ng-model="to"
+                                                        datepicker type="text" class="form-control input-sm">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer" style="text-align: center;">
+                                        <button class='picker-date' ng-click='rangeDate()'>GO</button>
+                                    </div>
+                                </div>
+                                <!-- /.modal-content -->
+                            </div>
+                            <!-- /.modal-dialog -->
+                        </div>
+
+                        <!--Custom Range Date Modal End-->
+                        <div id='filter-controller'>
+                            <div class='row'>
+
+                                <!-- <div class='filter-size'>
+                                <div class='navbar filter-wapper'>
+                                    <div class="vavel-web-filter-menu">
+                                        <div class="dropdown">
+                                            <div class='dropdown-header'>{{filterSize || 'Size'}} <div class='dropdown-down-btn'><img src='/img/dropdown-arrow@2x.png'></div></div>
+                                            <ul class="dropdown-menu">
+                                                <li ng-repeat="size in listSize" class='dropdown-item'><a ng-click='selectSize(size.value)'>{{size.label}}</a></li>
+                                            </ul>
+                                        </div> 
+                                    </div>
+                                    
+                                </div>
+                            </div> -->
+
+                                
+                                <div class='filter-date col-sm-2 col-md-1'>
+                                    <!-- <div> -->
+                                    <div class="vavel-web-filter-menu">
+                                        <div class="dropdown">
+                                            <a data-toggle="dropdown" aria-expanded="true">
+                                                <div class='dropdown-header'>{{filterTime || 'Time'}} <div
+                                                        class='dropdown-down-btn'><img src='/img/dropdown-arrow@2x.png'>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li ng-repeat="time in listTime" class='dropdown-item'><a
+                                                        ng-click='selectTime(time.value)'>{{time.label}}</a></li>
+                                                <li>
+                                                    <hr class='line-menu' />
+                                                </li>
+                                                <li class='dropdown-item'><a
+                                                        ng-click="selectTime('custom-range'); showModal('myModal-time')">Custom
+                                                        range..</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <!-- </div> -->
+                                </div>
+                                <div class='search-location col-sm-10 col-md-11'>
+                                    <div>
+                                        <form class="navbar-form js-search-form">
+                                            <div class="form-group">
+                                                <input placeholder="Enter address" id='filter-location' ng-model="filterLocation" googleplace
+                                                    ng-model-options="{ debounce: 500 }" type="text"
+                                                    class="form-control input-sm">
+                                                <div id="loadsearch"></div>
+                                            </div>
+                                        </form>
+                                        <div class='list-chip'>
+                                            <!-- <div class="bar-chip" ng-repeat='address in listChipLocation'>
+                                                <a ng-click="redirectURL(address.key, address.value)"
+                                                    rel="nofollow">{{address.label}}</a>
+                                                    <span class='clear-chip'
+                                                    ng-click='removeChipLocation(address.key)'>x</span>
+                                            </div> -->
+                                            <div ng-show="listChipLocation.length">
+                                                <img class='icon-remove' ng-click='removeChipLocation()' src='img/remove.svg'/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='filter-date col-sm-2 col-md-1'>
+                                    <div ng-controller='headersController' style="display: inline-block; padding: 10px">
+                                        <span>
+                                            <select ng-model="sort_by" style="padding-left: 8">
+                                                <option value='near'>Nearly</option>
+                                                <option value='newest-country'>Newest in my country</option>
+                                                <option value='newest'>Newest</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class='' style="display: -webkit-box;">
+                        <!-- <div class=''>
+                            <div ng-controller='headersController' style="display: inline-block; padding: 10px; max-width: 120px;">
+                                <span>
+                                    <select ng-model="sort_by" style="padding-left: 8">
+                                        <option value='near'>Nearly</option>
+                                        <option value='newest-country'>Newest in my country</option>
+                                        <option value='newest'>Newest</option>
+                                    </select>
+                                </span>
+                            </div>
+                        </div> -->
+                        <div style="width: 100%">
+                            <div ng-controller='tagsController' id='tag-controller' class='reload'>
+                                <!-- {{favoritetags.length}} -->
+                                <div class='tag-wapper'>
+                                    <div class="paddles">
+                                        <button class="left-paddle paddle hidden"> < </button> 
+                                    </div>
+                                    <div class="vavel-web-bar-menu list-tags">
+                                        <div class="bar-tag {{!urlParams || !urlParams.tag ? 'active' : '' }}"
+                                            ng-click="selectAllTags()"><a
+                                                ng-href="{{stringifyPath(null, null, 1)}}" rel="nofollow">ALL</a></div>
+                                        <div class="bar-tag {{tag.class}}"
+                                            ng-click="selectTag(tag)"
+                                            data-tag="{{tag.tag}}" ng-repeat="tag in favoritetags">
+                                            <a ng-href="{{stringifyPath(tag.tag !== 'all' ? tag.tag : '', null, 1)}}"
+                                                rel="nofollow">
+                                                <img ng-if="getLogo(tag.tag)" class='tag-logo' ng-src="{{getLogo(tag.tag)}}"/><span>{{(tag.tag || '')}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="paddles">
+                                        <!-- <button class="left-paddle paddle hidden"> < </button> -->
+                                        <button class="right-paddle paddle"> > </button>
+                                    </div>
+                                </div>
+                                <div class='dates-wrapper' ng-if="displayDatesFilter && dateFilters.length > 0 || currentPath === '/myaccount/:id'">
+                                    <div class="paddles">
+                                        <button class="left-paddle paddle hidden"> < </button> 
+                                    </div>
+                                    <div class="vavel-web-bar-menu list-dates">
+                                        <!-- <div class="bar-tag {{!urlParams || (!urlParams.year || !urlParams.month) ? 'active' : '' }}"
+                                        ng-click="selectAllDates()"><a
+                                                ng-href="{{stringifyPath(selectedTag)}}" rel="nofollow">ALL</a></div> -->
+                                        <div class="date-item {{item.class}}"
+                                            ng-click="selectDate()"
+                                            ng-repeat="item in dateFilters">
+                                            <a ng-href="{{stringifyPath(selectedTag, { year:item.year, month:item.month })}}"
+                                                >
+                                                <img ng-src="{{config.ftpFullPath}}h200_{{item.publicid}}.{{item.fileExtension}}">
+                                                <span class="month-name">{{item.monthName}}</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="paddles">
+                                        <!-- <button class="left-paddle paddle hidden"> < </button> -->
+                                        <button class="right-paddle paddle"> > </button>
+                                    </div>
+                                </div>
+                                <!-- <div class="vavel-web-bar-menu list-tags" ng-show="{{showphoto}}" ng-controller='allalbumsController'>
+                                    <div class="bar-button" data-tag="" onclick="addactive(this)"><a ng-href="{{$parent.stringifyPath()}}" rel="nofollow">ALL</a></div>
+                                    <div class="bar-button" data-tag="{{tag.tag}}" ng-repeat="tag in $parent.favoritetags" onclick="addactive(this)"><a ng-href="{{$parent.stringifyPath(tag.tag)}}" rel="nofollow">{{tag.tag.toUpperCase()}}</a></div>
+                                </div> -->
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--Dropdorn Upload Image/Album Popup Start-->
+                    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                        class="modal fade" id="myModal-upload">
+                        <div class="modal-backdrop fade in"></div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span
+                                            aria-hidden="true">×</span></button>
+                                    <h4 id="myModalLabel1" class="modal-title" style="text-align: center;">Upload Images
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="single-img" class="clearfix">
+
+                                        <a href="javascript:void(0);" ng-click="navSingleImgUp();"
+                                            class="ember-view btn btn-primary btn-sm center-block" id="img">Upload
+                                            Single Image</a></div>
+                                    <hr>
+                                    <div id="album-img" class="clearfix">
+                                        <a href="javascript:void(0);" ng-click="navaddalbum();"
+                                            class="ember-view btn btn-primary btn-sm center-block" id="albm">Upload
+                                            Album</a></div>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                        class="modal fade" id="myModal-fileupload">
+                        <div class="modal-backdrop fade in"></div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span
+                                            aria-hidden="true">×</span></button>
+                                    <h4 id="myModalLabel" class="modal-title teststep1">Enter License Details</h4>
+                                    <h4 id="myModalLabel1" class="modal-title teststep2">Add Photos</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form" name="fileuploadform" id="photo_upload_form">
+                                        <div class="errors"></div>
+                                        <div class="form-group">
+                                            <div class="form_controls">
+                                                <!--<a class="file-input-wrapper btn btn-prime" href="javascript:void(0);" id="upload_widget_multiple">
+              <span>Add File Only</span>
+           </a>-->
+
+                                                <div class="step1">
+                                                    <div class="well">
+                                                        <a href="javascript:void(0);" id="openlicenseeditorial"
+                                                            class="btn btn-link">Select Editorial License</a>
+                                                        <div id="collapseExample-four" aria-expanded="true"
+                                                            style="display:block;">
+                                                            <select name="editoriallicense"
+                                                                ng-model="myalbum.editoriallicense"
+                                                                id="editoriallicense">
+                                                                <option value="">Select Editorial License</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="well">
+                                                        <a href="javascript:void(0);" id="openlicensecommercial"
+                                                            class="btn btn-link">Select Commercial License</a>
+                                                        <div id="collapseExample-five" aria-expanded="true"
+                                                            style="display:block;">
+                                                            <select name="commerciallicense"
+                                                                ng-model="myalbum.commerciallicense"
+                                                                id="commerciallicense">
+                                                                <option value="">Select Commercial License</option>
+                                                                <option value="Yes">Yes</option>
+                                                                <option value="No">No</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="well">
+                                                        <a href="javascript:void(0);" id="openaddress"
+                                                            class="btn btn-link">Enter License Address</a>
+                                                        <div id="collapseExample-six" aria-expanded="true"
+                                                            style="display:block;">
+                                                            <input type="text" placeholder="Enter address"
+                                                                id="albumaddress" name="albumaddress"
+                                                                class="form-control" ng-model="myalbum.albumaddress">
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-top: 15px">
+
+                                                        <div id="collapseExample-six" aria-expanded="true"
+                                                            style="display:block;">
+                                                            <input type="button" name="Next" value="Next to add photos"
+                                                                id="nextstep" class="form-control"
+                                                                style="    width: 35%;    height: 40px;
+        background-color: rgb(0, 61, 105);    color: #fff;    font-weight: bold;    font-size: 13px;    margin: 0 auto;" onclick="gotonext()">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="step2">
+                                                    <div class="upload_button_holder">
+                                                        <input type="button" name="Next"
+                                                            value="Back to edit license details" id="nextstep"
+                                                            class="form-control"
+                                                            style="    width: 35%;    height: 40px;
+        background-color: rgb(0, 61, 105);    color: #fff;    font-weight: bold;    font-size: 13px;    margin: 0 auto;"
+                                                            onclick="gotoprevious()">
+                                                        <br>
+                                                        <input type="button" name="Next"
+                                                            value="Upload file to save photos" id="nextstep"
+                                                            class="form-control"
+                                                            style="    width: 35%;    height: 40px;
+        background-color: rgb(0, 61, 105);    color: #fff;    font-weight: bold;    font-size: 13px;    margin: 0 auto;"
+                                                            onclick="gotosubmit()">
+                                                        <input type="file" name="file" id="inputfilesingle"
+                                                            class="cloudinary_galleryupload" multiple="multiple"
+                                                            style="display: none !important;">
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="status" style="text-align: center">{{status}}</div>
+                                                <div class="progress" style="width: {{progress}}%" ng-init="progress=0"
+                                                    ng-show="gallerySuccess"></div>
+                                            </div>
+                                        </div>
+                                        <div id="ember1705" class="ember-view"></div>
+                                    </form>
+                                    <div class="social-auth">
+                                        <div class="clearfix">
+                                            <div id="ember1708" class="ember-view"></div>
+                                            <div id="ember1709" class="ember-view"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="text-align: center;"></div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+
+                    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                        class="modal fade" id="myModal-drag">
+                        <div class="modal-backdrop fade in"></div>
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span
+                                            aria-hidden="true">×</span></button>
+                                    <h4 id="myModalLabel" class="modal-title">Be Active - Upload More</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div ng-show="albumError" class="{{alert.altclass}}">
+                                        <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                    </div>
+                                    <div>
+                                        <h3>Drag &amp; Drop files here or click to upload</h3>
+                                        <p>Choose from the files on your local device</p>
+                                        <!--<a class="file-input-wrapper btn btn-prime" href="javascript:void(0);" id="upload_widget_multiple">
+            <span>Add File Only</span>
+          </a>
+          <div id="dropzone"></div>-->
+                                        <form class="dropzone" id="my-awesome-dropzone" dropzone="dropzoneConfig">
+                                        </form>
+
+                                        <input type="hidden" id="publicid" name="publicid" class="form-control"
+                                            ng-model="myalbum.albumpublicid" ng-value="albumpublicid" />
+                                        <input type="hidden" id="imageheightwidth" name="imageheightwidth"
+                                            class="form-control" ng-model="myalbum.albumwidthheight"
+                                            ng-value="albumwidthheight" />
+                                        <input type="hidden" id="imageurls" name="imageurls" class="form-control"
+                                            ng-model="myalbum.albumimageurls" ng-value="albumimageurls" />
+                                        <div class="well" style="margin-top:10px">
+                                            <a href="javascript:void(0);" id="openkeyword" class="btn btn-link">Add
+                                                Keywords</a>
+                                            <div id="collapseExample-one" aria-expanded="true" style="display:block;">
+                                                <tags-input ng-model="myalbum.keyword" display-property="tag"
+                                                    replace-spaces-with-dashes="false"></tags-input>
+                                                <p class="xsmall text-medium" style="margin-bottom:0px;">Enter tab or
+                                                    press enter to separate keywords.</p>
+                                            </div>
+                                        </div>
+                                        <div class="well">
+                                            <a href="javascript:void(0);" id="openprice" class="btn btn-link">Set Album
+                                                Price($)</a>
+                                            <div id="collapseExample-two" aria-expanded="true" style="display:block;">
+                                                <input type="text" placeholder="set album price" id="price" name="price"
+                                                    class="form-control" ng-model="myalbum.price">
+                                            </div>
+                                        </div>
+
+                                        <div class="well">
+                                            <a href="javascript:void(0);" id="openname" class="btn btn-link">Add Album
+                                                Name</a>
+                                            <div id="collapseExample-three" aria-expanded="true" style="display:block;">
+                                                <input type="text" placeholder="add album name" id="albumname"
+                                                    name="albumname" class="form-control" ng-model="myalbum.albumname">
+                                            </div>
+                                        </div>
+
+                                        <div class="well">
+                                            <a href="javascript:void(0);" id="openlicenseeditorial"
+                                                class="btn btn-link">Select Editorial License</a>
+                                            <div id="collapseExample-four" aria-expanded="true" style="display:block;">
+                                                <select name="editoriallicense" ng-model="myalbum.editoriallicense">
+                                                    <option value="">Select Editorial License</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="well">
+                                            <a href="javascript:void(0);" id="openlicensecommercial"
+                                                class="btn btn-link">Select Commercial License</a>
+                                            <div id="collapseExample-five" aria-expanded="true" style="display:block;">
+                                                <select name="commerciallicense" ng-model="myalbum.commerciallicense">
+                                                    <option value="">Select Commercial License</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="well">
+                                            <a href="javascript:void(0);" id="openaddress" class="btn btn-link">Enter
+                                                Address</a>
+                                            <div id="collapseExample-six" aria-expanded="true" style="display:block;">
+                                                <input type="text" placeholder="Enter address" id="albumaddress"
+                                                    name="albumaddress" class="form-control"
+                                                    ng-model="myalbum.albumaddress">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit" ng-click="albumsubmit()"
+                                        id="submtbtn_layout">Submit</button>
+                                </div>
+
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!--Dropdorn Upload Image/Album Popup End-->
+
+                    <!--Sign Up Modal Start-->
+                    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                        class="modal fade" id="myModal-join">
+                        <div class="modal-backdrop fade in"></div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span
+                                            aria-hidden="true">×</span></button>
+                                    <h4 id="myModalLabel1" class="modal-title">{{joinus.joinmodaltitle}}</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="buyer-info" class="clearfix">
+                                        <h5>{{joinus.usertitle}}</h5>
+                                        <p data-ng-bind-html="trustAsHtml(joinus.usercontent)"></p>
+                                        <a href="javascript:void(0);" ng-click="gotoSignup('buyer');"
+                                            class="ember-view btn btn-primary btn-sm center-block"
+                                            id="signupBuyer">{{joinus.userbuttonvalue}}</a>
+                                    </div>
+                                    <hr>
+                                    <div id="photog-info" class="clearfix">
+                                        <h5>{{joinus.photographertitle}}</h5>
+                                        <p data-ng-bind-html="trustAsHtml(joinus.photographercontent)"></p>
+                                        <a href="javascript:void(0);" ng-click="gotoSignup('photographer');"
+                                            class="ember-view btn btn-primary btn-sm center-block"
+                                            id="signupPhotographer">{{joinus.photographerbuttonvalue}}</a>
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="text-align: center;"> <span>Already Joined ? </span> <a
+                                        data-bindattr-1711="1711" class="switchToLogin" data-ember-action="1710"
+                                        href="javascript:void(0);"
+                                        onclick="openclose('myModal-login','myModal-join')">Sign In</a> </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+
+                    <!--Sign Up Modal End-->
+
+                    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                        class="modal fade" id="myModal-signup">
+                        <div class="modal-backdrop fade in"></div>
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span
+                                            aria-hidden="true">×</span></button>
+                                    <h4 id="myModalLabel" class="modal-title">Registration</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div ng-show="registrationError" class="{{alert.altclass}}">
+                                        <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                    </div>
+                                    <div ng-show="registrationSuccess" class="{{alert.altclass}}">
+                                        <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                    </div>
+                                    <form data-ember-action="1828" id="signup-form" ng-submit="Registration()">
+                                        <div class="form-group">
+                                            <label for="firstName">First Name</label>
+                                            <input type="text" ng-model="userregistration.firstname" id="ember1829"
+                                                class="ember-view ember-text-field form-control"
+                                                placeholder="First Name" autofocus name="firstname" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastName">Last Name</label>
+                                            <input type="text" ng-model="userregistration.lastname" id="ember1830"
+                                                class="ember-view ember-text-field form-control" placeholder="Last Name"
+                                                name="lastname" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="company">Company (Optional)</label>
+                                            <input type="text" id="ember1831" ng-model="userregistration.companyname"
+                                                class="ember-view ember-text-field form-control" placeholder="Company"
+                                                name="companyname">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" id="form-email" ng-model="userregistration.email"
+                                                class="ember-view ember-text-field form-control"
+                                                placeholder="Email Address" name="email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input type="password" id="form-password"
+                                                ng-model="userregistration.password" name='password'
+                                                class="ember-view ember-text-field form-control" placeholder="Password"
+                                                required>
+                                        </div>
+                                        <div class="clearfix"
+                                            style="width: 100%; text-align: center; margin-top: 10px;"><a
+                                                style="margin-bottom: 20px;" data-bindattr-1875="1875"
+                                                class="pull-right" data-ember-action="1874" href="#">Invite code</a>
+                                        </div>
+                                        <div id="ember1833" class="ember-view">
+                                            <button type="submit" data-bindattr-1878="1878" style=""
+                                                data-bindattr-1877="1877"
+                                                class="btn btn-loading btn btn-primary btn-block">
+                                                <div id="ember1879" class="ember-view loading-spinner" style=""></div>
+                                                <div class="btn-loading-text">Create Account</div>
+                                            </button>
+                                        </div>
+                                        <p class="xsmall" style="margin-top: 10px; background-color: #FFF;">By clicking
+                                            "Create Account" you agree to our <a id="ember1834" class="ember-view"
+                                                href="/legal/terms" data-dismiss="modal">Terms </a>and <a id="ember1835"
+                                                class="ember-view" href="/legal/privacy" data-dismiss="modal">Privacy
+                                                Policy </a>and
+                                            <a id="ember1836" class="ember-view" href="/legal" data-dismiss="modal">EULA
+                                            </a>and understand you will receive email updates from PHOTOGRAPHY, which
+                                            you may unsubscribe from at any time. For more info, contact
+                                            us.
+                                        </p>
+                                    </form>
+                                </div>
+                                <div class="modal-footer" style="text-align: center;"> <span>Already Joined ? </span>
+                                    <a data-bindattr-1711="1711" data-ember-action="1710" href="javascript:void(0)"
+                                        class="switchToLogin" onclick="openclose('myModal-join','myModal-login')">Sign
+                                        In</a> </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--Sign In Modal Start-->
+                    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                        class="modal fade" id="myModal-login">
+                        <div class="modal-backdrop fade in"></div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span
+                                            aria-hidden="true">×</span></button>
+                                    <h4 id="myModalLabel" class="modal-title">Sign In</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div ng-show="submissionError" class="{{alert.altclass}}">
+                                        <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                    </div>
+                                    <div ng-show="loginSuccess" class="{{alert.altclass}}">
+                                        <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                    </div>
+                                    <form role="form" name="loginform" ng-submit="login()">
+                                        <div class="errors"></div>
+                                        <div class="form-group">
+                                            <input type="email" id="login-email" ng-model="user.email"
+                                                class="ember-view ember-text-field form-control"
+                                                placeholder="Email Address" name="email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" id="login-password" ng-model="user.password"
+                                                class="ember-view ember-text-field form-control" placeholder="Password"
+                                                required>
+                                        </div>
+                                        <div id="ember1705" class="ember-view">
+                                            <button type="submit" class="btn btn-loading btn btn-primary btn-block">
+                                                <div id="ember1717" class="ember-view loading-spinner" ></div>
+                                                <div class="btn-loading-text">Sign in</div>
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    <div class="clearfix" style="width: 100%; text-align: center; margin-top: 10px;"><a
+                                            id="forgot-password" data-bindattr-1707="1707" class="pull-right small"
+                                            data-ember-action="1706" href="javascript:void(0)"
+                                            onclick="openclose('myModal-forgotpass','myModal-login')">Forgot Your
+                                            Password?</a></div>
+                                    <div class="social-auth">
+                                        <hr class="light" style="margin: 30px 0;">
+                                        <p class="small">or</p>
+                                        <div class="clearfix">
+                                            <div id="ember1708" class="ember-view" style="display:none;">
+                                                <button data-bindattr-1723="1723" style="background:#D8D5D5"
+                                                    data-bindattr-1722="1722"
+                                                    class="btn btn-loading btn-ig btn-xs btn-default pull-left"
+                                                    data-ember-action="1721">
+                                                    <div id="ember1724" class="ember-view loading-spinner" style="">
+                                                    </div>
+                                                    <div class="btn-loading-text"><i data-bindattr-1727="1727"
+                                                            class="ig-icon"></i>Sign in with Instagram</div>
+                                                </button>
+                                            </div>
+
+                                            <div id="ember1709" class="ember-view">
+
+                                                <button class="btn btn-loading btn btn-primary btn-block"
+                                                    ng-click="loginFacebook()">
+
+
+                                                    <div class="btn-loading-text"><i data-bindattr-1735="1735"
+                                                            class="fb-icon"></i>Sign in with Facebook</div>
+                                                </button>
+
+                                                <!-- <a href='/api/auth/facebook' target='_blank'>
+                                                        <button data-bindattr-1731="1731" style="background:#3b5998 !important"
+                                                        data-bindattr-1730="1730"
+                                                        class="btn btn-loading btn-fb btn-xs btn-default pull-right"
+                                                        data-ember-action="1729">
+                                                        <div id="ember1732" class="ember-view loading-spinner" style="background:#3b5998 !important">
+                                                        </div>
+                                                        <div class="btn-loading-text"><i data-bindattr-1735="1735"
+                                                                class="fb-icon"></i>Sign in with Facebook</div>
+                                                        </button>
+                                                    </a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer" style="text-align: center;"> <span>Don't have an account?
+                                    </span> <a href="/signup/photographer">Join</a> </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Sign In Modal End-->
+
+                    <!--Forgot Password Modal Start-->
+                    <div aria-hidden="false" aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+                        class="modal fade" id="myModal-forgotpass">
+                        <div class="modal-backdrop fade in"></div>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span
+                                            aria-hidden="true">×</span></button>
+                                    <h4 id="myModalLabel" class="modal-title">Forgot your password?</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div ng-show="submissionError" class="{{alert.altclass}}">
+                                        <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                    </div>
+                                    <div ng-show="forgetpasswordsuccess" class="{{alert.altclass}}">
+                                        <alert type="{{alert.type}}">{{alert.msg}}</alert>
+                                    </div>
+                                    <form role="form" name="forgotpasswordform" ng-submit="forgotpassword();">
+                                        <div class="errors"></div>
+                                        <div class="form-group">
+                                            <input type="email" id="login-email" ng-model="user.email"
+                                                class="ember-view ember-text-field form-control"
+                                                placeholder="Email Address" name="email" required>
+                                        </div>
+                                        <div id="ember1705" class="ember-view">
+                                            <button type="submit" class="btn btn-loading btn btn-primary btn-block">
+                                                <div id="ember1717" class="ember-view loading-spinner"></div>
+                                                <div class="btn-loading-text">Submit Request</div>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer" style="text-align: center;"> <span>Back to login </span> <a
+                                        data-bindattr-1711="1711" class="" data-ember-action="1710"
+                                        href="javascript:void(0)" id="aSwitchloginFromPassword"
+                                        onclick="openclose('myModal-login','myModal-forgotpass')">Login</a> </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="top-gap hidden-xs hidden-lg hidden-md"></div>
+                    <div class="{{pageClass}}" ng-view ngcloak autoscroll></div>
+                </div>
+                <div ng-controller="footercontroller" id="footrdiv" style="display:none;">
+                    <div id="footer" ng-show="footershow">
+                        <div class="footer-base">
+                            <div class="container">
+                                <div class="clearfix">
+                                    <div class="t20-icon"></div>
+
+
+                                    <p class="small mgt0">
+
+                                        <b>Committed to making you live sports.</b><br />
+                                        Copyright © 2019 VAVEL. Not allowed use without authorization. Media. All rights
+                                        reserved. VAVEL IMAGES is powered by: Etemenanky Technology SL, Calle Vallandes
+                                        12 Madrid, Spain.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="container pdb15">
+
+                            <ul class="small footer-list">
+                                <li ng-hide="submissionSuccess"><a href="/signup/photographer"
+                                        class="ember-view text-link dark" id="ember918"><b>Register as
+                                            Photographer</b></a></li>
+                                <!-- <li><a href="/collections" class="ember-view text-link dark" id="ember920">Explore custom collections</a></li>-->
+
+                                <li><a href="/cms/license" class="ember-view text-link dark" id="ember922">License</a>
+                                </li>
+                                <li><a href="/team" class="ember-view text-link dark" id="ember923">About us</a></li>
+
+                                <li><a href="/contact" class="text-link dark">Contact us</a></li>
+
+                                <!--   <li><a href="/faq" class="text-link dark">FAQ</a></li> -->
+                                <li><a href="/cms/terms" class="ember-view text-link dark" id="ember925">Terms</a></li>
+                                <li><a href="/cms/privacy" class="ember-view text-link dark" id="ember926">Privacy</a>
+                                </li>
+
+                                <li><a href="{{settingsfooter.instagram}}" target="_blank"><i
+                                            class="icon-ig-foot"></i>Instagram</a></li>
+                                <li><a href="{{settingsfooter.facebook}}" target="_blank"><i
+                                            class="icon-fb-foot"></i>Facebook</a></li>
+                                <li><a href="{{settingsfooter.twitter}}" target="_blank"><i
+                                            class="icon-tw-foot"></i>Twitter</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="bottom-bar ng-hide ng-show" ng-hide="cartcount == 0" ng-show="cartcount > 0">
+
+        <a style="transition: none;" ng-if="cartUpdating" href="javascript:void(0)" class="ember-view"><span>Creating
+                image...</span></a>
+        <a style="transition: none;" ng-if="!cartUpdating" href="/checkout"><span>Pay now </span><span class="badge"
+                style="font-size:17px; font-weight: bold; border-radius: 20px; margin-left: 10px; color:#4a92db; background: #FFF;"
+                ng-bind-html="cartcount"></span></a>
+
+
+    </div>
+    <script>
+        function scrollTags() {
+            var scrollDuration = 300;
+            // paddles
+            var leftPaddle = '.tag-wapper .left-paddle';
+            var rightPaddle = '.tag-wapper .right-paddle';
+            if ($(rightPaddle) || $(leftPaddle)) {
+
+                // scroll to left
+                $(rightPaddle).on('click', function () {
+                    var maxscroll = $('.tag-wapper .list-tags')[0].offsetWidth
+                    console.log(maxscroll)
+                    $(leftPaddle).removeClass('hidden');
+                    $(rightPaddle).addClass('hidden');
+                    $('.tag-wapper .list-tags').animate({ scrollLeft: maxscroll }, scrollDuration);
+                });
+
+                // scroll to right
+                $(leftPaddle).on('click', function () {
+                    $(rightPaddle).removeClass('hidden');
+                    $(leftPaddle).addClass('hidden');
+                    $('.tag-wapper .list-tags').animate({ scrollLeft: '0' }, scrollDuration);
+                });
+            }
+        }
+        function scrollDates() {
+            var scrollDuration = 300;
+            // paddles
+            var leftPaddle = '.dates-wrapper .left-paddle';
+            var rightPaddle = '.dates-wrapper .right-paddle';
+            if ($(rightPaddle) || $(leftPaddle)) {
+
+                // scroll to left
+                $(rightPaddle).on('click', function () {
+                    var maxscroll = $('.dates-wrapper .list-dates')[0].offsetWidth
+                    console.log(maxscroll)
+                    $(leftPaddle).removeClass('hidden');
+                    $(rightPaddle).addClass('hidden');
+                    $('.dates-wrapper .list-dates').animate({ scrollLeft: maxscroll }, scrollDuration);
+                });
+
+                // scroll to right
+                $(leftPaddle).on('click', function () {
+                    $(rightPaddle).removeClass('hidden');
+                    $(leftPaddle).addClass('hidden');
+                    $('.dates-wrapper .list-dates').animate({ scrollLeft: '0' }, scrollDuration);
+                });
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function (event) {
+            // your code here
+            scrollTags()
+            scrollDates()
+
+            $('.dropdown-filter-bar').click(function () {
+                $('#filter-controller').toggleClass('active');
+            });
+        });
+        function addactive(ele) {
+            $('.tag-wapper .bar-tag.active').removeClass("active");
+            ele.classList.add('active');
+        }
+
+    </script>
+    
+    <script script-src src="js/lib/semantika/apexcharts.min.js"></script>
+    <script script-src src="js/lib/semantika/dashboard.js"></script>
+    <script src="https://apis.google.com/js/client:platform.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+</body>
+</html>
