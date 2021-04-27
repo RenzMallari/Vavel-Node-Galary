@@ -78,7 +78,7 @@
     "q": "^1.4.1",
     "query-string": "^6.8.3",
     "querystring": "^0.2.0",
-    "redis": "^2.8.0",
+    "redis": "^3.1.1",
     "redis-server": "^1.2.2",
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",
