@@ -84,7 +84,7 @@
     "serve-favicon": "^2.5.0",
     "shortid": "^2.2.15",
     "text2png": "^2.2.0",
-    "underscore": "^1.8.3",
+    "underscore": "^1.12.1",
     "zip-folder": "^1.0.0"
   },
   "devDependencies": {
