@@ -18,7 +18,7 @@
     "angular-chart.js": "^1.1.1",
     "angular-download": "0.0.5",
     "angular-google-analytics": "^1.1.8",
-    "async": "^1.5.2",
+    "async": "^2.6.4",
     "axios": "^0.18.0",
     "babel-eslint": "^10.0.3",
     "bluebird": "^3.4.3",
